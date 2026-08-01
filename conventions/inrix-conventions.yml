@@ -1,0 +1,94 @@
+generated: '2026-08-01'
+method: searched
+source:
+- https://docs.inrix.com/reference/bestpractices/
+- https://docs.inrix.com/authentication/getting_authorized/
+- https://docs.inrix.com/traffic/segmentspeed/
+- https://docs.inrix.com/sendingdata/gpsdatastream/
+authentication:
+  style: bearer-token
+  token_source: INRIX User Accounts System (UAS)
+  presentation:
+  - 'Authorization: Bearer {token} header'
+  - accessToken query-string parameter
+  see_also: authentication/inrix-authentication.yml
+idempotency:
+  supported: false
+  note: INRIX documents no idempotency key or replay-safe write contract. The data-upload streams accept an optional
+    `rid` request identifier, but it is described as a correlation id for the request rather than a deduplication
+    key, and no retention window or replay semantics are published.
+pagination:
+  supported: false
+  note: 'Geospatial product APIs are bounded by query rather than paged: callers constrain results with `box` (bounding
+    box), `point` + `radius`, `segmentSet` or a corridor. Radius and bounding-box limits are enforced and surface
+    as statusId 153 (Radius Exceed Limit) and 154 (BoundingBox Exceed Limit).'
+field_selection:
+  supported: true
+  note: Output shaping is done with per-product output-field parameters rather than a generic sparse-fieldset syntax.
+  examples:
+  - parameter: SpeedOutputFields
+    api: Segment Speed
+    values: all, or a comma-delimited subset
+  - parameter: incidentOutputFields
+    api: Safety Alerts
+  error: Unknown values return statusId 60 ("unknown output field value in").
+datetime:
+  format: ISO 8601
+  docs: https://docs.inrix.com/reference/bestpractices/
+  example: '2007-12-25T19:20:30.45-08:00'
+  note: Times are expressed either in UTC with a trailing Z designator or as local time with a +hh:mm / -hh:mm offset.
+    Data-upload streams instead use a UNIX timestamp in the `ts` field.
+content_negotiation:
+  formats:
+  - application/json
+  - application/xml
+  note: Most product APIs accept a `format` parameter (JSON or XML). The legacy Connected Services gateway defaults
+    to XML with UTF-8 encoding.
+compression:
+  request: 'Content-Encoding: gzip is accepted on the data-upload streams'
+  response: 'Accept-Encoding: gzip, deflate is honoured'
+request_tracing:
+  field: rid
+  location: body
+  scope: data-upload streams
+  description: Optional unique identifier for the request, echoed for correlation.
+versioning:
+  scheme: uri-path
+  examples:
+  - /v1/segments/speed
+  - /v1/incidents
+  - /v3/Traffic/Inrix.ashx
+  - parking v3
+  see_also: lifecycle/inrix-lifecycle.yml
+error_envelope:
+  style: inrix-status-id
+  fields:
+  - statusId
+  - statusText
+  - copyright
+  - responseId
+  rfc9457: false
+  see_also: errors/inrix-error-codes.yml
+rate_limit_signaling:
+  documented: false
+  note: INRIX publishes no rate-limit headers or quota reference. Volume entitlement is set contractually per account.
+    The beta/test ingest endpoints are documented as having roughly 10x less capacity than production and are explicitly
+    not for load testing.
+location_referencing:
+  systems:
+  - INRIX XD segments
+  - TMC
+  - OpenLR
+  - TPEG-Loc
+  docs: https://docs.inrix.com/reference/dynamiclocationreferencing/
+  note: Segment identity is map-release dependent; callers should pin the map version reported by the Gateway Map
+    Version API.
+geometry:
+  bounding_box: box=lat1|lon1,lat2|lon2 (pipe-separated pairs, comma-separated corners)
+  point: Center="latitude|longitude" or point=lat|lon
+  units: '`units` parameter selects miles or kilometres'
+cross_links:
+  errors: errors/inrix-error-codes.yml
+  authentication: authentication/inrix-authentication.yml
+  lifecycle: lifecycle/inrix-lifecycle.yml
+  sandbox: sandbox/inrix-sandbox.yml

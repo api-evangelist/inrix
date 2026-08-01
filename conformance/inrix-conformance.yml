@@ -1,0 +1,94 @@
+generated: '2026-08-01'
+method: searched
+source:
+- https://docs.inrix.com/traffic/tpeg/
+- https://docs.inrix.com/reference/dynamiclocationreferencing/
+- https://docs.inrix.com/reference/bestpractices/
+- https://inrix.com/site-privacy-policy/
+- openapi/inrix-user-accounts-openapi-original.json
+- openapi/inrix-signals-analytics-openapi-original.json
+standards:
+- id: tpeg
+  name: TPEG (Transport Protocol Experts Group, TISA)
+  conforms: true
+  evidence: INRIX TPEG Connect delivers traffic, incident, parking, weather and fuel content in TPEG format; Annex
+    B is generally available and Annex A under special circumstances.
+  docs: https://docs.inrix.com/traffic/tpeg/
+- id: openlr
+  name: OpenLR dynamic location referencing
+  conforms: true
+  evidence: Safety Alerts accepts roadSegmentType=TTOpenLr; the Data Download Service ships OpenLR dictionary files
+    as a map-release dataset.
+  docs: https://docs.inrix.com/reference/dynamiclocationreferencing/
+- id: tmc
+  name: ALERT-C / TMC location codes
+  conforms: true
+  evidence: TMC segment identifiers are first-class across the Traffic APIs and map-release datasets (TMCAdded,
+    TMCRemoved, TMCReplaced).
+- id: iso8601
+  name: ISO 8601 date and time
+  conforms: true
+  evidence: The best-practices reference mandates ISO 8601 with either a Z designator or a +hh:mm/-hh:mm offset.
+  docs: https://docs.inrix.com/reference/bestpractices/
+- id: geojson
+  name: GeoJSON
+  conforms: true
+  evidence: GeoJSON is a published dataset type in the Data Download Service map-release hierarchy.
+- id: oauth2
+  name: OAuth 2.0
+  conforms: partial
+  evidence: The UAS spec exposes POST /v1/oauth2/token and POST /v1/oauth2/apptoken, but no securityDefinitions
+    of type oauth2, no authorization endpoint, no scope vocabulary and no RFC 8414 metadata document are published.
+- id: oidc
+  name: OpenID Connect
+  conforms: false
+  evidence: No /.well-known/openid-configuration document on any INRIX host.
+- id: rfc9457-problem-details
+  name: RFC 9457 Problem Details
+  conforms: false
+  evidence: INRIX uses a proprietary numeric statusId/statusText envelope; no application/problem+json media type
+    appears in any harvested spec or documentation page.
+- id: rfc9116-security-txt
+  name: RFC 9116 security.txt
+  conforms: false
+  evidence: No /.well-known/security.txt on any probed host.
+- id: rfc8594-sunset
+  name: RFC 8594 Sunset header
+  conforms: false
+  evidence: No Sunset or Deprecation header support is documented; deprecation is announced in prose.
+- id: openapi
+  name: OpenAPI Specification
+  conforms: partial
+  evidence: 'Three machine-readable contracts are served: Swagger 2.0 for UAS and Parkme, OpenAPI 3.0.1 for Signals
+    Analytics. The larger Traffic, Parking v3, Analytics and data-stream surfaces are documented in HTML only.'
+- id: asyncapi
+  name: AsyncAPI
+  conforms: false
+  evidence: No AsyncAPI document and no consumer-facing event, webhook or subscription surface. INRIX data streams
+    are inbound ingest endpoints; TPEG Connect is a client-initiated HTTP POST session with incremental deltas rather
+    than a push channel.
+- id: eu-us-dpf
+  name: EU-U.S. Data Privacy Framework
+  conforms: true
+  evidence: INRIX states it has certified to the U.S. Department of Commerce that it adheres to the EU-U.S. Data
+    Privacy Framework Principles.
+  docs: https://inrix.com/site-privacy-policy/
+- id: gdpr
+  name: GDPR
+  conforms: claimed
+  evidence: The site privacy policy describes data-subject rights handling and EU personal-data transfer mechanisms.
+  docs: https://inrix.com/site-privacy-policy/
+- id: soc2
+  name: SOC 2
+  conforms: unknown
+  evidence: No published SOC 2 attestation found on any INRIX public surface.
+- id: iso27001
+  name: ISO/IEC 27001
+  conforms: unknown
+  evidence: No published ISO 27001 certificate found on any INRIX public surface.
+certifications_published:
+- EU-U.S. Data Privacy Framework
+trust_center: false
+note: INRIX publishes no trust center, no security page and no vulnerability-disclosure policy. The only named compliance
+  program on a public INRIX surface is the EU-U.S. Data Privacy Framework certification cited in the site privacy
+  policy.

@@ -1,0 +1,359 @@
+generated: '2026-08-01'
+method: probed
+source: live probes of every apis.yml baseURL host, OpenAPI servers host and the docs/console host
+result: none
+summary: INRIX publishes no /.well-known/ discovery documents on any host. inrix.com and www.inrix.com return HTTP
+  403 to non-browser clients for every path. The AWS API Gateway host api.iq.inrix.com answers every /.well-known/*
+  path with HTTP 401 {"message":"Missing Authentication Token"} - the API Gateway default, not a document. analytics.inrix.com,
+  iq.inrix.com and iq.qa.inrix.com are single-page applications that answer HTTP 200 with an HTML shell for every
+  /.well-known/* path; those were rejected as catch-all false positives, not documents.
+hosts_probed:
+- inrix.com
+- docs.inrix.com
+- uas-api.inrix.com
+- parking-api.inrix.com
+- segment-api.inrix.com
+- incident-api.inrix.com
+- signals-api.inrix.com
+- tile-api.inrix.com
+- api.iq.inrix.com
+- iq.inrix.com
+- appsvc-ingest.inrix.io
+- mapdata.inrix.io
+- status.inrix.com
+paths_probed:
+- /.well-known/security.txt
+- /.well-known/openid-configuration
+- /.well-known/oauth-authorization-server
+- /.well-known/oauth-protected-resource
+- /.well-known/api-catalog
+- /.well-known/ai-plugin.json
+- /.well-known/agent-card.json
+- /.well-known/agent.json
+documents: []
+negative_results:
+- host: inrix.com
+  path: /.well-known/security.txt
+  status: no document
+- host: inrix.com
+  path: /.well-known/openid-configuration
+  status: no document
+- host: inrix.com
+  path: /.well-known/oauth-authorization-server
+  status: no document
+- host: inrix.com
+  path: /.well-known/oauth-protected-resource
+  status: no document
+- host: inrix.com
+  path: /.well-known/api-catalog
+  status: no document
+- host: inrix.com
+  path: /.well-known/ai-plugin.json
+  status: no document
+- host: inrix.com
+  path: /.well-known/agent-card.json
+  status: no document
+- host: inrix.com
+  path: /.well-known/agent.json
+  status: no document
+- host: docs.inrix.com
+  path: /.well-known/security.txt
+  status: no document
+- host: docs.inrix.com
+  path: /.well-known/openid-configuration
+  status: no document
+- host: docs.inrix.com
+  path: /.well-known/oauth-authorization-server
+  status: no document
+- host: docs.inrix.com
+  path: /.well-known/oauth-protected-resource
+  status: no document
+- host: docs.inrix.com
+  path: /.well-known/api-catalog
+  status: no document
+- host: docs.inrix.com
+  path: /.well-known/ai-plugin.json
+  status: no document
+- host: docs.inrix.com
+  path: /.well-known/agent-card.json
+  status: no document
+- host: docs.inrix.com
+  path: /.well-known/agent.json
+  status: no document
+- host: uas-api.inrix.com
+  path: /.well-known/security.txt
+  status: no document
+- host: uas-api.inrix.com
+  path: /.well-known/openid-configuration
+  status: no document
+- host: uas-api.inrix.com
+  path: /.well-known/oauth-authorization-server
+  status: no document
+- host: uas-api.inrix.com
+  path: /.well-known/oauth-protected-resource
+  status: no document
+- host: uas-api.inrix.com
+  path: /.well-known/api-catalog
+  status: no document
+- host: uas-api.inrix.com
+  path: /.well-known/ai-plugin.json
+  status: no document
+- host: uas-api.inrix.com
+  path: /.well-known/agent-card.json
+  status: no document
+- host: uas-api.inrix.com
+  path: /.well-known/agent.json
+  status: no document
+- host: parking-api.inrix.com
+  path: /.well-known/security.txt
+  status: no document
+- host: parking-api.inrix.com
+  path: /.well-known/openid-configuration
+  status: no document
+- host: parking-api.inrix.com
+  path: /.well-known/oauth-authorization-server
+  status: no document
+- host: parking-api.inrix.com
+  path: /.well-known/oauth-protected-resource
+  status: no document
+- host: parking-api.inrix.com
+  path: /.well-known/api-catalog
+  status: no document
+- host: parking-api.inrix.com
+  path: /.well-known/ai-plugin.json
+  status: no document
+- host: parking-api.inrix.com
+  path: /.well-known/agent-card.json
+  status: no document
+- host: parking-api.inrix.com
+  path: /.well-known/agent.json
+  status: no document
+- host: segment-api.inrix.com
+  path: /.well-known/security.txt
+  status: no document
+- host: segment-api.inrix.com
+  path: /.well-known/openid-configuration
+  status: no document
+- host: segment-api.inrix.com
+  path: /.well-known/oauth-authorization-server
+  status: no document
+- host: segment-api.inrix.com
+  path: /.well-known/oauth-protected-resource
+  status: no document
+- host: segment-api.inrix.com
+  path: /.well-known/api-catalog
+  status: no document
+- host: segment-api.inrix.com
+  path: /.well-known/ai-plugin.json
+  status: no document
+- host: segment-api.inrix.com
+  path: /.well-known/agent-card.json
+  status: no document
+- host: segment-api.inrix.com
+  path: /.well-known/agent.json
+  status: no document
+- host: incident-api.inrix.com
+  path: /.well-known/security.txt
+  status: no document
+- host: incident-api.inrix.com
+  path: /.well-known/openid-configuration
+  status: no document
+- host: incident-api.inrix.com
+  path: /.well-known/oauth-authorization-server
+  status: no document
+- host: incident-api.inrix.com
+  path: /.well-known/oauth-protected-resource
+  status: no document
+- host: incident-api.inrix.com
+  path: /.well-known/api-catalog
+  status: no document
+- host: incident-api.inrix.com
+  path: /.well-known/ai-plugin.json
+  status: no document
+- host: incident-api.inrix.com
+  path: /.well-known/agent-card.json
+  status: no document
+- host: incident-api.inrix.com
+  path: /.well-known/agent.json
+  status: no document
+- host: signals-api.inrix.com
+  path: /.well-known/security.txt
+  status: no document
+- host: signals-api.inrix.com
+  path: /.well-known/openid-configuration
+  status: no document
+- host: signals-api.inrix.com
+  path: /.well-known/oauth-authorization-server
+  status: no document
+- host: signals-api.inrix.com
+  path: /.well-known/oauth-protected-resource
+  status: no document
+- host: signals-api.inrix.com
+  path: /.well-known/api-catalog
+  status: no document
+- host: signals-api.inrix.com
+  path: /.well-known/ai-plugin.json
+  status: no document
+- host: signals-api.inrix.com
+  path: /.well-known/agent-card.json
+  status: no document
+- host: signals-api.inrix.com
+  path: /.well-known/agent.json
+  status: no document
+- host: tile-api.inrix.com
+  path: /.well-known/security.txt
+  status: no document
+- host: tile-api.inrix.com
+  path: /.well-known/openid-configuration
+  status: no document
+- host: tile-api.inrix.com
+  path: /.well-known/oauth-authorization-server
+  status: no document
+- host: tile-api.inrix.com
+  path: /.well-known/oauth-protected-resource
+  status: no document
+- host: tile-api.inrix.com
+  path: /.well-known/api-catalog
+  status: no document
+- host: tile-api.inrix.com
+  path: /.well-known/ai-plugin.json
+  status: no document
+- host: tile-api.inrix.com
+  path: /.well-known/agent-card.json
+  status: no document
+- host: tile-api.inrix.com
+  path: /.well-known/agent.json
+  status: no document
+- host: api.iq.inrix.com
+  path: /.well-known/security.txt
+  status: no document
+- host: api.iq.inrix.com
+  path: /.well-known/openid-configuration
+  status: no document
+- host: api.iq.inrix.com
+  path: /.well-known/oauth-authorization-server
+  status: no document
+- host: api.iq.inrix.com
+  path: /.well-known/oauth-protected-resource
+  status: no document
+- host: api.iq.inrix.com
+  path: /.well-known/api-catalog
+  status: no document
+- host: api.iq.inrix.com
+  path: /.well-known/ai-plugin.json
+  status: no document
+- host: api.iq.inrix.com
+  path: /.well-known/agent-card.json
+  status: no document
+- host: api.iq.inrix.com
+  path: /.well-known/agent.json
+  status: no document
+- host: iq.inrix.com
+  path: /.well-known/security.txt
+  status: no document
+- host: iq.inrix.com
+  path: /.well-known/openid-configuration
+  status: no document
+- host: iq.inrix.com
+  path: /.well-known/oauth-authorization-server
+  status: no document
+- host: iq.inrix.com
+  path: /.well-known/oauth-protected-resource
+  status: no document
+- host: iq.inrix.com
+  path: /.well-known/api-catalog
+  status: no document
+- host: iq.inrix.com
+  path: /.well-known/ai-plugin.json
+  status: no document
+- host: iq.inrix.com
+  path: /.well-known/agent-card.json
+  status: no document
+- host: iq.inrix.com
+  path: /.well-known/agent.json
+  status: no document
+- host: appsvc-ingest.inrix.io
+  path: /.well-known/security.txt
+  status: no document
+- host: appsvc-ingest.inrix.io
+  path: /.well-known/openid-configuration
+  status: no document
+- host: appsvc-ingest.inrix.io
+  path: /.well-known/oauth-authorization-server
+  status: no document
+- host: appsvc-ingest.inrix.io
+  path: /.well-known/oauth-protected-resource
+  status: no document
+- host: appsvc-ingest.inrix.io
+  path: /.well-known/api-catalog
+  status: no document
+- host: appsvc-ingest.inrix.io
+  path: /.well-known/ai-plugin.json
+  status: no document
+- host: appsvc-ingest.inrix.io
+  path: /.well-known/agent-card.json
+  status: no document
+- host: appsvc-ingest.inrix.io
+  path: /.well-known/agent.json
+  status: no document
+- host: mapdata.inrix.io
+  path: /.well-known/security.txt
+  status: no document
+- host: mapdata.inrix.io
+  path: /.well-known/openid-configuration
+  status: no document
+- host: mapdata.inrix.io
+  path: /.well-known/oauth-authorization-server
+  status: no document
+- host: mapdata.inrix.io
+  path: /.well-known/oauth-protected-resource
+  status: no document
+- host: mapdata.inrix.io
+  path: /.well-known/api-catalog
+  status: no document
+- host: mapdata.inrix.io
+  path: /.well-known/ai-plugin.json
+  status: no document
+- host: mapdata.inrix.io
+  path: /.well-known/agent-card.json
+  status: no document
+- host: mapdata.inrix.io
+  path: /.well-known/agent.json
+  status: no document
+- host: status.inrix.com
+  path: /.well-known/security.txt
+  status: no document
+- host: status.inrix.com
+  path: /.well-known/openid-configuration
+  status: no document
+- host: status.inrix.com
+  path: /.well-known/oauth-authorization-server
+  status: no document
+- host: status.inrix.com
+  path: /.well-known/oauth-protected-resource
+  status: no document
+- host: status.inrix.com
+  path: /.well-known/api-catalog
+  status: no document
+- host: status.inrix.com
+  path: /.well-known/ai-plugin.json
+  status: no document
+- host: status.inrix.com
+  path: /.well-known/agent-card.json
+  status: no document
+- host: status.inrix.com
+  path: /.well-known/agent.json
+  status: no document
+false_positives:
+- host: analytics.inrix.com
+  reason: SPA catch-all returns HTTP 200 text/html for every path
+- host: iq.inrix.com
+  reason: Nuxt SPA returns HTTP 200 text/html or HTTP 302 for every path
+- host: iq.qa.inrix.com
+  reason: Nuxt SPA returns HTTP 200 text/html for every path
+- host: api.iq.inrix.com
+  reason: AWS API Gateway returns HTTP 401 "Missing Authentication Token" for every path
+security_txt: false
+openid_configuration: false
+api_catalog: false
+agent_card: false

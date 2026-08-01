@@ -1,0 +1,59 @@
+generated: '2026-08-01'
+method: derived
+source: openapi/*.json
+format: inrix-status-id
+note: INRIX does not emit RFC 9457 application/problem+json. HTTP status codes are paired with the numeric statusId
+  registry captured in errors/inrix-error-codes.yml, which is the authoritative error surface.
+see_also: errors/inrix-error-codes.yml
+count: 10
+problems:
+- status: 400
+  title: Bad request - invalid namespace
+  source_operation: openapi/inrix-signals-analytics-openapi-original.json#deleteNamespace
+  path: /v1/namespace/{namespace}
+  method: DELETE
+- status: 401
+  title: Unauthorized - invalid or missing token
+  source_operation: openapi/inrix-signals-analytics-openapi-original.json#deleteNamespace
+  path: /v1/namespace/{namespace}
+  method: DELETE
+- status: 404
+  title: Namespace not found
+  source_operation: openapi/inrix-signals-analytics-openapi-original.json#deleteNamespace
+  path: /v1/namespace/{namespace}
+  method: DELETE
+- status: 500
+  title: Internal server error
+  source_operation: openapi/inrix-signals-analytics-openapi-original.json#deleteNamespace
+  path: /v1/namespace/{namespace}
+  method: DELETE
+- status: 400
+  title: Bad request - invalid parameters
+  source_operation: openapi/inrix-signals-analytics-openapi-original.json#updateNamespace
+  path: /v1/namespace/{namespace}
+  method: PATCH
+- status: 401
+  title: Unauthorized - invalid or missing token
+  source_operation: openapi/inrix-signals-analytics-openapi-original.json#updateNamespace
+  path: /v1/namespace/{namespace}
+  method: PATCH
+- status: 500
+  title: Internal server error
+  source_operation: openapi/inrix-signals-analytics-openapi-original.json#updateNamespace
+  path: /v1/namespace/{namespace}
+  method: PATCH
+- status: 400
+  title: Bad request - invalid parameters
+  source_operation: openapi/inrix-signals-analytics-openapi-original.json#searchNamespaces
+  path: /v1/namespace/search
+  method: POST
+- status: 401
+  title: Unauthorized - invalid or missing token
+  source_operation: openapi/inrix-signals-analytics-openapi-original.json#searchNamespaces
+  path: /v1/namespace/search
+  method: POST
+- status: 500
+  title: Internal server error
+  source_operation: openapi/inrix-signals-analytics-openapi-original.json#searchNamespaces
+  path: /v1/namespace/search
+  method: POST

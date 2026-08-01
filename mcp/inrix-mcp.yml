@@ -1,0 +1,464 @@
+generated: '2026-08-01'
+method: derived
+status: candidate
+source: openapi/*.json
+note: INRIX publishes no hosted or remote MCP server. Searches of the INRIX docs, the INRIX GitHub organization
+  and the public MCP registries returned no INRIX server. This is a CANDIDATE tool surface derived from the three
+  machine-readable INRIX contracts so an implementer can see what a server would expose; it is not an INRIX product.
+server:
+  name: inrix
+  transport: http
+  url: null
+  published: false
+searched:
+- surface: https://docs.inrix.com/
+  result: no MCP reference
+- surface: https://github.com/INRIX
+  result: no MCP repository
+- surface: npm @modelcontextprotocol / registry search "inrix"
+  result: 0 results
+tool_count: 88
+tools:
+- name: Application_Get
+  description: GET /v1/applications
+  method: GET
+  path: /v1/applications
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#Application_Get
+- name: Application_Post
+  description: POST /v1/applications
+  method: POST
+  path: /v1/applications
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#Application_Post
+- name: Application_Put
+  description: PUT /v1/applications/{appId}
+  method: PUT
+  path: /v1/applications/{appId}
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#Application_Put
+- name: Application_Delete
+  description: DELETE /v1/applications/{appId}
+  method: DELETE
+  path: /v1/applications/{appId}
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#Application_Delete
+- name: Application_GetByVendor
+  description: GET /v1/appByVendor
+  method: GET
+  path: /v1/appByVendor
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#Application_GetByVendor
+- name: Application_GetAppToken
+  description: GET /v1/appToken
+  method: GET
+  path: /v1/appToken
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#Application_GetAppToken
+- name: Application_OAuth2Token
+  description: POST /v1/oauth2/apptoken
+  method: POST
+  path: /v1/oauth2/apptoken
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#Application_OAuth2Token
+- name: Application_GetAppKey
+  description: GET /v1/applications/{appId}/appKey
+  method: GET
+  path: /v1/applications/{appId}/appKey
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#Application_GetAppKey
+- name: Application_SetStatus
+  description: PUT /v1/applications/{appId}/status
+  method: PUT
+  path: /v1/applications/{appId}/status
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#Application_SetStatus
+- name: Application_QueryProperty
+  description: GET /v1/applications/{appId}/properties
+  method: GET
+  path: /v1/applications/{appId}/properties
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#Application_QueryProperty
+- name: Application_UpdateProperty2
+  description: PUT /v1/applications/{appId}/properties
+  method: PUT
+  path: /v1/applications/{appId}/properties
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#Application_UpdateProperty2
+- name: Application_AddProperties
+  description: POST /v1/applications/{appId}/properties
+  method: POST
+  path: /v1/applications/{appId}/properties
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#Application_AddProperties
+- name: Application_DeleteProperty2
+  description: DELETE /v1/applications/{appId}/properties
+  method: DELETE
+  path: /v1/applications/{appId}/properties
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#Application_DeleteProperty2
+- name: Application_QueryPropertyByKey
+  description: GET /v1/applications/{appId}/properties/{key}
+  method: GET
+  path: /v1/applications/{appId}/properties/{key}
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#Application_QueryPropertyByKey
+- name: Application_UpdateProperty
+  description: PUT /v1/applications/{appId}/properties/{key}
+  method: PUT
+  path: /v1/applications/{appId}/properties/{key}
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#Application_UpdateProperty
+- name: Application_DeleteProperty
+  description: DELETE /v1/applications/{appId}/properties/{key}
+  method: DELETE
+  path: /v1/applications/{appId}/properties/{key}
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#Application_DeleteProperty
+- name: ApplicationManagement_Ping
+  description: GET /v1/ApplicationManagement/Ping
+  method: GET
+  path: /v1/ApplicationManagement/Ping
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#ApplicationManagement_Ping
+- name: ApplicationManagement_GetApplicationContext
+  description: GET /v1/ApplicationManagement/ApplicationContext
+  method: GET
+  path: /v1/ApplicationManagement/ApplicationContext
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#ApplicationManagement_GetApplicationContext
+- name: ApplicationManagement_GetApplicationStatus
+  description: GET /v1/ApplicationManagement/ApplicationStatus
+  method: GET
+  path: /v1/ApplicationManagement/ApplicationStatus
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#ApplicationManagement_GetApplicationStatus
+- name: ApplicationManagement_GetCaches
+  description: GET /v1/ApplicationManagement/Caches
+  method: GET
+  path: /v1/ApplicationManagement/Caches
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#ApplicationManagement_GetCaches
+- name: ApplicationManagement_ClearCache
+  description: GET /v1/ApplicationManagement/Caches/{cacheId}/Clear
+  method: GET
+  path: /v1/ApplicationManagement/Caches/{cacheId}/Clear
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#ApplicationManagement_ClearCache
+- name: ApplicationManagement_RefreshCache
+  description: GET /v1/ApplicationManagement/Caches/{cacheId}/Refresh
+  method: GET
+  path: /v1/ApplicationManagement/Caches/{cacheId}/Refresh
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#ApplicationManagement_RefreshCache
+- name: ApplicationManagement_GetCacheContent
+  description: GET /v1/ApplicationManagement/Caches/{cacheId}
+  method: GET
+  path: /v1/ApplicationManagement/Caches/{cacheId}
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#ApplicationManagement_GetCacheContent
+- name: ApplicationManagement_RecycleApplication
+  description: GET /v1/ApplicationManagement/Recycle
+  method: GET
+  path: /v1/ApplicationManagement/Recycle
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#ApplicationManagement_RecycleApplication
+- name: ApplicationManagement_ForceGarbageCollection
+  description: GET /v1/ApplicationManagement/ForceGarbageCollection
+  method: GET
+  path: /v1/ApplicationManagement/ForceGarbageCollection
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#ApplicationManagement_ForceGarbageCollection
+- name: Auth_CheckToken
+  description: POST /v1/validatetoken
+  method: POST
+  path: /v1/validatetoken
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#Auth_CheckToken
+- name: Auth_Signin
+  description: POST /v1/signin
+  method: POST
+  path: /v1/signin
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#Auth_Signin
+- name: Auth_OAuth2Token
+  description: POST /v1/oauth2/token
+  method: POST
+  path: /v1/oauth2/token
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#Auth_OAuth2Token
+- name: Auth_SocialSignin
+  description: POST /v1/socialSignin
+  method: POST
+  path: /v1/socialSignin
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#Auth_SocialSignin
+- name: Auth_Signout
+  description: GET /v1/signout
+  method: GET
+  path: /v1/signout
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#Auth_Signout
+- name: Auth_RenewToken
+  description: GET /v1/renewtoken
+  method: GET
+  path: /v1/renewtoken
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#Auth_RenewToken
+- name: Developer_Get
+  description: GET /v1/developers
+  method: GET
+  path: /v1/developers
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#Developer_Get
+- name: Developer_Post
+  description: POST /v1/developers
+  method: POST
+  path: /v1/developers
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#Developer_Post
+- name: Developer_Put
+  description: PUT /v1/developers/{devId}
+  method: PUT
+  path: /v1/developers/{devId}
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#Developer_Put
+- name: Device_Put
+  description: PUT /v1/devices/{id}
+  method: PUT
+  path: /v1/devices/{id}
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#Device_Put
+- name: Device_GetUserDevices
+  description: GET /v1/devices
+  method: GET
+  path: /v1/devices
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#Device_GetUserDevices
+- name: Device_DeleteDevices
+  description: DELETE /v1/devices
+  method: DELETE
+  path: /v1/devices
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#Device_DeleteDevices
+- name: Device_ConnHeartbeat
+  description: GET /v1/heartbeat
+  method: GET
+  path: /v1/heartbeat
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#Device_ConnHeartbeat
+- name: EmailTemplate_Get
+  description: GET /v1/emailtemplates/{id}
+  method: GET
+  path: /v1/emailtemplates/{id}
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#EmailTemplate_Get
+- name: EmailTemplate_Put
+  description: PUT /v1/emailtemplates/{id}
+  method: PUT
+  path: /v1/emailtemplates/{id}
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#EmailTemplate_Put
+- name: EmailTemplate_Delete
+  description: DELETE /v1/emailtemplates/{id}
+  method: DELETE
+  path: /v1/emailtemplates/{id}
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#EmailTemplate_Delete
+- name: EmailTemplate_Post
+  description: POST /v1/emailtemplates
+  method: POST
+  path: /v1/emailtemplates
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#EmailTemplate_Post
+- name: User_GetPrincipalsByResource
+  description: GET /v1/users
+  method: GET
+  path: /v1/users
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#User_GetPrincipalsByResource
+- name: User_Post
+  description: POST /v1/users
+  method: POST
+  path: /v1/users
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#User_Post
+- name: User_GetPrincipalsByResource2
+  description: GET /v1/GetPrincipalsByResource
+  method: GET
+  path: /v1/GetPrincipalsByResource
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#User_GetPrincipalsByResource2
+- name: User_GetMultipleUsers2
+  description: POST /v1/GetMultipleUsers
+  method: POST
+  path: /v1/GetMultipleUsers
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#User_GetMultipleUsers2
+- name: User_getusersbydeveloper
+  description: GET /v1/getusersbydeveloper
+  method: GET
+  path: /v1/getusersbydeveloper
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#User_getusersbydeveloper
+- name: User_Get
+  description: GET /v1/users/{id}
+  method: GET
+  path: /v1/users/{id}
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#User_Get
+- name: User_Post1
+  description: POST /v1/users/RDS1
+  method: POST
+  path: /v1/users/RDS1
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#User_Post1
+- name: User_Post2
+  description: POST /v1/users/RDS2
+  method: POST
+  path: /v1/users/RDS2
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#User_Post2
+- name: User_ChangePassword
+  description: POST /v1/changePassword
+  method: POST
+  path: /v1/changePassword
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#User_ChangePassword
+- name: User_ResetPassword
+  description: GET /v1/resetPassword
+  method: GET
+  path: /v1/resetPassword
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#User_ResetPassword
+- name: User_InviteUser
+  description: POST /v1/inviteUser
+  method: POST
+  path: /v1/inviteUser
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#User_InviteUser
+- name: User_Put
+  description: PUT /v1/users/{userId}/email
+  method: PUT
+  path: /v1/users/{userId}/email
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#User_Put
+- name: User_Delete
+  description: DELETE /v1/users/{userId}
+  method: DELETE
+  path: /v1/users/{userId}
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#User_Delete
+- name: User_SendVerificationEmail
+  description: POST /v1/sendVerificationEmail
+  method: POST
+  path: /v1/sendVerificationEmail
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#User_SendVerificationEmail
+- name: User_ValidateEmail
+  description: POST /v1/validateEmail
+  method: POST
+  path: /v1/validateEmail
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#User_ValidateEmail
+- name: User_Clean
+  description: POST /v1/cleanOpenCarRecord
+  method: POST
+  path: /v1/cleanOpenCarRecord
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#User_Clean
+- name: User_QueryProperty
+  description: GET /v1/users/{userId}/properties
+  method: GET
+  path: /v1/users/{userId}/properties
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#User_QueryProperty
+- name: User_UpdateProperty
+  description: PUT /v1/users/{userId}/properties
+  method: PUT
+  path: /v1/users/{userId}/properties
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#User_UpdateProperty
+- name: User_AddProperties
+  description: POST /v1/users/{userId}/properties
+  method: POST
+  path: /v1/users/{userId}/properties
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#User_AddProperties
+- name: User_DeleteProperty
+  description: DELETE /v1/users/{userId}/properties
+  method: DELETE
+  path: /v1/users/{userId}/properties
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#User_DeleteProperty
+- name: User_VerifyEmail
+  description: POST /v1/verifyEmail
+  method: POST
+  path: /v1/verifyEmail
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#User_VerifyEmail
+- name: User_ResendCode
+  description: POST /v1/resendCode
+  method: POST
+  path: /v1/resendCode
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#User_ResendCode
+- name: UserGroup_Get
+  description: GET /v1/usergroups/{id}
+  method: GET
+  path: /v1/usergroups/{id}
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#UserGroup_Get
+- name: UserGroup_GetByName
+  description: GET /v1/usergroups
+  method: GET
+  path: /v1/usergroups
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#UserGroup_GetByName
+- name: UserGroup_Post
+  description: POST /v1/usergroups
+  method: POST
+  path: /v1/usergroups
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#UserGroup_Post
+- name: UserGroup_GetMembers
+  description: GET /v1/usergroups/{id}/members
+  method: GET
+  path: /v1/usergroups/{id}/members
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#UserGroup_GetMembers
+- name: UserGroup_AddMembers
+  description: POST /v1/usergroups/{id}/members
+  method: POST
+  path: /v1/usergroups/{id}/members
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#UserGroup_AddMembers
+- name: UserGroup_GetUserGroupsByAdmin
+  description: GET /v1/FindUserGroupsByAdminUser
+  method: GET
+  path: /v1/FindUserGroupsByAdminUser
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#UserGroup_GetUserGroupsByAdmin
+- name: UserGroup_DeleteMembers
+  description: DELETE /v1/usergroups/{id}/members/{memberId}
+  method: DELETE
+  path: /v1/usergroups/{id}/members/{memberId}
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#UserGroup_DeleteMembers
+- name: UserGroup_Put
+  description: PUT /v1/usergroups/{groupId}
+  method: PUT
+  path: /v1/usergroups/{groupId}
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#UserGroup_Put
+- name: UserGroup_Delete
+  description: DELETE /v1/usergroups/{groupId}
+  method: DELETE
+  path: /v1/usergroups/{groupId}
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#UserGroup_Delete
+- name: UserGroup_GetMultipleUserGroups
+  description: POST /v1/usergroups/GetMultipleUserGroups
+  method: POST
+  path: /v1/usergroups/GetMultipleUserGroups
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#UserGroup_GetMultipleUserGroups
+- name: UserGroup_QueryProperty
+  description: GET /v1/usergroups/{groupId}/properties
+  method: GET
+  path: /v1/usergroups/{groupId}/properties
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#UserGroup_QueryProperty
+- name: UserGroup_UpdateProperty
+  description: PUT /v1/usergroups/{groupId}/properties
+  method: PUT
+  path: /v1/usergroups/{groupId}/properties
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#UserGroup_UpdateProperty
+- name: UserGroup_AddProperties
+  description: POST /v1/usergroups/{groupId}/properties
+  method: POST
+  path: /v1/usergroups/{groupId}/properties
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#UserGroup_AddProperties
+- name: UserGroup_DeleteProperty
+  description: DELETE /v1/usergroups/{groupId}/properties
+  method: DELETE
+  path: /v1/usergroups/{groupId}/properties
+  source_operation: openapi/inrix-user-accounts-openapi-original.json#UserGroup_DeleteProperty
+- name: accounts_mobile_delete_delete
+  description: Endpoint for deleting a user account from mobile app
+  method: DELETE
+  path: /accounts/mobile/delete/
+  source_operation: openapi/inrix-parkme-openapi-original.json#accounts_mobile_delete_delete
+- name: api_caniparkhere_list
+  description: 'given a coordinate finds the nearest segments and computes which rate is currently active and attaches
+    additional
+
+    data to json response.'
+  method: GET
+  path: /api/caniparkhere/
+  source_operation: openapi/inrix-parkme-openapi-original.json#api_caniparkhere_list
+- name: api_openspots_events_list
+  description: GET /api/openspots/events/
+  method: GET
+  path: /api/openspots/events/
+  source_operation: openapi/inrix-parkme-openapi-original.json#api_openspots_events_list
+- name: api_openspots_events_read
+  description: GET /api/openspots/events/{pk_event}/
+  method: GET
+  path: /api/openspots/events/{pk_event}/
+  source_operation: openapi/inrix-parkme-openapi-original.json#api_openspots_events_read
+- name: intersectionAvailability
+  description: GET /v1/metrics/intersections/availability
+  method: GET
+  path: /v1/metrics/intersections/availability
+  source_operation: openapi/inrix-signals-analytics-openapi-original.json#intersectionAvailability
+- name: intersectionMetadata
+  description: POST /v1/metadata/intersections
+  method: POST
+  path: /v1/metadata/intersections
+  source_operation: openapi/inrix-signals-analytics-openapi-original.json#intersectionMetadata
+- name: intersectionMetrics
+  description: POST /v1/metrics/intersections
+  method: POST
+  path: /v1/metrics/intersections
+  source_operation: openapi/inrix-signals-analytics-openapi-original.json#intersectionMetrics
+- name: deleteNamespace
+  description: Delete namespace
+  method: DELETE
+  path: /v1/namespace/{namespace}
+  source_operation: openapi/inrix-signals-analytics-openapi-original.json#deleteNamespace
+- name: updateNamespace
+  description: Update namespace
+  method: PATCH
+  path: /v1/namespace/{namespace}
+  source_operation: openapi/inrix-signals-analytics-openapi-original.json#updateNamespace
+- name: searchNamespaces
+  description: Search namespaces
+  method: POST
+  path: /v1/namespace/search
+  source_operation: openapi/inrix-signals-analytics-openapi-original.json#searchNamespaces

@@ -1,0 +1,37 @@
+generated: '2026-08-01'
+method: generated
+source: openapi/*.json + docs.inrix.com
+note: Skills are grounded in operationIds verified verbatim in the harvested INRIX contracts. INRIX publishes no
+  AGENTS.md or first-party agent skills.
+skills:
+- file: inrix-authenticate-and-call.md
+  name: Authenticate against INRIX and call a product API
+  api: openapi/inrix-user-accounts-openapi-original.json
+  operations:
+  - Application_GetAppToken
+  - Auth_CheckToken
+  - Auth_RenewToken
+- file: inrix-manage-applications-and-users.md
+  name: Provision INRIX applications, users and groups
+  api: openapi/inrix-user-accounts-openapi-original.json
+  operations:
+  - Auth_Signin
+  - Application_Post
+  - Application_Get
+  - Application_GetAppKey
+  - Application_SetStatus
+  - Application_AddProperties
+  - User_Post
+  - UserGroup_Post
+  - UserGroup_AddMembers
+  - Auth_Signout
+- file: inrix-query-signals-intersection-metrics.md
+  name: Query INRIX Signals intersection metrics
+  api: openapi/inrix-signals-analytics-openapi-original.json
+  operations:
+  - intersectionAvailability
+  - intersectionMetadata
+  - intersectionMetrics
+  - searchNamespaces
+  - updateNamespace
+  - deleteNamespace

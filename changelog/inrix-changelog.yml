@@ -1,0 +1,86 @@
+generated: '2026-08-01'
+method: searched
+source:
+- https://docs.inrix.com/parking/change_log/
+- https://docs.inrix.com/sdk/releasenotes/
+scheme: per-product dated release notes
+note: INRIX does not maintain a single platform-wide changelog. Dated release notes exist for the Parking API and
+  for the Mobile Client SDK; other product APIs communicate change through documentation edits and account management.
+streams:
+- name: Parking API change log
+  url: https://docs.inrix.com/parking/change_log/
+  current: INRIX Parking Services (IPS) 3.0
+  entries:
+  - title: New USS API
+    date: '2018-10-22'
+    type: major
+    highlights:
+    - The USS API provides open spots based on INRIX processing of raw USS data and the existing prediction engine.
+    - OpenSpots data for a geographic region.
+    breaking: false
+  - title: New Occupancy API
+    date: '2017-05-22'
+    type: major
+    highlights:
+    - Historical occupancy and probability queries.
+    - Consistent representation of occupancy and probability across all parking APIs.
+    - Ability to see the source of occupancy data.
+    fixes:
+    - In the Parking lots API, occupancyPct was incorrectly listed as an object; a formal occupancy representation
+      was added.
+    breaking: false
+- name: INRIX Mobile Client SDK release notes
+  url: https://docs.inrix.com/sdk/releasenotes/
+  current: v9.0
+  entries:
+  - version: '9.0'
+    date: 2018-08
+    platforms:
+    - Android
+    - iOS
+    highlights:
+    - 'Cone-Ahead: display relevant incident alerts miles ahead using current speed and heading.'
+    breaking: false
+  - version: '8.1'
+    date: 2018-06
+    platforms:
+    - Android
+    highlights:
+    - Updated Google Play Services and Android API versions.
+    breaking: false
+  - version: '8.0'
+    date: 2018-04
+    platforms:
+    - Android
+    highlights:
+    - Architectural improvements increasing stability and OS compatibility.
+    breaking: true
+  - version: '7.2'
+    date: 2018-03
+    platforms:
+    - Android
+    highlights:
+    - Better SDK handling when required permissions have not been granted.
+    - Parking performance improvements, including better off-street data.
+    breaking: false
+  - version: '7.1'
+    date: 2017-12
+    platforms:
+    - Android
+    highlights:
+    - Updated parking with better on-street data.
+    breaking: false
+  - version: '7.0'
+    date: 2017-07
+    platforms:
+    - Android
+    highlights:
+    - Largely architectural changes under the hood.
+    breaking: true
+x-evidence:
+- url: https://docs.inrix.com/parking/change_log/
+  fetched: '2026-08-01'
+  http_status: 200
+- url: https://docs.inrix.com/sdk/releasenotes/
+  fetched: '2026-08-01'
+  http_status: 200

@@ -1,0 +1,92 @@
+generated: '2026-08-01'
+method: searched
+source:
+- https://docs.inrix.com/parking/beta/
+- https://docs.inrix.com/sendingdata/gpsdatastream/
+- https://docs.inrix.com/sendingdata/parkdatastream/
+- https://docs.inrix.com/datadownload/datadownload/
+model: separate beta / sandbox / qa hostnames rather than test-mode keys
+note: INRIX does not use a test-vs-live key prefix. Test traffic is directed at parallel beta, sandbox or qa hostnames
+  using the same credential flow. Tokens are not interchangeable between environments.
+environments:
+- name: Parking beta
+  pattern: Substitute beta.parkme.com for parkme.com
+  url: https://docs.inrix.com/parking/beta/
+  host_map:
+  - production: api.parkme.com
+    beta: api.beta.parkme.com
+  - production: parking-api.inrix.com
+    beta: api.beta.parkme.com
+  - production: www.parkme.com
+    beta: www.beta.parkme.com
+  - production: operator.parkme.com
+    beta: operator.beta.parkme.com
+  - production: admin.parkme.com
+    beta: admin.beta.parkme.com
+  purpose: A safe and secure way to test any part of the parking system without using real credit card information
+    or modifying production data.
+  payments:
+    real_cards_rejected: true
+    test_instrument: Stripe test cards
+    note: INRIX documents that real credit cards will not work against the beta endpoints and directs callers to
+      use Stripe test cards for requests and reservations. INRIX publishes no test card numbers of its own; use
+      the Stripe published test card set.
+    reference: https://docs.stripe.com/testing
+- name: Data upload beta
+  production: https://appsvc-ingest.inrix.io
+  beta: https://appsvc-ingest.beta.inrix.io
+  endpoints:
+  - /v1/gpsdatastream
+  - /v1/parkdatastream
+  - /v1/datastream
+  purpose: For testing purposes, including sending test data.
+  constraint: The beta endpoint should not be used for load testing, since it has 10x less capacity than production.
+- name: Data download qa
+  production: https://mapdata.inrix.io
+  qa: https://mapdata.qa.inrix.io
+  portal:
+    production: https://iq.inrix.com/data-downloader/
+    qa: https://iq.qa.inrix.com/data-downloader/
+- name: UAS beta
+  production: https://uas-api.inrix.com
+  beta: https://uas-api.beta.inrix.com
+  console: https://uas-api.beta.inrix.com/swagger
+- name: Gateway beta
+  production: https://gateway-api.inrix.com
+  beta: https://gateway-api.beta.inrix.com
+- name: Mobile gateway sandbox
+  hosts:
+  - https://na-api.sandbox.inrix.com
+  - https://eu-api.sandbox.inrix.com
+  - https://na-tts.sandbox.inrix.com
+  - https://eu-tts.sandbox.inrix.com
+- name: RoadRules beta
+  production: https://roadrules.inrix.com
+  beta: https://roadrules.beta.inrix.com
+- name: IQ portal qa
+  production: https://iq.inrix.com
+  qa: https://iq.qa.inrix.com
+interactive_consoles:
+- name: UAS Swagger UI
+  url: https://uas-api.inrix.com/swagger
+  status: live
+- name: Tile API Swagger UI
+  url: https://tile-api.inrix.com/swagger
+  status: live (spec endpoint /swagger/docs/v1 returns HTTP 500 as observed 2026-08-01)
+trial:
+  url: https://iq.inrix.com/
+  note: INRIX IQ offers a self-service trial registration; API credentials for production products are requested
+    via https://inrix.com/contact/.
+test_values_published: false
+test_values_note: INRIX publishes no magic test identifiers, fixture generators or time-simulation tooling. Test
+  data is whatever the caller uploads to the beta ingest endpoints.
+x-evidence:
+- url: https://docs.inrix.com/parking/beta/
+  fetched: '2026-08-01'
+  http_status: 200
+- url: https://uas-api.inrix.com/swagger
+  fetched: '2026-08-01'
+  http_status: 200
+- url: https://tile-api.inrix.com/swagger/docs/v1
+  fetched: '2026-08-01'
+  http_status: 500

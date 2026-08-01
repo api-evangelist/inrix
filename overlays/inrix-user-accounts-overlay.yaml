@@ -1,0 +1,25 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for INRIX User Accounts System (UAS) API
+  version: 1.0.0
+extends: openapi/inrix-user-accounts-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: inrix
+    x-apievangelist-harvested: '2026-08-01'
+    x-apievangelist-source: https://uas-api.inrix.com/swagger/docs/v1
+    x-apievangelist-documentation: https://docs.inrix.com/
+    x-apievangelist-authentication: authentication/inrix-authentication.yml
+    x-apievangelist-errors: errors/inrix-error-codes.yml
+    x-apievangelist-conventions: conventions/inrix-conventions.yml
+    x-apievangelist-lifecycle: lifecycle/inrix-lifecycle.yml
+    x-apievangelist-status-page: https://status.inrix.com/
+- target: $
+  update:
+    x-apievangelist-notes:
+    - Errors are reported with a numeric INRIX statusId plus statusText alongside the HTTP status code; the full
+      360-entry registry is captured in errors/inrix-error-codes.yml.
+    - 'Access tokens for every INRIX product API are minted by the UAS appToken flow and presented either as an
+      accessToken query parameter or an Authorization: Bearer header.'
+    - INRIX documents no idempotency contract and no rate-limit headers.

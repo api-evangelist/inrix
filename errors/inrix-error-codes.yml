@@ -1,0 +1,1471 @@
+generated: '2026-08-01'
+method: searched
+source: https://docs.inrix.com/reference/errorstatusids/
+docs: https://docs.inrix.com/reference/errorstatusids/
+format: inrix-status-id
+envelope:
+  description: INRIX responses carry a numeric statusId plus a human-readable statusText alongside the HTTP status
+    code. statusId 0 / "OK" indicates normal processing. The registry is shared across the Traffic, Parking, Routing
+    and gateway APIs.
+  fields:
+  - field: statusId
+    type: integer
+    description: INRIX status identifier; 0 means success.
+  - field: statusText
+    type: string
+    description: Short machine-ish label for the status identifier.
+  - field: copyright
+    type: string
+    description: INRIX copyright string returned on responses.
+  - field: responseId
+    type: string
+    description: Identifier for the individual response.
+  problem_json: false
+  rfc9457: false
+count: 360
+errors:
+- status_id: 0
+  status_text: OK
+  http_status: 200
+  description: Normal processing
+- status_id: 1
+  status_text: no vendorId
+  http_status: 403
+  description: Missing vendorId parameter
+- status_id: 2
+  status_text: vendorId not found
+  http_status: 403
+  description: VendorId not in database
+- status_id: 3
+  status_text: vendor forbidden
+  http_status: 403
+  description: Vendor is not authorized to perform the action
+- status_id: 4
+  status_text: no action
+  http_status: 400
+  description: Missing action parameter
+- status_id: 5
+  status_text: bad action
+  http_status: 400
+  description: Malformed action parameter
+- status_id: 6
+  status_text: no consumerGuid
+  http_status: 403
+  description: Missing consumerGuid parameter
+- status_id: 7
+  status_text: consumerGuid not found
+  http_status: 403
+  description: ConsumerGuid not in database
+- status_id: 8
+  status_text: unknown service error
+  http_status: 500
+  description: Failure in underlying service
+- status_id: 9
+  status_text: unknown action
+  http_status: 501
+  description: Action in cache, but could not reflect
+- status_id: 10
+  status_text: not found
+  http_status: 404
+  description: Not found
+- status_id: 11
+  status_text: undefined statusText for statusId
+  http_status: 501
+  description: There’s no entry in Status Table
+- status_id: 12
+  status_text: action not implemented
+  http_status: 501
+  description: The action is not yet implemented
+- status_id: 13
+  status_text: subscription expired
+  http_status: 400
+  description: The consumer’s subscription has expired, according to Inrix data
+- status_id: 14
+  status_text: schema not found
+  http_status: 404
+  description: Schema not found on filesystem
+- status_id: 15
+  status_text: public IP
+  http_status: 400
+  description: Admin request from a public IP address
+- status_id: 16
+  status_text: not HTTPS
+  http_status: 400
+  description: Admin request not HTTPS
+- status_id: 17
+  status_text: bad consumerId
+  http_status: 403
+  description: Malformed consumerGuid
+- status_id: 18
+  status_text: no consumerId
+  http_status: 403
+  description: Missing consumerId parameter
+- status_id: 19
+  status_text: consumerId not found
+  http_status: 403
+  description: ConsumerId not in database
+- status_id: 20
+  status_text: vendorGroup not found
+  http_status: 404
+  description: VendorGroup not in database
+- status_id: 21
+  status_text: Security Token Not Present
+  http_status: -1
+  description: There is no ‘InrixSessionId’ attribute in the query params
+- status_id: 22
+  status_text: Security Token Not Decryptable
+  http_status: -1
+  description: Could not decrypt token using ‘EncryptionKey’
+- status_id: 23
+  status_text: Security Token IP Address Mismatch
+  http_status: -1
+  description: IP address of request differs from that stored in
+- status_id: 24
+  status_text: SecurityToken DtKey Expired
+  http_status: 408
+  description: DTKey difference exceeds ‘EcryptionGraceMinutes’
+- status_id: 25
+  status_text: Security Token DtKey in Future
+  http_status: -1
+  description: DTKey exceeds 5 minutes in future direction
+- status_id: 26
+  status_text: User Authentication Failed
+  http_status: 403
+  description: User Authentication Failed
+- status_id: 41
+  status_text: NoToken
+  http_status: 400
+  description: Missing Token parameter
+- status_id: 42
+  status_text: BadToken
+  http_status: 400
+  description: Malformed Token parameter
+- status_id: 43
+  status_text: TokenExpired
+  http_status: 401
+  description: Token has expired
+- status_id: 50
+  status_text: boolean value expected for
+  http_status: 400
+  description: Parameter not parsed as bool
+- status_id: 51
+  status_text: byte value expected for
+  http_status: 400
+  description: Parameter not parsed as byte
+- status_id: 52
+  status_text: datetime value expected for
+  http_status: 400
+  description: Parameter not parsed as datetime
+- status_id: 53
+  status_text: double value expected for
+  http_status: 400
+  description: Parameter not parsed as double
+- status_id: 54
+  status_text: integer value expected for
+  http_status: 400
+  description: Parameter not parsed as int
+- status_id: 55
+  status_text: long value expected for
+  http_status: 400
+  description: Parameter not parsed as long
+- status_id: 56
+  status_text: 'Missing required parameter:'
+  http_status: 400
+  description: Missing required parameter
+- status_id: 60
+  status_text: unknown output field value in
+  http_status: 400
+  description: Unknown output field value
+- status_id: 70
+  status_text: invalid binary encoding type
+  http_status: 501
+  description: Invalid binary encoding type
+- status_id: 71
+  status_text: bad binary data
+  http_status: 400
+  description: Bad binary data
+- status_id: 80
+  status_text: Create failed
+  http_status: 501
+  description: Create object failed
+- status_id: 81
+  status_text: Update failed
+  http_status: 501
+  description: Update object failed
+- status_id: 82
+  status_text: Delete failed
+  http_status: 501
+  description: Delete object failed
+- status_id: 90
+  status_text: Service Call Timed Out
+  http_status: 500
+  description: Service Call Timed Out
+- status_id: 91
+  status_text: Invalid Message
+  http_status: 500
+  description: Invalid Message
+- status_id: 101
+  status_text: no date
+  http_status: 400
+  description: Missing date parameter
+- status_id: 102
+  status_text: no date
+  http_status: 400
+  description: Missing date parameter
+- status_id: 103
+  status_text: bad date
+  http_status: 400
+  description: Malformed date parameter
+- status_id: 104
+  status_text: bad date
+  http_status: 400
+  description: Malformed date parameter
+- status_id: 105
+  status_text: bad isambiguousorigin
+  http_status: 400
+  description: isAmbiguousOrigin must be “true” or “false”
+- status_id: 111
+  status_text: no waypoint
+  http_status: 400
+  description: Missing waypoint parameter
+- status_id: 112
+  status_text: no waypoint
+  http_status: 400
+  description: Missing waypoint parameter
+- status_id: 113
+  status_text: bad waypoint
+  http_status: 400
+  description: Malformed waypoint parameter
+- status_id: 114
+  status_text: bad waypoint
+  http_status: 400
+  description: Malformed waypoint parameter
+- status_id: 115
+  status_text: bad includeManeuvers
+  http_status: 400
+  description: Malformed includeManeuvers parameter
+- status_id: 116
+  status_text: bad duration
+  http_status: 400
+  description: Malformed duration parameter
+- status_id: 117
+  status_text: bad SpeedFilter
+  http_status: 400
+  description: Malformed SpeedFilter parameter
+- status_id: 118
+  status_text: NonConsecutiveWaypoints
+  http_status: 400
+  description: Non-Consecutive Waypoints
+- status_id: 119
+  status_text: BadMaxAlternates
+  http_status: 400
+  description: Bad Max Alternates
+- status_id: 120
+  status_text: NoMaxAlternates
+  http_status: 400
+  description: No Max Alternates
+- status_id: 121
+  status_text: Unroutable Waypoint
+  http_status: 400
+  description: A waypoint cannot be routed to/from
+- status_id: 131
+  status_text: no routeId
+  http_status: 400
+  description: Missing routeId parameter
+- status_id: 132
+  status_text: bad routeId
+  http_status: 400
+  description: Malformed routeId parameter
+- status_id: 133
+  status_text: routeId not found
+  http_status: 404
+  description: routeId not in database
+- status_id: 134
+  status_text: no tripId
+  http_status: 400
+  description: Missing tripId parameter
+- status_id: 135
+  status_text: bad tripId
+  http_status: 400
+  description: Malformed tripId parameter
+- status_id: 136
+  status_text: TripId not found
+  http_status: 404
+  description: tripId not found in database
+- status_id: 137
+  status_text: Route Not Found
+  http_status: 400
+  description: No routes found
+- status_id: 138
+  status_text: Unable to retrieve route
+  http_status: 501
+  description: Unable to rehydrate existing route def
+- status_id: 141
+  status_text: no latitude
+  http_status: 400
+  description: Missing latitude parameter
+- status_id: 142
+  status_text: 'no'
+  http_status: 400
+  description: Missing latitude parameter
+- status_id: 143
+  status_text: bad latitude
+  http_status: 400
+  description: Malformed latitude parameter
+- status_id: 144
+  status_text: bad
+  http_status: 400
+  description: Malformed latitude parameter
+- status_id: 145
+  status_text: no longitude
+  http_status: 400
+  description: Missing longitude parameter
+- status_id: 146
+  status_text: 'no'
+  http_status: 400
+  description: Missing longitude parameter
+- status_id: 147
+  status_text: bad longitude
+  http_status: 400
+  description: Malformed longitude parameter
+- status_id: 148
+  status_text: bad
+  http_status: 400
+  description: Malformed longitude parameter
+- status_id: 149
+  status_text: No radius
+  http_status: 400
+  description: No radius
+- status_id: 150
+  status_text: No radius
+  http_status: 400
+  description: No radius
+- status_id: 151
+  status_text: bad radius
+  http_status: 400
+  description: Malformed radius
+- status_id: 152
+  status_text: 'bad radius:'
+  http_status: 400
+  description: Malformed radius
+- status_id: 153
+  status_text: Radius Exceed Limit
+  http_status: 400
+  description: RadiusExceedLimit
+- status_id: 154
+  status_text: BoundingBox Exceed Limit
+  http_status: 400
+  description: BoundingBox Exceed Limit
+- status_id: 170
+  status_text: Cannot connect parking service
+  http_status: 500
+  description: Client cannot connect parking service Exceed Limit
+- status_id: 171
+  status_text: Communication error to parking service
+  http_status: 500
+  description: Communication error to parking service
+- status_id: 190
+  status_text: too many active alerts
+  http_status: 400
+  description: The number of active alerts exceeds the limt
+- status_id: 201
+  status_text: no alertType
+  http_status: 400
+  description: Missing alertType parameter
+- status_id: 202
+  status_text: bad alertType
+  http_status: 400
+  description: Malformed alertType parameter
+- status_id: 203
+  status_text: 'bad alertType:'
+  http_status: 400
+  description: Malformed alertType parameter
+- status_id: 211
+  status_text: no alertStatus
+  http_status: 400
+  description: Missing alertStatus parameter
+- status_id: 212
+  status_text: bad alertStatus
+  http_status: 400
+  description: Malformed alertStatus parameter
+- status_id: 213
+  status_text: 'bad alertStatus:'
+  http_status: 400
+  description: Malformed alertStatus parameter
+- status_id: 221
+  status_text: no marketId
+  http_status: 400
+  description: Missing marketId parameter
+- status_id: 222
+  status_text: bad marketId
+  http_status: 400
+  description: Malformed MarketId parameter
+- status_id: 223
+  status_text: marketId not found
+  http_status: 404
+  description: marketId not in db
+- status_id: 231
+  status_text: no DowMask
+  http_status: 400
+  description: Missing dowMask parameter
+- status_id: 232
+  status_text: bad DowMask
+  http_status: 400
+  description: Malformed dowMask parameter
+- status_id: 233
+  status_text: BadDaysOfWeek
+  http_status: 400
+  description: BadDaysOfWeek
+- status_id: 234
+  status_text: BadEnabledParam
+  http_status: 400
+  description: BadEnabledParam
+- status_id: 235
+  status_text: NoStartTime
+  http_status: 400
+  description: NoStartTime
+- status_id: 236
+  status_text: NoDeliveryType
+  http_status: 400
+  description: NoDeliveryType
+- status_id: 237
+  status_text: BadDeliveryType
+  http_status: 400
+  description: BadDeliveryType
+- status_id: 238
+  status_text: NoEnabled
+  http_status: 400
+  description: NoEnabled
+- status_id: 241
+  status_text: no StartTodKey
+  http_status: 400
+  description: Missing startTodKey parameter
+- status_id: 242
+  status_text: bad StartTodKey
+  http_status: 400
+  description: Malformed bad startTodKey parameter
+- status_id: 243
+  status_text: no end tod key
+  http_status: 400
+  description: Missing endtodkey
+- status_id: 244
+  status_text: bad end tod key
+  http_status: 400
+  description: Malformed endtodkey
+- status_id: 245
+  status_text: no time zone id
+  http_status: 400
+  description: Missing timezoneid
+- status_id: 246
+  status_text: bad time zone id
+  http_status: 400
+  description: Malformed timezoneid
+- status_id: 247
+  status_text: no alert tag
+  http_status: 400
+  description: Missing alerttag
+- status_id: 251
+  status_text: no stopSms
+  http_status: 400
+  description: Missing stopSms parameter
+- status_id: 252
+  status_text: bad stopSms
+  http_status: 400
+  description: Malformed stopSms parameter
+- status_id: 253
+  status_text: no suspendMessages
+  http_status: 400
+  description: Missing suspendMessages parameter
+- status_id: 254
+  status_text: bad suspendMessages
+  http_status: 400
+  description: Malformed suspendMessages parameter
+- status_id: 255
+  status_text: bad reason
+  http_status: 400
+  description: Malformed reason parameter
+- status_id: 261
+  status_text: no alertId
+  http_status: 400
+  description: Missing alertId parameter
+- status_id: 262
+  status_text: bad alertId
+  http_status: 400
+  description: Malformed alertId parameter
+- status_id: 263
+  status_text: alertId not found
+  http_status: 404
+  description: alertId not in database
+- status_id: 264
+  status_text: bad alert condition
+  http_status: 400
+  description: Malformed alertcondition
+- status_id: 271
+  status_text: no deliverTrafficAlerts
+  http_status: 400
+  description: Missing deliverTrafficAlerts parameter
+- status_id: 272
+  status_text: bad deliverTrafficAlerts
+  http_status: 400
+  description: Malformed deliverTrafficAlerts parameter
+- status_id: 274
+  status_text: 'Msg channel not found for VendorGroupId:'
+  http_status: 400
+  description: Message channel not found
+- status_id: 281
+  status_text: no isGasStation
+  http_status: 400
+  description: Missing isGasStation
+- status_id: 282
+  status_text: bad isGasStation
+  http_status: 400
+  description: Malformed isGasStation
+- status_id: 283
+  status_text: bad external id
+  http_status: 400
+  description: External id is not an integer
+- status_id: 284
+  status_text: Bad ExternalPointType
+  http_status: 400
+  description: Bad ExternalPointType
+- status_id: 301
+  status_text: too many points
+  http_status: 400
+  description: The Consumer’s Location list is full
+- status_id: 302
+  status_text: bad pointName
+  http_status: 400
+  description: Malformed pointName parameter
+- status_id: 303
+  status_text: duplicate pointName
+  http_status: 400
+  description: The PointName is a duplicate of an existing PointName
+- status_id: 304
+  status_text: bad address
+  http_status: 400
+  description: Malformed address parameter
+- status_id: 305
+  status_text: bad label
+  http_status: 400
+  description: Malformed label parameter
+- status_id: 306
+  status_text: unusable voice label
+  http_status: 400
+  description: The voice label is not acceptable to the recognition engine
+- status_id: 307
+  status_text: conflicting voice label
+  http_status: 400
+  description: The voice label phonetically conflicts with another voice label
+- status_id: 308
+  status_text: no pointName
+  http_status: 400
+  description: Missing pointName parameter
+- status_id: 309
+  status_text: 'bad voice tag:'
+  http_status: 400
+  description: Malformed voice tag parameter
+- status_id: 310
+  status_text: bad description
+  http_status: 400
+  description: Malformed description parameter
+- status_id: 311
+  status_text: no pointId
+  http_status: 400
+  description: Missing pointId parameter
+- status_id: 312
+  status_text: bad pointId
+  http_status: 400
+  description: Malformed pointId parameter
+- status_id: 313
+  status_text: pointId not found
+  http_status: 404
+  description: Location not in database
+- status_id: 314
+  status_text: bad point
+  http_status: 400
+  description: Malformed point
+- status_id: 315
+  status_text: no point
+  http_status: 400
+  description: Missing point
+- status_id: 316
+  status_text: Voice label is reserved
+  http_status: 400
+  description: The voice label is a reserved word used by the voice interface
+- status_id: 317
+  status_text: No point or location supplied
+  http_status: 400
+  description: No point or location supplied
+- status_id: 318
+  status_text: Duplicate location name
+  http_status: 400
+  description: DuplicateLocationName
+- status_id: 321
+  status_text: no voiceTag
+  http_status: 400
+  description: Missing voiceTag parameter
+- status_id: 322
+  status_text: bad voiceTag
+  http_status: 400
+  description: Malformed voiceTag parameter
+- status_id: 331
+  status_text: no intendedUse
+  http_status: 400
+  description: Missing intendedUse parameter
+- status_id: 332
+  status_text: bad intendedUse
+  http_status: 400
+  description: Malformed intendedUse parameter
+- status_id: 341
+  status_text: no startTimeDtk1
+  http_status: 400
+  description: Missing startTimeDtk1 parameter
+- status_id: 342
+  status_text: bad startTimeDtk1
+  http_status: 400
+  description: Malformed startTimeDtk1 parameter
+- status_id: 343
+  status_text: no stepMinutes1
+  http_status: 400
+  description: Missing stepMinutes1 parameter
+- status_id: 344
+  status_text: bad stepMinutes1
+  http_status: 400
+  description: Malformed stepMinutes1
+- status_id: 345
+  status_text: no count1
+  http_status: 400
+  description: Missing count1 parameter
+- status_id: 346
+  status_text: bad count1
+  http_status: 400
+  description: Malformed count1 parameter
+- status_id: 347
+  status_text: bad startTimesAreArrivalTimes
+  http_status: 400
+  description: Malformed startTimesAreArrivalTimes parameter
+- status_id: 348
+  status_text: bad startTimeDtk2
+  http_status: 400
+  description: Malformed startTimeDtk2 parameter
+- status_id: 349
+  status_text: bad stepMinutes2
+  http_status: 400
+  description: Malformed stepMinutes2
+- status_id: 350
+  status_text: bad count2
+  http_status: 400
+  description: Malformed count2 parameter
+- status_id: 351
+  status_text: bad includeIncidents
+  http_status: 400
+  description: Malformed includeIncidents parameter
+- status_id: 352
+  status_text: bad includePolyline
+  http_status: 400
+  description: Malformed includePolyline parameter
+- status_id: 353
+  status_text: bad colorPolyline
+  http_status: 400
+  description: Malformed colorPolyline parameter
+- status_id: 354
+  status_text: bad includeGeometry
+  http_status: 400
+  description: Malformed includeGeometry parameter
+- status_id: 355
+  status_text: bad includeFlow
+  http_status: 400
+  description: Malformed includeFlow
+- status_id: 405
+  status_text: bad incidentDisplay type
+  http_status: 400
+  description: Malformed incidentDisplayDefaults value
+- status_id: 406
+  status_text: bad Incident Source
+  http_status: 400
+  description: Malformed incidentsource parameter
+- status_id: 410
+  status_text: no anonymousVehicleId
+  http_status: 400
+  description: Missing anonymousVehicleid
+- status_id: 411
+  status_text: bad phs_
+  http_status: 400
+  description: Malformed phs
+- status_id: 412
+  status_text: no phs
+  http_status: 400
+  description: Missing phs
+- status_id: 413
+  status_text: bad phs
+  http_status: 400
+  description: Malformed phs
+- status_id: 414
+  status_text: bad phsx
+  http_status: 400
+  description: Malformed phsx parameter
+- status_id: 415
+  status_text: no phsx
+  http_status: 400
+  description: Missing phsx parameter
+- status_id: 419
+  status_text: no route results
+  http_status: 400
+  description: Missing routeresults
+- status_id: 420
+  status_text: no routeIdList
+  http_status: 400
+  description: Missing route id list
+- status_id: 421
+  status_text: bad start time
+  http_status: 400
+  description: Malformed start date
+- status_id: 422
+  status_text: bad step
+  http_status: 400
+  description: Malformed step
+- status_id: 423
+  status_text: bad count
+  http_status: 400
+  description: Malformed count
+- status_id: 424
+  status_text: bad StartRank
+  http_status: 400
+  description: Malformed StartRank
+- status_id: 431
+  status_text: NoRouteDefForTimeZone
+  http_status: 400
+  description: RouteDef not found while performing TimeZone lookup
+- status_id: 432
+  status_text: NoRouteInstanceForTimeZone
+  http_status: 400
+  description: RouteInstance not found while performing TimeZone lookup
+- status_id: 433
+  status_text: NoRouteFeatureIdForTimeZone
+  http_status: 400
+  description: RouteFeatureId not found while performing TimeZone lookup
+- status_id: 434
+  status_text: NoRMFFeatureForTimeZone
+  http_status: 400
+  description: RMFFeature not found while performing TimeZone lookup
+- status_id: 435
+  status_text: NoUtcOffsetHoursForTimeZone
+  http_status: 400
+  description: UtcOffsetHours null while performing TimeZone lookup
+- status_id: 436
+  status_text: NoObservesDstForTimeZone
+  http_status: 400
+  description: ObservesDst null while performing TimeZone lookup
+- status_id: 437
+  status_text: TimeZoneNotFound
+  http_status: 400
+  description: Could not find entry for UtcOffset and ObservesDst while performing
+- status_id: 438
+  status_text: NoDstRegionIdForTimeZone
+  http_status: 400
+  description: DstRegionID null while performing TimeZone lookup
+- status_id: 440
+  status_text: bad units
+  http_status: 400
+  description: Malformed Units parameter
+- status_id: 441
+  status_text: bad IncidentType
+  http_status: 400
+  description: Malformed IncidentType parameter
+- status_id: 442
+  status_text: bad IncidentOutputFields
+  http_status: 400
+  description: Malformed IncidentOutputFields parameter
+- status_id: 443
+  status_text: bad SpeedOutputFields
+  http_status: 400
+  description: Malformed SpeedOutputFields parameter
+- status_id: 444
+  status_text: bad FrcLevel
+  http_status: 400
+  description: Malformed FrcLevel parameter
+- status_id: 445
+  status_text: bad FullTmc
+  http_status: 400
+  description: Malformed FullTmc parameter
+- status_id: 446
+  status_text: bad incident Severity filter
+  http_status: 400
+  description: Malformed incident Severity parameter
+- status_id: 447
+  status_text: bad Interval
+  http_status: 400
+  description: Malformed Interval parameter
+- status_id: 448
+  status_text: bad CongestionReportType
+  http_status: 400
+  description: Malformed CongestionReportType parameter
+- status_id: 449
+  status_text: bad CongestionFilter
+  http_status: 400
+  description: Malformed CongestionFilter parameter
+- status_id: 450
+  status_text: bad Name
+  http_status: 400
+  description: Malformed Name parameter
+- status_id: 451
+  status_text: no Name
+  http_status: 400
+  description: Missing Name parameter
+- status_id: 452
+  status_text: no Description
+  http_status: 400
+  description: Missing Description parameter
+- status_id: 453
+  status_text: bad Private
+  http_status: 400
+  description: Malformed Private parameter
+- status_id: 454
+  status_text: no Tmcs
+  http_status: 400
+  description: Missing Tmcs parameter
+- status_id: 455
+  status_text: bad Tmcs
+  http_status: 400
+  description: Malformed Tmcs parameter
+- status_id: 456
+  status_text: no TmcSetId
+  http_status: 400
+  description: Missing TmcSetId parameter
+- status_id: 457
+  status_text: bad TmcSetId
+  http_status: 400
+  description: Malformed TmcSetId parameter
+- status_id: 458
+  status_text: TmcSet not found
+  http_status: 404
+  description: TmcSet not found in database
+- status_id: 459
+  status_text: Data too large
+  http_status: 400
+  description: Request data too long, time out or OOM
+- status_id: 460
+  status_text: Too much data requested.
+  http_status: 400
+  description: Too many items requested
+- status_id: 461
+  status_text: bad ProductType
+  http_status: 400
+  description: Malformed ProductType parameter
+- status_id: 462
+  status_text: bad OutputFields
+  http_status: 400
+  description: Malformed OutputFields parameter
+- status_id: 463
+  status_text: too many TMCSets
+  http_status: 400
+  description: Vendor limit exceeded
+- status_id: 464
+  status_text: Too Many SpeedBuckets
+  http_status: 400
+  description: Vendor limit exceeded
+- status_id: 465
+  status_text: Bad SpeedBucketXml
+  http_status: 400
+  description: Malformed SpeedBucket XML parameter
+- status_id: 466
+  status_text: no SpeedBucket Xml
+  http_status: 400
+  description: Missing SpeedBucket XML parameter
+- status_id: 467
+  status_text: No SpeedBucket Id
+  http_status: 400
+  description: Missing SpeedBucket Id Parameter
+- status_id: 468
+  status_text: SpeedBucket Id not found
+  http_status: 400
+  description: SpeedBucked Id not found in DB
+- status_id: 470
+  status_text: bad ClientType
+  http_status: 400
+  description: Malformed ClientType parameter
+- status_id: 471
+  status_text: bad Id
+  http_status: 400
+  description: Malformed Id parameter
+- status_id: 472
+  status_text: no Id
+  http_status: 400
+  description: Missing Id parameter
+- status_id: 473
+  status_text: Gas Station not found
+  http_status: 404
+  description: Gas Station not found
+- status_id: 474
+  status_text: bad IncidentId
+  http_status: 400
+  description: Malformed IncidentId parameter
+- status_id: 475
+  status_text: no IncidentId
+  http_status: 400
+  description: Missing IncidentId parameter
+- status_id: 476
+  status_text: IncidentId not found
+  http_status: 404
+  description: IncidentId not found
+- status_id: 477
+  status_text: no Setting
+  http_status: 400
+  description: Missing Setting parameter
+- status_id: 478
+  status_text: no Value
+  http_status: 400
+  description: Missing Value parameter
+- status_id: 479
+  status_text: bad Value
+  http_status: 400
+  description: Malformed Value parameter
+- status_id: 480
+  status_text: bad Setting
+  http_status: 400
+  description: Malformed Setting parameter
+- status_id: 481
+  status_text: Failed To Init BATS
+  http_status: 400
+  description: Failed to Init BATS
+- status_id: 482
+  status_text: bad
+  http_status: 400
+  description: Malformed Corner/Center parameter
+- status_id: 483
+  status_text: 'no'
+  http_status: 400
+  description: Missing Corner/Center parameter
+- status_id: 485
+  status_text: bad vendor group id
+  http_status: 400
+  description: Malformed vendorgroupid
+- status_id: 486
+  status_text: no vendor group id
+  http_status: 400
+  description: Missing vendorgroupid
+- status_id: 487
+  status_text: no email
+  http_status: 400
+  description: Missing email
+- status_id: 488
+  status_text: ExceedMinDegreePerPixel
+  http_status: 400
+  description: Exceed MinDegreePerPixel
+- status_id: 489
+  status_text: ExceedMaxDegreePerPixel
+  http_status: 400
+  description: Exceed MaxDegreePerPixel
+- status_id: 490
+  status_text: bad Traffic Tile DataType
+  http_status: 400
+  description: Malformed TileDataType
+- status_id: 491
+  status_text: bad PenWidth
+  http_status: 400
+  description: Malformed PenWidth
+- status_id: 492
+  status_text: bad SpeedBucketId
+  http_status: 400
+  description: Malformed External SpeedBucketId
+- status_id: 493
+  status_text: bad Tile Height
+  http_status: 400
+  description: Malformed Tile Height
+- status_id: 494
+  status_text: bad Tile Width
+  http_status: 400
+  description: Malformed Tile Width
+- status_id: 495
+  status_text: tile too big Max tile size
+  http_status: 400
+  description: Tile size is too big
+- status_id: 496
+  status_text: Bad Tile Format
+  http_status: 400
+  description: Bad tile img format
+- status_id: 497
+  status_text: bad GeocodeInput
+  http_status: 400
+  description: Malformed GeocodeInput parameter
+- status_id: 498
+  status_text: no GeocodeInput
+  http_status: 400
+  description: Missing GeocodeInput parameter
+- status_id: 499
+  status_text: Geocode plugin not specified
+  http_status: 503
+  description: Geocode plugin not specified in configuration
+- status_id: 500
+  status_text: Geocode plugin not found
+  http_status: 503
+  description: Class for Geocode plugin not found
+- status_id: 501
+  status_text: Geocode plugin not valid
+  http_status: 503
+  description: Class for Geocode plugin not an instance of IGeocodePlugin
+- status_id: 502
+  status_text: Too many GeocodeInput parameters
+  http_status: 400
+  description: Too many GeocodeInput parameters were present
+- status_id: 503
+  status_text: Geocode Error
+  http_status: 500
+  description: Error in geocoding
+- status_id: 504
+  status_text: geocode timeout
+  http_status: 500
+  description: Geocode timeout
+- status_id: 505
+  status_text: Unsupported country requested
+  http_status: 400
+  description: Unsupported country requested
+- status_id: 510
+  status_text: bad use traffic
+  http_status: 400
+  description: Malformed usetraffic
+- status_id: 511
+  status_text: bad departure time
+  http_status: 400
+  description: Malformed departuretime
+- status_id: 512
+  status_text: bad arrival time
+  http_status: 400
+  description: Malformed arrivaltime
+- status_id: 513
+  status_text: bad route type
+  http_status: 400
+  description: Malformed routetype
+- status_id: 514
+  status_text: bad route output fields
+  http_status: 400
+  description: Malformed routeoutputfields
+- status_id: 515
+  status_text: bad collapse maneuvers
+  http_status: 400
+  description: Malformed collapsemaneuvers
+- status_id: 516
+  status_text: bad routing type
+  http_status: 400
+  description: Malformed routingtype
+- status_id: 520
+  status_text: no location id
+  http_status: 400
+  description: Missing locationid
+- status_id: 521
+  status_text: bad location id
+  http_status: 400
+  description: Malformed locationid
+- status_id: 522
+  status_text: bad location
+  http_status: 400
+  description: Malformed location
+- status_id: 530
+  status_text: Guidance Server Unavailable
+  http_status: 500
+  description: The payload creation server is unavailable
+- status_id: 531
+  status_text: error sending to SYNCP server
+  http_status: 500
+  description: INRIX could not send data to SYNCP server
+- status_id: 540
+  status_text: BadRouteInstanceId
+  http_status: 400
+  description: BadRouteInstanceId
+- status_id: 541
+  status_text: NoRouteInstanceId
+  http_status: 400
+  description: NoRouteInstanceId
+- status_id: 542
+  status_text: BadMessageId
+  http_status: 400
+  description: BadMessageId
+- status_id: 543
+  status_text: NoMessageId
+  http_status: 400
+  description: NoMessageId
+- status_id: 544
+  status_text: BadCorrelationId
+  http_status: 400
+  description: BadCorrelationId
+- status_id: 545
+  status_text: NoCorrelationId
+  http_status: 400
+  description: NoCorrelationId
+- status_id: 546
+  status_text: BadCurrentLocation
+  http_status: 400
+  description: BadCurrentLocation
+- status_id: 547
+  status_text: NoCurrentLocation
+  http_status: 400
+  description: NoCurrentLocation
+- status_id: 548
+  status_text: BadBreadCrumb
+  http_status: 400
+  description: BadBreadCrumb
+- status_id: 549
+  status_text: NoBreadCrumb
+  http_status: 400
+  description: NoBreadCrumb
+- status_id: 550
+  status_text: BadSchema
+  http_status: 400
+  description: BadSchema
+- status_id: 551
+  status_text: NoSchema
+  http_status: 400
+  description: NoSchema
+- status_id: 552
+  status_text: NoPartnerId
+  http_status: 400
+  description: NoPartnerId
+- status_id: 553
+  status_text: BadPartnerId
+  http_status: 400
+  description: BadPartnerId
+- status_id: 601
+  status_text: bad compress
+  http_status: 400
+  description: Malformed compress
+- status_id: 602
+  status_text: no compress
+  http_status: 400
+  description: Missing compress
+- status_id: 611
+  status_text: Bad Coverage
+  http_status: 400
+  description: Malformed Coverage
+- status_id: 612
+  status_text: No Coverage
+  http_status: 400
+  description: NoCoverage
+- status_id: 613
+  status_text: No Vendor Default Coverage
+  http_status: 400
+  description: NoVendorDefaultCoverage
+- status_id: 614
+  status_text: Vendor Not Authorized
+  http_status: 400
+  description: VendorNotAuthorized
+- status_id: 615
+  status_text: Bad Default Coverage
+  http_status: 400
+  description: BadDefaultCoverage
+- status_id: 616
+  status_text: Invalid Coverage TileDataType
+  http_status: 400
+  description: If user passes in both Coverage and TileDataType,
+- status_id: 620
+  status_text: BadConsumerXML
+  http_status: 400
+  description: BadConsumerXML
+- status_id: 621
+  status_text: NoConsumerXML
+  http_status: 400
+  description: NoConsumerXML
+- status_id: 631
+  status_text: BadIncludeSummary
+  http_status: 400
+  description: BadIncludeSummary
+- status_id: 641
+  status_text: BadSpeedBucketOutputFilter
+  http_status: 400
+  description: BadSpeedBucketOutputFilter
+- status_id: 642
+  status_text: SpeedBucketBinNotFound
+  http_status: 400
+  description: SpeedBucketBinNotFound
+- status_id: 643
+  status_text: SpeedBucketSchemaFileNotFound
+  http_status: 400
+  description: SpeedBucketSchemaFileNotFound
+- status_id: 701
+  status_text: no consumercontact
+  http_status: 400
+  description: Missing consumercontact
+- status_id: 702
+  status_text: BadConsumerContactType
+  http_status: 400
+  description: BadConsumerContactType
+- status_id: 703
+  status_text: ConsumerContactType Not Found
+  http_status: 400
+  description: ConsumerContactType Not Found
+- status_id: 711
+  status_text: BadTmcOutputFields
+  http_status: 400
+  description: BadTmcOutputFields
+- status_id: 712
+  status_text: TmcInfo Not Found
+  http_status: 400
+  description: TmcInfo Not Found
+- status_id: 721
+  status_text: ForecastType parameter not found
+  http_status: 400
+  description: ForecastType parameter not found
+- status_id: 722
+  status_text: ForecastType parameter invalid
+  http_status: 400
+  description: ForecastType parameter invalid
+- status_id: 800
+  status_text: Initialization failed
+  http_status: 400
+  description: Initialization failed for the given component
+- status_id: 810
+  status_text: Lanugage code not supported or unrecognized
+  http_status: 400
+  description: LanguageCodeNotSupported
+- status_id: 811
+  status_text: Bad multieventcode
+  http_status: 400
+  description: Bad multieventcode
+- status_id: 820
+  status_text: Image not available
+  http_status: 404
+  description: Image not available
+- status_id: 821
+  status_text: Image was not retrieved
+  http_status: 501
+  description: Image retrieval failed
+- status_id: 822
+  status_text: Camera info was not retrieved
+  http_status: 501
+  description: Camera data retrieval failed
+- status_id: 823
+  status_text: Image quality poor
+  http_status: 501
+  description: Image quality too poor to return
+- status_id: 830
+  status_text: Quad key has problems
+  http_status: 400
+  description: Quad key has problems
+- status_id: 849
+  status_text: Opacity value is out of range
+  http_status: 400
+  description: Opacity value is out of range
+- status_id: 852
+  status_text: Image format cannot be generated
+  http_status: 400
+  description: Unsupported image format
+- status_id: 900
+  status_text: 'MarketMap base map image not found:'
+  http_status: 400
+  description: MarketMap base map image not found
+- status_id: 901
+  status_text: Missing market name
+  http_status: 400
+  description: No market name
+- status_id: 902
+  status_text: 'Bad market name:'
+  http_status: 400
+  description: Bad market name
+- status_id: 910
+  status_text: Bad layers
+  http_status: 400
+  description: Bad layers
+- status_id: 911
+  status_text: Layer:was requested more than once
+  http_status: 400
+  description: Layer requested more than once
+- status_id: 912
+  status_text: Server too busy
+  http_status: 400
+  description: Server too busy
+- status_id: 920
+  status_text: No Type
+  http_status: 400
+  description: Type parameter Missing
+- status_id: 921
+  status_text: Address parameter missing
+  http_status: 400
+  description: Address parameter missing
+- status_id: 922
+  status_text: LatLong parameter missing
+  http_status: 400
+  description: LatLong parameter missing
+- status_id: 923
+  status_text: Bad Type
+  http_status: 400
+  description: Type parameter invalid
+- status_id: 924
+  status_text: LatLon parameter invalid
+  http_status: 400
+  description: LatLon parameter invalid
+- status_id: 925
+  status_text: Phone parameter missing
+  http_status: 400
+  description: Phone parameter missing
+- status_id: 926
+  status_text: Bad Phone
+  http_status: 400
+  description: Phone parameter invalid
+- status_id: 927
+  status_text: No Destination
+  http_status: 400
+  description: Destination parameter missing
+- status_id: 928
+  status_text: Bad Destination
+  http_status: 400
+  description: Destination parameter invalid
+- status_id: 930
+  status_text: Bad zoom
+  http_status: 400
+  description: Bad zoom
+- status_id: 931
+  status_text: No zoom
+  http_status: 400
+  description: No zoom
+- status_id: 932
+  status_text: Bad north
+  http_status: 400
+  description: Bad north
+- status_id: 933
+  status_text: Bad east
+  http_status: 400
+  description: Bad east
+- status_id: 934
+  status_text: Too many location descriptors
+  http_status: 400
+  description: Too many location descriptors
+- status_id: 935
+  status_text: No location descriptor
+  http_status: 400
+  description: No location descriptor
+- status_id: 936
+  status_text: BadGeometryTolerance
+  http_status: 400
+  description: The specified GeometryTolerance was invalid
+- status_id: 940
+  status_text: NoDisplayName
+  http_status: 400
+  description: NoDisplayName
+- status_id: 941
+  status_text: DisplayNameTooLong
+  http_status: 400
+  description: DisplayNameTooLong
+- status_id: 942
+  status_text: DisplayNameNotAvailable
+  http_status: 400
+  description: DisplayNameNotAvailable
+- status_id: 943
+  status_text: DisplayNameNotAllowed
+  http_status: 400
+  description: DisplayNameNotAllowed
+- status_id: 945
+  status_text: Too many contributors. MaxCount=
+  http_status: 400
+  description: maxCount limit exceeded
+- status_id: 946
+  status_text: NoAddressType
+  http_status: 400
+  description: No AddressType
+- status_id: 947
+  status_text: BadAddressType
+  http_status: 400
+  description: Bad AddressType
+- status_id: 948
+  status_text: Address Too Long. MaxLength=
+  http_status: 400
+  description: Addess length exceeded limit
+- status_id: 950
+  status_text: BadTravelTimeCount
+  http_status: 400
+  description: The specified TravelTimeCount was invalid
+- status_id: 951
+  status_text: BadTravelTimeInterval
+  http_status: 400
+  description: The specified TravelTimeInterval was invalid
+- status_id: 952
+  status_text: NoTravelTimeCount
+  http_status: 400
+  description: No TravelTimeCount was specified
+- status_id: 953
+  status_text: NoTravelTimeInterval
+  http_status: 400
+  description: No TravelTimeInterval was specified
+- status_id: 954
+  status_text: BadTimeRange
+  http_status: 400
+  description: The Time Range was invalid
+- status_id: 960
+  status_text: Only owner may cancel the submission
+  http_status: 400
+  description: Only owner may cancel the submission
+- status_id: 961
+  status_text: Owner may not review own submission
+  http_status: 400
+  description: Owner may not review own submission
+- status_id: 962
+  status_text: Requested version is out of date
+  http_status: 400
+  description: Requested version is out of date
+- status_id: 963
+  status_text: Trust level too low to accept submission
+  http_status: 400
+  description: Trust level too low to accept submission
+- status_id: 964
+  status_text: Incident already reviewed
+  http_status: 400
+  description: Only one rating per user per incident
+- status_id: 972
+  status_text: BadAppleToken
+  http_status: 400
+  description: Bad Apple Token
+- status_id: 980
+  status_text: Invalid GML document
+  http_status: 400
+  description: GML document is empty or does not match the schema
+- status_id: 981
+  status_text: EncryptionProblem
+  http_status: 400
+  description: Unable to encrypt/decrypt
+- status_id: 982
+  status_text: CompressionProblem
+  http_status: 400
+  description: Unable to compress/decompress
+- status_id: 990
+  status_text: Registration Duplicated
+  http_status: 500
+  description: Multiple consumers found that match the registration request
+- status_id: 991
+  status_text: Email In Use
+  http_status: 400
+  description: Email address is in use by another consumer
+- status_id: 1001
+  status_text: TpegSessionInvalid
+  http_status: 400
+  description: TPEG session is in invalid state
+- status_id: 1002
+  status_text: TpegArgumentsInvalid
+  http_status: 400
+  description: TPEG session parameter is invalid
+- status_id: 1003
+  status_text: RouteRequestInvlaid
+  http_status: 400
+  description: AgoraC route request is invalid
+- status_id: 1006
+  status_text: SubscriptionRenewalFailed
+  http_status: 400
+  description: Renewing consumer’s subscription failed
+- status_id: 1008
+  status_text: RequestBodyNotFound
+  http_status: 400
+  description: Request body not found
+- status_id: 1009
+  status_text: Failed to parse parameter
+  http_status: 400
+  description: A generic error for parameter parsing errors
+- status_id: 1010
+  status_text: Integer list expected for
+  http_status: 400
+  description: Parameter not parsed as int list
+- status_id: 1011
+  status_text: Enum value expected for
+  http_status: 400
+  description: Parameter not parsed as enum
+x-evidence:
+- url: https://docs.inrix.com/reference/errorstatusids/
+  fetched: '2026-08-01'
+  http_status: 200
+  rows: 360

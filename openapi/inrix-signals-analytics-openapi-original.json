@@ -1,0 +1,1191 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "INRIX Analytics Webservice Template API",
+    "description": "Webservice template to stand up webservices on IQ Backend"
+  },
+  "tags": [
+    {
+      "name": "Namespace Management",
+      "description": "APIs for managing intersection namespace subscriptions"
+    }
+  ],
+  "paths": {
+    "/v1/metrics/intersections/availability": {
+      "get": {
+        "operationId": "intersectionAvailability",
+        "parameters": [
+          {
+            "name": "startDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "intersectionOutputMode",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "namespaces",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "travelTimeType",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/UasPrincipalRequired"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostMetricResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer Token": []
+          }
+        ]
+      }
+    },
+    "/v1/metadata/intersections": {
+      "post": {
+        "operationId": "intersectionMetadata",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/IntersectionMetadataRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostMetadataResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer Token": []
+          }
+        ]
+      }
+    },
+    "/v1/metrics/intersections": {
+      "post": {
+        "operationId": "intersectionMetrics",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "$ref": "#/components/schemas/MetricRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostMetricResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer Token": []
+          }
+        ]
+      }
+    },
+    "/v1/namespace/{namespace}": {
+      "delete": {
+        "tags": [
+          "Namespace Management"
+        ],
+        "summary": "Delete namespace",
+        "description": "Delete a namespace and all its intersection subscription data",
+        "operationId": "deleteNamespace",
+        "parameters": [
+          {
+            "name": "namespace",
+            "in": "path",
+            "description": "Namespace identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Namespace deleted successfully"
+          },
+          "400": {
+            "description": "Bad request - invalid namespace"
+          },
+          "401": {
+            "description": "Unauthorized - invalid or missing token"
+          },
+          "404": {
+            "description": "Namespace not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [
+          {
+            "Bearer Token": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Namespace Management"
+        ],
+        "summary": "Update namespace",
+        "description": "Update intersection subscription status for a specific namespace",
+        "operationId": "updateNamespace",
+        "parameters": [
+          {
+            "name": "namespace",
+            "in": "path",
+            "description": "Namespace identifier",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Update request body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NamespaceUpdateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful update",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NamespaceUpdateResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters"
+          },
+          "401": {
+            "description": "Unauthorized - invalid or missing token"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [
+          {
+            "Bearer Token": []
+          }
+        ]
+      }
+    },
+    "/v1/namespace/search": {
+      "post": {
+        "tags": [
+          "Namespace Management"
+        ],
+        "summary": "Search namespaces",
+        "description": "Search for intersection subscription status across multiple namespaces",
+        "operationId": "searchNamespaces",
+        "requestBody": {
+          "description": "Search request body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NamespaceSearchRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NamespaceSearchResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters"
+          },
+          "401": {
+            "description": "Unauthorized - invalid or missing token"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [
+          {
+            "Bearer Token": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ColumnHeader": {
+        "type": "object",
+        "properties": {
+          "dimensionHeaderEntries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ColumnHeaderEntry"
+            }
+          },
+          "metricHeaderEntries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ColumnHeaderEntry"
+            }
+          }
+        }
+      },
+      "ColumnHeaderEntry": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      },
+      "MetricData": {
+        "type": "object",
+        "properties": {
+          "nextCursor": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "columnHeader": {
+            "$ref": "#/components/schemas/ColumnHeader"
+          },
+          "rows": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "PostMetricResponse": {
+        "type": "object",
+        "properties": {
+          "createdDate": {
+            "type": "string"
+          },
+          "responseId": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/MetricData"
+          }
+        }
+      },
+      "UasPrincipalRequired": {
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "appId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "anonymous": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Crs": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "name",
+              "link"
+            ]
+          },
+          "properties": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          }
+        }
+      },
+      "DateRange": {
+        "type": "object",
+        "properties": {
+          "startDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      },
+      "Feature": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/GeoJsonObject"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "properties": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              },
+              "geometry": {
+                "$ref": "#/components/schemas/GeoJsonObject"
+              },
+              "id": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      },
+      "FeatureCollection": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/GeoJsonObject"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "features": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Feature"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "FieldName": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "Filter": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "operator": {
+            "type": "string"
+          },
+          "not": {
+            "type": "boolean"
+          },
+          "expressions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "GeoJsonObject": {
+        "required": [
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "crs": {
+            "$ref": "#/components/schemas/Crs"
+          },
+          "bbox": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "discriminator": {
+          "propertyName": "type"
+        }
+      },
+      "GeoObjectWithRadius": {
+        "type": "object",
+        "properties": {
+          "geometry": {
+            "$ref": "#/components/schemas/GeoJsonObject"
+          },
+          "radiusInMeters": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "GeometryCollection": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/GeoJsonObject"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "geometries": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/GeoJsonObject"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "IntersectionMetadataRequest": {
+        "type": "object",
+        "properties": {
+          "nextCursor": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dateRanges": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DateRange"
+            }
+          },
+          "geometry": {
+            "$ref": "#/components/schemas/GeoJsonObject"
+          },
+          "fields": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FieldName"
+            }
+          },
+          "fieldFilters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Filter"
+            }
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/Metadata"
+          },
+          "locations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GeoObjectWithRadius"
+            }
+          },
+          "includeGeometry": {
+            "type": "boolean"
+          },
+          "includeMovements": {
+            "type": "boolean"
+          },
+          "maxRank": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "LineString": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/GeoJsonObject"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "coordinates": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/LngLatAlt"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "LngLatAlt": {
+        "type": "object",
+        "properties": {
+          "longitude": {
+            "type": "number",
+            "format": "double"
+          },
+          "latitude": {
+            "type": "number",
+            "format": "double"
+          },
+          "altitude": {
+            "type": "number",
+            "format": "double"
+          },
+          "additionalElements": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "format": "double"
+            }
+          }
+        }
+      },
+      "Location": {
+        "type": "object",
+        "properties": {
+          "country": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          }
+        }
+      },
+      "Metadata": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "value": {
+            "type": "object"
+          },
+          "valueList": {
+            "type": "boolean"
+          }
+        }
+      },
+      "MultiLineString": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/GeoJsonObject"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "coordinates": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LngLatAlt"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "MultiPoint": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/GeoJsonObject"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "coordinates": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/LngLatAlt"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "MultiPolygon": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/GeoJsonObject"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "coordinates": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/LngLatAlt"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "Point": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/GeoJsonObject"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "coordinates": {
+                "$ref": "#/components/schemas/LngLatAlt"
+              }
+            }
+          }
+        ]
+      },
+      "Polygon": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/GeoJsonObject"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "coordinates": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LngLatAlt"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "CoordinateResponseItem": {
+        "type": "object",
+        "properties": {
+          "lat": {
+            "type": "number",
+            "format": "double"
+          },
+          "lon": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "Direction": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "direction": {
+            "type": "string"
+          },
+          "altName": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "heading": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "geometry": {
+            "$ref": "#/components/schemas/Geometry"
+          }
+        }
+      },
+      "Geometry": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "coordinates": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number",
+                "format": "double"
+              }
+            }
+          }
+        }
+      },
+      "LocationResponseItem": {
+        "type": "object",
+        "properties": {
+          "region": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string"
+          },
+          "mapVersion": {
+            "type": "string"
+          }
+        }
+      },
+      "MetadataResponseItem": {
+        "type": "object",
+        "properties": {
+          "intersectionId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "coordinates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CoordinateResponseItem"
+            }
+          },
+          "movements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MovementResponseItem"
+            }
+          }
+        }
+      },
+      "MovementResponseItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "rank": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "inbound": {
+            "$ref": "#/components/schemas/Direction"
+          },
+          "outbound": {
+            "$ref": "#/components/schemas/Direction"
+          },
+          "movementType": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "turnManeuvers": {
+            "type": "string"
+          },
+          "turnGroupId": {
+            "type": "string"
+          }
+        }
+      },
+      "PostMetadataResponse": {
+        "type": "object",
+        "properties": {
+          "createdDate": {
+            "type": "string"
+          },
+          "responseId": {
+            "type": "string"
+          },
+          "locations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LocationResponseItem"
+            }
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MetadataResponseItem"
+            }
+          }
+        }
+      },
+      "DimensionItem": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "ranges": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ValueItem"
+            }
+          }
+        }
+      },
+      "MetricItem": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "ranges": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NamedRangeItem"
+            }
+          }
+        }
+      },
+      "MetricRequest": {
+        "type": "object",
+        "properties": {
+          "nextCursor": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dateRanges": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DateRange"
+            }
+          },
+          "geometry": {
+            "$ref": "#/components/schemas/GeoJsonObject"
+          },
+          "dimensions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DimensionItem"
+            }
+          },
+          "metrics": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MetricItem"
+            }
+          },
+          "dimensionFilters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Filter"
+            }
+          },
+          "metadata": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Metadata"
+            }
+          },
+          "orderBys": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderBy"
+            }
+          },
+          "noPaging": {
+            "type": "boolean"
+          }
+        }
+      },
+      "NamedRangeItem": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "startAvgControlDelay": {
+            "type": "number",
+            "format": "double"
+          },
+          "endAvgControlDelay": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "OrderBy": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "sortOrder": {
+            "type": "string",
+            "enum": [
+              "ASCENDING",
+              "DESCENDING"
+            ]
+          }
+        }
+      },
+      "ValueItem": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "startTime": {
+            "type": "string"
+          },
+          "endTime": {
+            "type": "string"
+          }
+        }
+      },
+      "NamespaceData": {
+        "type": "object",
+        "properties": {
+          "namespace": {
+            "type": "string"
+          },
+          "mapVersion": {
+            "type": "string"
+          },
+          "provisioned": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "pending": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "reviewRequired": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "region": {
+            "$ref": "#/components/schemas/Location"
+          }
+        }
+      },
+      "NamespaceSearchResponse": {
+        "type": "object",
+        "properties": {
+          "createdDate": {
+            "type": "string"
+          },
+          "responseId": {
+            "type": "string"
+          },
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NamespaceData"
+            }
+          }
+        }
+      },
+      "NamespaceSearchRequest": {
+        "type": "object",
+        "properties": {
+          "namespaces": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "mapVersion": {
+            "type": "string"
+          },
+          "region": {
+            "$ref": "#/components/schemas/Location"
+          }
+        }
+      },
+      "NamespaceUpdateResponse": {
+        "type": "object",
+        "properties": {
+          "createdDate": {
+            "type": "string"
+          },
+          "responseId": {
+            "type": "string"
+          },
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NamespaceData"
+            }
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "DeltaOperation": {
+        "type": "object",
+        "properties": {
+          "add": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "remove": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "replace": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "NamespaceUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "mapVersion": {
+            "type": "string"
+          },
+          "provisioned": {
+            "$ref": "#/components/schemas/DeltaOperation"
+          },
+          "pending": {
+            "$ref": "#/components/schemas/DeltaOperation"
+          },
+          "reviewRequired": {
+            "$ref": "#/components/schemas/DeltaOperation"
+          },
+          "region": {
+            "$ref": "#/components/schemas/Location"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "Bearer Token": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

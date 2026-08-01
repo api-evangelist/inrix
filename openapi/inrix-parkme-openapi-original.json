@@ -1,0 +1,153 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "INRIX Parkme API",
+    "description": "INRIX Parkme Web Service API",
+    "contact": {
+      "email": "support@inrix.com"
+    },
+    "version": "v1"
+  },
+  "host": "parking-api.inrix.com",
+  "schemes": [
+    "https"
+  ],
+  "basePath": "/",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "securityDefinitions": {
+    "Basic": {
+      "type": "basic"
+    }
+  },
+  "security": [
+    {
+      "Basic": []
+    }
+  ],
+  "paths": {
+    "/accounts/mobile/delete/": {
+      "delete": {
+        "operationId": "accounts_mobile_delete_delete",
+        "description": "Endpoint for deleting a user account from mobile app",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "accounts"
+        ]
+      },
+      "parameters": []
+    },
+    "/api/caniparkhere/": {
+      "get": {
+        "operationId": "api_caniparkhere_list",
+        "description": "given a coordinate finds the nearest segments and computes which rate is currently active and attaches additional\ndata to json response.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "parameters": []
+    },
+    "/api/openspots/events/": {
+      "get": {
+        "operationId": "api_openspots_events_list",
+        "description": "",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "A search term.",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/OpenParkEvent"
+              }
+            }
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "parameters": []
+    },
+    "/api/openspots/events/{pk_event}/": {
+      "get": {
+        "operationId": "api_openspots_events_read",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/OpenParkEvent"
+            }
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "pk_event",
+          "in": "path",
+          "description": "A unique value identifying this open park event.",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "OpenParkEvent": {
+      "required": [
+        "ts"
+      ],
+      "type": "object",
+      "properties": {
+        "ts": {
+          "title": "Ts",
+          "type": "string",
+          "format": "date-time"
+        },
+        "polyline": {
+          "title": "Polyline",
+          "type": "string",
+          "readOnly": true
+        },
+        "quadkey17": {
+          "title": "Quadkey17",
+          "type": "string",
+          "readOnly": true
+        },
+        "source": {
+          "title": "Source",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    }
+  }
+}

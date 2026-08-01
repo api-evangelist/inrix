@@ -1,0 +1,72 @@
+generated: '2026-08-01'
+method: searched
+source:
+- https://docs.inrix.com/sdk/general/
+- https://docs.inrix.com/sdk/releasenotes/
+- https://cocoapods.org/pods/INRIX-iOS-ClientLibrary
+- https://github.com/INRIX
+note: INRIX ships first-party mobile client SDKs only. No INRIX-authored packages were found on npm, PyPI, Maven
+  Central, NuGet, pkg.go.dev, RubyGems, Packagist or crates.io as of the probe date; the Android artifact is distributed
+  from a private INRIX JFrog Artifactory repository.
+packages:
+- language: swift
+  platform: ios
+  registry: cocoapods
+  name: INRIX-iOS-ClientLibrary
+  url: https://cocoapods.org/pods/INRIX-iOS-ClientLibrary
+  install: pod 'INRIX-iOS-ClientLibrary'
+  official: true
+  docs: https://docs.inrix.com/sdk/general/
+  http_status: 200
+- language: java
+  platform: android
+  registry: jfrog-artifactory
+  name: com.inrix.sdk:core
+  version: '9.0'
+  url: https://inrix.jfrog.io/inrix/sdk-releases/com/inrix/sdk/core/
+  install: Gradle dependency from the INRIX Artifactory repository
+  official: true
+  access: gated
+  http_status: 401
+  docs: https://docs.inrix.com/sdk/android/
+source_code:
+- name: INRIX/iOS-MobileSDK
+  url: https://github.com/INRIX/iOS-MobileSDK
+  description: INRIX iOS Mobile SDK
+  official: true
+  http_status: 200
+- name: INRIX/iOS-SampleApp-External
+  url: https://github.com/INRIX/iOS-SampleApp-External
+  description: iOS SDK sample app
+  official: true
+  http_status: 200
+- name: INRIX/opencar-sdk-examples
+  url: https://github.com/INRIX/opencar-sdk-examples
+  description: Public examples for the OpenCar SDK
+  official: true
+- name: INRIX/automotive-bg
+  url: https://github.com/INRIX/automotive-bg
+  official: true
+registries_checked:
+- registry: npm
+  query: inrix
+  results: 0
+- registry: pypi
+  query: inrix, inrix-api, pyinrix
+  results: 0
+- registry: maven-central
+  query: g:com.inrix*
+  results: 0
+- registry: cocoapods
+  query: INRIX-iOS-ClientLibrary
+  results: 1
+unavailable:
+- name: INRIX/Android-MobileSDK-External
+  url: https://github.com/INRIX/Android-MobileSDK-External
+  referenced_from: https://docs.inrix.com/sdk/releasenotes/
+  http_status: 404
+  note: The Android SDK repository linked from the INRIX release notes no longer resolves.
+- name: INRIX/IQ-API-Samples
+  url: https://github.com/INRIX/IQ-API-Samples
+  http_status: 404
+  note: Referenced in search results as the IQ API sample-code repository; not publicly resolvable at probe time.

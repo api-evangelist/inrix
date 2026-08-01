@@ -1,23 +1,369 @@
 aid: inrix
 name: INRIX
-description: 'INRIX is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'INRIX is a Kirkland, Washington-based transportation analytics company that turns anonymized GPS probe
+  data from connected vehicles, mobile devices and fleets into real-time and historical road intelligence for automakers,
+  cities, departments of transportation, retailers and app developers. Its developer surface is organized around
+  the INRIX IQ platform and documented at docs.inrix.com, spanning Traffic APIs (segment speed, safety alerts/incidents,
+  traffic tiles, routing, drive time polygons, traffic cameras, dangerous slowdowns, fuel stations and TPEG Connect),
+  Parking APIs (INRIX Parking Services 3.0, formerly ParkMe: lots, blocks, occupancy and probability, destinations
+  and reservations), Analytics APIs (trade area trips, trip trends, visits, dangerous roads and Roadway Analytics),
+  Signals intersection analytics, a Data Download Service for map and XD network releases, and data-upload streams
+  for GPS, XFCD and parking events. All access is brokered through the INRIX User Accounts System (UAS), which exchanges
+  an appId and a SHA-1 hashToken for a bearer access token used across every product API.'
+image: https://docs.inrix.com/images/inrix.png
 url: https://raw.githubusercontent.com/api-evangelist/inrix/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-01'
 modified: '2026-08-01'
 tags:
-- Company
-apis: []
+- Transportation
+- Traffic
+- Mobility
+- Parking
+- Geospatial
+- Location Data
+- Analytics
+- Automotive
+- Smart Cities
+- Routing
+- Connected Vehicles
+- Road Network
+- Data
+- Fleet
+- Intelligent Transportation Systems
+apis:
+- name: INRIX User Accounts System (UAS) API
+  description: Authentication and account service for the entire INRIX platform. Exchanges an appId plus a SHA-1
+    hashToken (or OAuth2 client credentials) for a bearer access token, and manages applications, application keys
+    and properties, developers, devices, users, user groups and email templates.
+  humanURL: https://docs.inrix.com/authentication/getting_authorized/
+  baseURL: https://uas-api.inrix.com
+  tags:
+  - Authentication
+  - Tokens
+  - Accounts
+  - Users
+  - Identity
+  properties:
+  - type: OpenAPI
+    url: openapi/inrix-user-accounts-openapi-original.json
+  - type: Swagger
+    url: https://uas-api.inrix.com/swagger/docs/v1
+  - type: Console
+    url: https://uas-api.inrix.com/swagger
+  - type: Overlay
+    url: overlays/inrix-user-accounts-overlay.yaml
+    name: API Evangelist enhancements
+  - type: AgentSkill
+    url: skills/inrix-authenticate-and-call.md
+  - type: AgentSkill
+    url: skills/inrix-manage-applications-and-users.md
+- name: INRIX Parking API (INRIX Parking Services 3.0 / ParkMe)
+  description: 'On-street and off-street parking data: parking lots and city blocks, rates and hours, real-time
+    and historical occupancy and probability, open spots from the Utilization Sensing Service, destinations, filters,
+    EV chargers and reservations. Formerly the ParkMe web service API.'
+  humanURL: https://docs.inrix.com/parking/general_info/
+  baseURL: https://parking-api.inrix.com
+  tags:
+  - Parking
+  - Occupancy
+  - Reservations
+  - Geospatial
+  - Points of Interest
+  properties:
+  - type: OpenAPI
+    url: openapi/inrix-parkme-openapi-original.json
+  - type: Swagger
+    url: https://parking-api.inrix.com/api/swagger.json
+  - type: APIReference
+    url: https://parking-api.inrix.com/doc/v3/bulk/
+  - type: ChangeLog
+    url: https://docs.inrix.com/parking/change_log/
+  - type: Overlay
+    url: overlays/inrix-parkme-overlay.yaml
+    name: API Evangelist enhancements
+- name: INRIX Signals Analytics API
+  description: 'Traffic-signal and intersection analytics served from the INRIX IQ backend: intersection metrics,
+    intersection metadata, metrics availability, and namespace management for customer-scoped signal datasets.'
+  humanURL: https://docs.inrix.com/signals/signals-metrics/
+  baseURL: https://signals-api.inrix.com
+  tags:
+  - Signals
+  - Intersections
+  - Analytics
+  - Traffic
+  - Metrics
+  properties:
+  - type: OpenAPI
+    url: openapi/inrix-signals-analytics-openapi-original.json
+  - type: OpenAPI
+    url: https://signals-api.inrix.com/openapi.json
+    name: Live OpenAPI
+  - type: Overlay
+    url: overlays/inrix-signals-analytics-overlay.yaml
+    name: API Evangelist enhancements
+  - type: AgentSkill
+    url: skills/inrix-query-signals-intersection-metrics.md
+- name: INRIX Segment Speed API
+  description: Real-time, historical and predicted speed, travel time and reference speed for INRIX XD and TMC road
+    segments, queried by bounding box, radius, point, segment set or corridor.
+  humanURL: https://docs.inrix.com/traffic/segmentspeed/
+  baseURL: https://segment-api.inrix.com
+  tags:
+  - Traffic
+  - Speed
+  - Road Segments
+  - Real Time
+  - XD
+- name: INRIX Safety Alerts (Incidents) API
+  description: Roadway incident, construction, flow, event and hazard alerts within a bounding box, radius or along
+    a route, with TMC and OpenLR location referencing and TPEG-style event codes.
+  humanURL: https://docs.inrix.com/traffic/incidents/
+  baseURL: https://incident-api.inrix.com
+  tags:
+  - Incidents
+  - Safety
+  - Alerts
+  - Traffic
+  - Events
+- name: INRIX Traffic Tiles API
+  description: Pre-rendered raster traffic tiles for map overlays, addressed by quadkey and rendered from live INRIX
+    speed data.
+  humanURL: https://docs.inrix.com/traffic/tiles/
+  baseURL: https://tile-api.inrix.com
+  tags:
+  - Tiles
+  - Maps
+  - Traffic
+  - Raster
+  - Visualization
+- name: INRIX Fuel Stations API
+  description: Fuel station locations, brands, amenities and current fuel prices by grade, searchable by bounding
+    box, radius or station identifier.
+  humanURL: https://docs.inrix.com/traffic/fuel/
+  baseURL: https://fuel-api.inrix.com
+  tags:
+  - Fuel
+  - Prices
+  - Points of Interest
+  - Geospatial
+  - Automotive
+- name: INRIX Dangerous Slowdowns API
+  description: Detects and reports sudden, unexpected slowdowns on the road network so vehicles and drivers can
+    be warned ahead of a hazard.
+  humanURL: https://docs.inrix.com/traffic/dangerousslowdowns/
+  baseURL: https://dsd.api.inrix.com
+  tags:
+  - Safety
+  - Traffic
+  - Alerts
+  - Connected Vehicles
+  - Hazards
+- name: INRIX Dangerous Roads API
+  description: Ranked collision and safety risk scoring for road segments, used to identify the most dangerous roads
+    and intersections in a geography.
+  humanURL: https://docs.inrix.com/analytics/dangerousroads/
+  baseURL: https://dangerousroads-api.inrix.com
+  tags:
+  - Safety
+  - Analytics
+  - Collisions
+  - Road Network
+  - Risk
+- name: INRIX Trade Area Trips API
+  description: Aggregated, anonymized trip origin-destination counts into and out of a defined trade area or location
+    polygon, for retail site selection and location analytics.
+  humanURL: https://docs.inrix.com/analytics/tradeareatrips/
+  baseURL: https://trade-areas-api.inrix.com
+  tags:
+  - Analytics
+  - Trips
+  - Trade Area
+  - Retail
+  - Location Intelligence
+- name: INRIX Trip Trends Reports API
+  description: Trip volume and travel-behaviour trend reports over time for a geography, including seasonal adjustment
+    and data-quality metadata.
+  humanURL: https://docs.inrix.com/analytics/triptrends/
+  baseURL: https://triptrends-api.inrix.com
+  tags:
+  - Analytics
+  - Trips
+  - Reports
+  - Trends
+  - Mobility
+- name: INRIX Roadway Analytics Data Downloader API
+  description: 'Asynchronous report and bulk speed-data downloader for INRIX Roadway Analytics: submit a report
+    request, poll its status and retrieve the generated dataset.'
+  humanURL: https://docs.inrix.com/ra/speedsdatadownloader/
+  baseURL: https://roadway-analytics-api.inrix.com
+  tags:
+  - Analytics
+  - Bulk Data
+  - Reports
+  - Roadway
+  - Download
+- name: INRIX Data Download Service
+  description: Queries and downloads static INRIX data deliverables organized by product, dataset and file - beginning
+    with map releases (XD added/removed/replaced, TMC changes, OpenLR dictionaries, shapefiles and GeoJSON conflations).
+  humanURL: https://docs.inrix.com/datadownload/datadownload/
+  baseURL: https://mapdata.inrix.io
+  tags:
+  - Bulk Data
+  - Maps
+  - Downloads
+  - Reference Data
+  - XD
+- name: INRIX Data Upload Service (GPS, XFCD and Parking Event Streams)
+  description: 'Inbound data streams for partners contributing probe data to INRIX: batched JSON POSTs of GPS points,
+    extended floating car data (XFCD) readings, and parking events, consumed asynchronously with sub-second acknowledgement.'
+  humanURL: https://docs.inrix.com/sendingdata/gpsdatastream/
+  baseURL: https://appsvc-ingest.inrix.io
+  tags:
+  - Data Ingest
+  - Streams
+  - GPS
+  - XFCD
+  - Probe Data
+- name: INRIX Gateway Map Version API
+  description: Reports the current INRIX map and XD network version in use, so consumers can align segment identifiers
+    with the correct map release.
+  humanURL: https://docs.inrix.com/reference/mapversion/
+  baseURL: https://gateway-api.inrix.com
+  tags:
+  - Reference Data
+  - Versioning
+  - Maps
+  - XD
+  - Metadata
+- name: INRIX Connected Services Gateway API
+  description: The long-standing INRIX Connected Services gateway (Inrix.ashx), which serves routing, drive time
+    polygons, traffic cameras, road speed at points, segment sets and speed buckets through Action-style requests
+    against a regionally issued server path.
+  humanURL: https://docs.inrix.com/authentication/getting_authorized/
+  baseURL: https://na-api2.inrix.com
+  tags:
+  - Routing
+  - Traffic
+  - Cameras
+  - Drive Time
+  - Gateway
+- name: INRIX TPEG Connect
+  description: Delivers INRIX traffic, incident, parking, weather and fuel content in TISA TPEG format over HTTP
+    POST sessions, with incremental deltas, configurable content radii, compression and encryption for embedded
+    automotive head units.
+  humanURL: https://docs.inrix.com/traffic/tpeg/
+  baseURL: https://na-tts.inrix.com
+  tags:
+  - TPEG
+  - Automotive
+  - Streaming
+  - Traffic
+  - Standards
+- name: INRIX Visits Analytics API
+  description: Anonymized visit counts and dwell analytics for points of interest and custom polygons, derived from
+    INRIX device and vehicle movement data.
+  humanURL: https://docs.inrix.com/analytics/analyticsvisits/
+  baseURL: https://analytics-visits.inrix.com
+  tags:
+  - Analytics
+  - Visits
+  - Location Intelligence
+  - Retail
+  - Foot Traffic
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/inrix-domain-security.yml
+- type: Authentication
+  url: authentication/inrix-authentication.yml
 - type: Website
-  url: https://forgeglobal.com/inrix_stock/
+  url: https://inrix.com/
+- type: DeveloperPortal
+  url: https://inrix.com/developers/
+- type: Documentation
+  url: https://docs.inrix.com/
+- type: APIReference
+  url: https://docs.inrix.com/traffic/general_info/
+- type: GettingStarted
+  url: https://docs.inrix.com/authentication/getting_authorized/
+- type: Authentication
+  url: https://docs.inrix.com/authentication/getting_authorized/
+- type: Console
+  url: https://iq.inrix.com/
+- type: SignUp
+  url: https://iq.inrix.com/
+- type: Login
+  url: https://iq.inrix.com/?l=1
+- type: Support
+  url: mailto:support@inrix.com
+- type: Blog
+  url: https://inrix.com/blog/
+- type: GitHubOrganization
+  url: https://github.com/INRIX
+- type: StatusPage
+  url: https://status.inrix.com/
+- type: ChangeLog
+  url: https://docs.inrix.com/parking/change_log/
+- type: TermsOfService
+  url: https://inrix.com/site-terms/
+- type: PrivacyPolicy
+  url: https://inrix.com/site-privacy-policy/
+- type: Glossary
+  url: https://docs.inrix.com/reference/glossary/
+- type: ErrorCodes
+  url: https://docs.inrix.com/reference/errorstatusids/
+- type: SDK
+  url: https://docs.inrix.com/sdk/general/
+- type: Pricing
+  url: https://inrix.com/contact/
+- type: ErrorCatalog
+  url: errors/inrix-error-codes.yml
+  name: INRIX statusId registry (360 codes)
+- type: ErrorCatalog
+  url: errors/inrix-problem-types.yml
+  name: Error responses derived from the INRIX contracts
+- type: Conventions
+  url: conventions/inrix-conventions.yml
+  name: INRIX API conventions
+- type: Lifecycle
+  url: lifecycle/inrix-lifecycle.yml
+  name: INRIX versioning, environments and status
+- type: ChangeLog
+  url: changelog/inrix-changelog.yml
+  name: INRIX parking and SDK release notes
+- type: Sandbox
+  url: sandbox/inrix-sandbox.yml
+  name: INRIX beta, sandbox and qa environments
+- type: Packages
+  url: packages/inrix-packages.yml
+  name: INRIX client libraries
+- type: SDKs
+  url: packages/inrix-packages.yml
+  name: INRIX mobile client SDKs
+- type: Conformance
+  url: conformance/inrix-conformance.yml
+  name: Standards conformance
+- type: Compliance
+  url: conformance/inrix-conformance.yml
+  name: EU-U.S. Data Privacy Framework certification
+- type: DataModel
+  url: data-model/inrix-data-model.yml
+  name: INRIX entity graph
+- type: AgentSkill
+  url: skills/_index.yml
+  name: INRIX agent skills
+- type: LLMsTxt
+  url: llms/inrix-llms.txt
+  name: llms.txt for INRIX
+x-enrichment:
+  date: '2026-08-01'
+  status: enriched
+  artifacts_added: 24
+  pass: local-v1

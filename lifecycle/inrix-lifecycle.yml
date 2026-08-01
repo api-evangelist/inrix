@@ -1,0 +1,89 @@
+generated: '2026-08-01'
+method: searched
+source:
+- https://status.inrix.com/
+- https://docs.inrix.com/parking/change_log/
+- https://docs.inrix.com/parking/beta/
+- https://docs.inrix.com/sdk/releasenotes/
+versioning:
+  scheme: uri-path
+  current:
+    traffic: v1
+    parking: v3
+    signals: v1
+    uas: v1
+    legacy_gateway: V3
+  note: Each product API carries its own path version. INRIX Parking Services (IPS) 3.0 supersedes the earlier ParkMe
+    v1/v2 parking endpoints.
+status_page: https://status.inrix.com/
+status_page_title: INRIX IQ Status
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: INRIX publishes no formal deprecation policy and does not advertise RFC 8594 Sunset/Deprecation headers.
+    Deprecation is communicated in prose on individual documentation pages.
+  observed_notices:
+  - surface: Parking beta endpoint
+    url: https://docs.inrix.com/parking/beta/
+    notice: This API is legacy and no longer supported. Please see INRIX Parking Services (IPS) 3.0 documentation,
+      which is current and fully supported.
+    replacement: https://parking-api.inrix.com/doc/v3/bulk/
+  - surface: GetSecurityToken legacy authentication
+    url: https://docs.inrix.com/authentication/getting_authorized/
+    notice: Superseded by the UAS appToken flow for new integrations.
+  - surface: unused_materials/* documentation tree
+    url: https://docs.inrix.com/
+    notice: Retired documentation retained on the docs site under an unused_materials prefix.
+sla:
+  url: null
+  uptime_target: null
+  note: No public SLA or uptime target is published; service levels are contractual.
+support:
+  email: support@inrix.com
+  docs: https://docs.inrix.com/reference/emails/
+environments:
+- name: production
+  hosts:
+  - uas-api.inrix.com
+  - parking-api.inrix.com
+  - segment-api.inrix.com
+  - incident-api.inrix.com
+  - signals-api.inrix.com
+  - appsvc-ingest.inrix.io
+  - mapdata.inrix.io
+- name: beta / sandbox
+  hosts:
+  - uas-api.beta.inrix.com
+  - api.beta.parkme.com
+  - appsvc-ingest.beta.inrix.io
+  - gateway-api.beta.inrix.com
+  - na-api.sandbox.inrix.com
+  - eu-api.sandbox.inrix.com
+  - na-tts.sandbox.inrix.com
+  - eu-tts.sandbox.inrix.com
+  - roadrules.beta.inrix.com
+  see_also: sandbox/inrix-sandbox.yml
+- name: qa
+  hosts:
+  - iq.qa.inrix.com
+  - mapdata.qa.inrix.io
+regions:
+- region: North America
+  hosts:
+  - na-api2.inrix.com
+  - na-api.inrix.com
+  - na-tts.inrix.com
+  - na-rseg-tts.inrix.com
+- region: Europe
+  hosts:
+  - eu.api.inrix.com
+  - eu-rseg-tts.inrix.com
+deprecated_operations: []
+x-evidence:
+- url: https://status.inrix.com/
+  fetched: '2026-08-01'
+  http_status: 200
+  title: INRIX IQ Status
+- url: https://docs.inrix.com/parking/beta/
+  fetched: '2026-08-01'
+  http_status: 200

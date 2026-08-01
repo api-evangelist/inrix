@@ -1,0 +1,117 @@
+generated: '2026-08-01'
+method: searched
+source: https://docs.inrix.com/authentication/getting_authorized/
+docs: https://docs.inrix.com/authentication/getting_authorized/
+summary:
+  types:
+  - http
+  - apiKey
+  - oauth2
+  api_key_in:
+  - query
+  - header
+  oauth2_flows:
+  - clientCredentials
+  note: 'Every INRIX product API is gated by a bearer access token minted by the INRIX User Accounts System (UAS).
+    The token may be presented either as an `accessToken` query-string parameter or as an `Authorization: Bearer`
+    header.'
+primary_flow:
+  name: UAS appToken
+  description: Exchange an INRIX-issued appId (GUID) and a SHA-1 hashToken for a time-limited access token.
+  token_endpoint: https://uas-api.inrix.com/v1/appToken
+  operation: openapi/inrix-user-accounts-openapi-original.json#Application_GetAppToken
+  parameters:
+  - name: appId
+    in: query
+    description: Unique GUID provided by INRIX.
+  - name: hashToken
+    in: query
+    description: SHA-1 hash of the lowercase UTF-8 string "AppId|AppKey".
+  response_fields:
+  - token
+  - expiry (token validity period)
+  presentation:
+  - style: query
+    parameter: accessToken
+  - style: header
+    header: Authorization
+    format: Bearer {UAS-TOKEN}
+  guidance: Cache the token and reuse it for subsequent requests until it is close to expiring; tokens are not interchangeable
+    between environments.
+additional_flows:
+- name: OAuth2 application token
+  token_endpoint: https://uas-api.inrix.com/v1/oauth2/apptoken
+  operation: openapi/inrix-user-accounts-openapi-original.json#Application_OAuth2Token
+  note: OAuth2-shaped application token endpoint exposed by UAS. No scope vocabulary is published.
+- name: OAuth2 user token
+  token_endpoint: https://uas-api.inrix.com/v1/oauth2/token
+  operation: openapi/inrix-user-accounts-openapi-original.json#Auth_OAuth2Token
+- name: User sign-in
+  token_endpoint: https://uas-api.inrix.com/v1/signin
+  operation: openapi/inrix-user-accounts-openapi-original.json#Auth_Signin
+- name: Token renewal
+  token_endpoint: https://uas-api.inrix.com/v1/renewtoken
+  operation: openapi/inrix-user-accounts-openapi-original.json#Auth_RenewToken
+  parameters:
+  - name: refreshToken
+    in: query
+    required: true
+  - name: oAuthToken
+    in: query
+- name: Token validation
+  token_endpoint: https://uas-api.inrix.com/v1/validatetoken
+  operation: openapi/inrix-user-accounts-openapi-original.json#Auth_CheckToken
+- name: GetSecurityToken (legacy Connected Services)
+  token_endpoint: https://{serverPath}.inrix.com/traffic/Inrix.ashx?Action=GetSecurityToken
+  parameters:
+  - name: vendorId
+    in: query
+  - name: consumerId
+    in: query
+  - name: format
+    in: query
+    description: XML or JSON; XML is the default.
+  response_fields:
+  - token
+  - tokenExpireDtUtc
+  - serverPath
+  presentation:
+  - style: query
+    parameter: token
+  status: legacy
+  note: The legacy gateway returns the regional server path the caller must use for all subsequent requests (for
+    example na-api2.inrix.com or eu.api.inrix.com).
+schemes:
+- name: Basic
+  type: http
+  scheme: basic
+  sources:
+  - openapi/inrix-parkme-openapi-original.json
+  note: HTTP Basic is declared on the Parkme/INRIX Parking Services spec for operator-level endpoints (for example
+    reservation creation).
+- name: Bearer Token
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  sources:
+  - openapi/inrix-signals-analytics-openapi-original.json
+  note: The INRIX Signals Analytics API declares a JWT bearer scheme; the token is the UAS access token.
+- name: accessToken
+  type: apiKey
+  in: query
+  sources:
+  - https://docs.inrix.com/sendingdata/gpsdatastream/
+  - https://docs.inrix.com/traffic/segmentspeed/
+  note: Documented across the Traffic, Parking, Analytics and data-stream APIs as an alternative to the Authorization
+    header.
+no_oauth_scopes: true
+scope_note: INRIX publishes OAuth2-shaped token endpoints but no scope vocabulary or permissions reference; entitlement
+  is set per application/account by INRIX, not by requested scope.
+credential_request: https://inrix.com/contact/
+x-evidence:
+- url: https://docs.inrix.com/authentication/getting_authorized/
+  fetched: '2026-08-01'
+  http_status: 200
+- url: https://uas-api.inrix.com/swagger/docs/v1
+  fetched: '2026-08-01'
+  http_status: 200
