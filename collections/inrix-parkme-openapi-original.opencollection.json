@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "INRIX Parkme API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "accounts_mobile_delete_delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/accounts/mobile/delete/"
+          },
+          "docs": "Endpoint for deleting a user account from mobile app"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "api",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "api_caniparkhere_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/caniparkhere/"
+          },
+          "docs": "given a coordinate finds the nearest segments and computes which rate is currently active and attaches additional\ndata to json response."
+        },
+        {
+          "info": {
+            "name": "api_openspots_events_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/openspots/events/",
+            "params": [
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "A search term."
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "api_openspots_events_read",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/openspots/events/:pk_event/",
+            "params": [
+              {
+                "name": "pk_event",
+                "value": "",
+                "type": "path",
+                "description": "A unique value identifying this open park event."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,396 @@
+{
+  "item": [
+    {
+      "id": "4af52dcf-8caa-4ce6-8919-8be89b01d2e9",
+      "name": "accounts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "957eed9b-ae4b-4451-9a52-f8dc6af6f05f",
+          "name": "accounts mobile delete delete",
+          "request": {
+            "name": "accounts mobile delete delete",
+            "description": {
+              "content": "Endpoint for deleting a user account from mobile app",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts",
+                "mobile",
+                "delete",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7e735ef5-6cb8-4335-8fa9-44ee9f93d1a6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts",
+                    "mobile",
+                    "delete",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "7fa8b371-5373-4b14-acc9-da4fbc4f3150",
+      "name": "api",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "80714fa5-43f6-4474-8bcc-cc8438298c60",
+          "name": "api caniparkhere list",
+          "request": {
+            "name": "api caniparkhere list",
+            "description": {
+              "content": "given a coordinate finds the nearest segments and computes which rate is currently active and attaches additional\ndata to json response.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "caniparkhere",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c4722ba5-1810-4f0c-9820-9d06172f317c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "caniparkhere",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b8946de3-8a57-4920-b32d-8327ab8b35c5",
+          "name": "api openspots events list",
+          "request": {
+            "name": "api openspots events list",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "openspots",
+                "events",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "A search term."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "74eacfd1-5579-4553-ac35-13bb3dc3677c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "openspots",
+                    "events",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"ts\": \"1985-10-14T11:53:01.250Z\",\n    \"polyline\": \"string\",\n    \"quadkey17\": \"string\",\n    \"source\": \"string\"\n  },\n  {\n    \"ts\": \"1946-12-26T11:38:23.085Z\",\n    \"polyline\": \"string\",\n    \"quadkey17\": \"string\",\n    \"source\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "05672b43-f2d5-491b-8f19-2acf5d759e28",
+          "name": "api openspots events read",
+          "request": {
+            "name": "api openspots events read",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "openspots",
+                "events",
+                ":pk_event",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pk_event",
+                  "description": "(Required) A unique value identifying this open park event."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5cfa7315-c7f9-4985-a226-12a447062615",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "openspots",
+                    "events",
+                    ":pk_event",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pk_event",
+                      "description": "(Required) A unique value identifying this open park event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ts\": \"1978-08-06T18:22:13.074Z\",\n  \"polyline\": \"string\",\n  \"quadkey17\": \"string\",\n  \"source\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://parking-api.inrix.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "00f9598b-81a4-4107-a005-094bc0a53958",
+    "name": "INRIX Parkme API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "INRIX Parkme Web Service API\n\nContact Support:\n Email: support@inrix.com",
+      "type": "text/plain"
+    }
+  }
+}

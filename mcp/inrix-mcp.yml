@@ -3,8 +3,9 @@ method: derived
 status: candidate
 source: openapi/*.json
 note: INRIX publishes no hosted or remote MCP server. Searches of the INRIX docs, the INRIX GitHub organization
-  and the public MCP registries returned no INRIX server. This is a CANDIDATE tool surface derived from the three
-  machine-readable INRIX contracts so an implementer can see what a server would expose; it is not an INRIX product.
+  and the public MCP registries returned no INRIX server. This is a CANDIDATE tool surface derived from
+  the three machine-readable INRIX contracts so an implementer can see what a server would expose; it
+  is not an INRIX product.
 server:
   name: inrix
   transport: http
@@ -415,8 +416,8 @@ tools:
   path: /accounts/mobile/delete/
   source_operation: openapi/inrix-parkme-openapi-original.json#accounts_mobile_delete_delete
 - name: api_caniparkhere_list
-  description: 'given a coordinate finds the nearest segments and computes which rate is currently active and attaches
-    additional
+  description: 'given a coordinate finds the nearest segments and computes which rate is currently active
+    and attaches additional
 
     data to json response.'
   method: GET
@@ -462,3 +463,9 @@ tools:
   method: POST
   path: /v1/namespace/search
   source_operation: openapi/inrix-signals-analytics-openapi-original.json#searchNamespaces
+deployment:
+  mode: none
+  verified: derived
+  tools: 88
+  checked: '2026-08-12'
+  source: catalog MCP census
