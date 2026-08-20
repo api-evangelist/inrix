@@ -43,6 +43,12 @@ apis:
   tags:
   - Authentication
   - Tokens
+  - Account
+  - User
+  - Identity
+  tags_raw:
+  - Authentication
+  - Tokens
   - Accounts
   - Users
   - Identity
@@ -115,6 +121,12 @@ apis:
   - Traffic
   - Speed
   - Road Segments
+  - Real-Time
+  - XD
+  tags_raw:
+  - Traffic
+  - Speed
+  - Road Segments
   - Real Time
   - XD
 - name: INRIX Safety Alerts (Incidents) API
@@ -123,6 +135,12 @@ apis:
   humanURL: https://docs.inrix.com/traffic/incidents/
   baseURL: https://incident-api.inrix.com
   tags:
+  - Incidents
+  - Safety
+  - Alerts
+  - Traffic
+  - Event
+  tags_raw:
   - Incidents
   - Safety
   - Alerts
@@ -204,6 +222,12 @@ apis:
   - Bulk Data
   - Reports
   - Roadway
+  - Downloads
+  tags_raw:
+  - Analytics
+  - Bulk Data
+  - Reports
+  - Roadway
   - Download
 - name: INRIX Data Download Service
   description: Queries and downloads static INRIX data deliverables organized by product, dataset and file - beginning
@@ -245,6 +269,12 @@ apis:
   humanURL: https://docs.inrix.com/authentication/getting_authorized/
   baseURL: https://na-api2.inrix.com
   tags:
+  - Routing
+  - Traffic
+  - Camera
+  - Drive Time
+  - Gateway
+  tags_raw:
   - Routing
   - Traffic
   - Cameras
