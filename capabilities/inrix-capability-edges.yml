@@ -1,0 +1,46 @@
+slug: inrix
+provider: INRIX
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Transportation & Logistics
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: User
+  spec_file: inrix-user-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.75
+  evidence: POST /v1/changePassword User_ChangePassword; POST /v1/resetPassword; POST /v1/inviteUser User_InviteUser;
+    schemas ChangePasswordRequest, VerifyEmailRequest, InrixUser
+  reason: Operations manage user accounts, credentials, invitations and email verification for the platform
+    — identity and access administration rather than any customer-facing business process.
+- tag: Application
+  spec_file: inrix-application-api-openapi.yml
+  capability_id: BC-4270.40
+  capability_id_l1: BC-4270
+  capability_name: Developer Identity & Credential Management
+  confidence: 0.7
+  evidence: GET /v1/applications/{appId}/appKey  Application_GetAppKey; POST /v1/oauth2/apptoken  Application_OAuth2Token;
+    schemas OAuth2SigninRequest, Application
+  reason: Under a UserAccounts service, these operations register client applications and issue app keys
+    and OAuth2 app tokens for consumers of INRIX's APIs — developer credential issuance and stewardship.
+    Some risk it is better read as internal IAM, hence moderate confidence.
+- tag: UserGroup
+  spec_file: inrix-usergroup-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: GET /v1/usergroups/{id}/members UserGroup_GetMembers; POST /v1/usergroups/{id}/members UserGroup_AddMembers;
+    schema InrixUserGroupMember
+  reason: Group and membership administration for platform user accounts — access-group management, an
+    IAM function; no other business reading fits.
