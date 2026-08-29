@@ -10,6 +10,18 @@ description: 'INRIX is a Kirkland, Washington-based transportation analytics com
   Signals intersection analytics, a Data Download Service for map and XD network releases, and data-upload streams
   for GPS, XFCD and parking events. All access is brokered through the INRIX User Accounts System (UAS), which exchanges
   an appId and a SHA-1 hashToken for a bearer access token used across every product API.'
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://docs.inrix.com/images/inrix.png
 url: https://raw.githubusercontent.com/api-evangelist/inrix/refs/heads/main/apis.yml
 x-type: company
