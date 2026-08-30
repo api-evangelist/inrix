@@ -260,6 +260,8 @@ apis:
   humanURL: https://docs.inrix.com/authentication/getting_authorized/
   baseURL: https://uas-api.inrix.com
   tags:
+  - Account
+  tags_raw:
   - accounts
   properties:
   - type: OpenAPI
@@ -279,7 +281,8 @@ apis:
   description: The api API from INRIX — 3 operation(s) for api.
   humanURL: https://docs.inrix.com/authentication/getting_authorized/
   baseURL: https://uas-api.inrix.com
-  tags:
+  tags: []
+  tags_raw:
   - api
   properties:
   - type: OpenAPI
@@ -320,6 +323,8 @@ apis:
   humanURL: https://docs.inrix.com/authentication/getting_authorized/
   baseURL: https://uas-api.inrix.com
   tags:
+  - Application Management
+  tags_raw:
   - ApplicationManagement
   properties:
   - type: OpenAPI
@@ -340,6 +345,8 @@ apis:
   humanURL: https://docs.inrix.com/authentication/getting_authorized/
   baseURL: https://uas-api.inrix.com
   tags:
+  - Authentication
+  tags_raw:
   - Auth
   properties:
   - type: OpenAPI
@@ -360,6 +367,8 @@ apis:
   humanURL: https://docs.inrix.com/authentication/getting_authorized/
   baseURL: https://uas-api.inrix.com
   tags:
+  - Developers
+  tags_raw:
   - Developer
   properties:
   - type: OpenAPI
