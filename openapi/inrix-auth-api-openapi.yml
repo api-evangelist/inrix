@@ -1,0 +1,403 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: Inrix.UserAccounts.Web Auth API
+servers:
+- url: https://uas-api.inrix.com/Inrix.UserAccountsSystem.Web_deploy
+tags:
+- name: Auth
+paths:
+  /v1/validatetoken:
+    post:
+      tags:
+      - Auth
+      operationId: Auth_CheckToken
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccessToken'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/AccessToken'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/AccessToken'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/AccessToken'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AccessToken'
+        required: true
+  /v1/signin:
+    post:
+      tags:
+      - Auth
+      operationId: Auth_Signin
+      parameters:
+      - name: hashToken
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: appKey
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: appId
+        in: query
+        required: false
+        schema:
+          type: string
+          format: uuid
+      - name: withProperty
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SigninRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/SigninRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/SigninRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/SigninRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SigninRequest'
+        required: true
+  /v1/oauth2/token:
+    post:
+      tags:
+      - Auth
+      operationId: Auth_OAuth2Token
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OAuth2SigninRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/OAuth2SigninRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/OAuth2SigninRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/OAuth2SigninRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OAuth2SigninRequest'
+        required: true
+  /v1/socialSignin:
+    post:
+      tags:
+      - Auth
+      operationId: Auth_SocialSignin
+      parameters:
+      - name: hashToken
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: appId
+        in: query
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SigninRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/SigninRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/SigninRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/SigninRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SigninRequest'
+        required: true
+  /v1/signout:
+    get:
+      tags:
+      - Auth
+      operationId: Auth_Signout
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+  /v1/renewtoken:
+    get:
+      tags:
+      - Auth
+      operationId: Auth_RenewToken
+      parameters:
+      - name: refreshToken
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: oAuthToken
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+components:
+  schemas:
+    AccessToken:
+      type: object
+      properties:
+        token:
+          type: string
+        expiry:
+          format: date-time
+          type: string
+    SigninRequest:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+        oAuthUserId:
+          type: string
+        providerName:
+          type: string
+        oAuthToken:
+          type: string
+        oAuthUserName:
+          type: string
+        device:
+          $ref: '#/components/schemas/Device'
+        impersonateEmail:
+          type: string
+        impersonateAppId:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+    OAuth2SigninRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        grant_type:
+          type: string
+        device:
+          $ref: '#/components/schemas/Device'
+    Application:
+      type: object
+      properties:
+        SerializeForStorage:
+          type: boolean
+        role:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          type: integer
+        id:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        appKey:
+          type: string
+        name:
+          type: string
+        appVersion:
+          type: string
+        sdkVersion:
+          type: string
+        status:
+          format: int32
+          enum:
+          - 0
+          - 1
+          type: integer
+        devId:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        csVendorId:
+          type: string
+        csVendorGroupId:
+          type: string
+        csVendorToken:
+          type: string
+        sfId:
+          type: string
+        sfAccountName:
+          type: string
+        sfContractExpiration:
+          format: date-time
+          type: string
+        tokenExpirationHours:
+          format: int32
+          type: integer
+        createdBy:
+          type: string
+        createdDate:
+          format: date-time
+          type: string
+        modifiedBy:
+          type: string
+        modifiedDate:
+          format: date-time
+          type: string
+        properties:
+          type: object
+          additionalProperties:
+            type: string
+    Device:
+      type: object
+      properties:
+        SerializeForStorage:
+          type: boolean
+        application:
+          $ref: '#/components/schemas/Application'
+        id:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        uniqueDeviceId:
+          type: string
+        platform:
+          type: string
+        osVersion:
+          type: string
+        model:
+          type: string
+        locale:
+          type: string
+        connectionType:
+          type: string
+        pushTokenChannel:
+          type: string
+        pushToken:
+          type: string
+        pushTokenType:
+          type: string
+        deviceToken:
+          type: string
+        pushCredentials:
+          type: object
+          additionalProperties:
+            type: string
+        name:
+          type: string

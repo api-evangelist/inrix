@@ -1,0 +1,241 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: Inrix.UserAccounts.Web Device API
+servers:
+- url: https://uas-api.inrix.com/Inrix.UserAccountsSystem.Web_deploy
+tags:
+- name: Device
+paths:
+  /v1/devices/{id}:
+    put:
+      tags:
+      - Device
+      operationId: Device_Put
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Device'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Device'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Device'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/Device'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Device'
+        required: true
+  /v1/devices:
+    get:
+      tags:
+      - Device
+      operationId: Device_GetUserDevices
+      parameters:
+      - name: userId
+        in: query
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: deviceStatus
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+    delete:
+      tags:
+      - Device
+      operationId: Device_DeleteDevices
+      parameters:
+      - name: userId
+        in: query
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+  /v1/heartbeat:
+    get:
+      tags:
+      - Device
+      operationId: Device_ConnHeartbeat
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+components:
+  schemas:
+    Application:
+      type: object
+      properties:
+        SerializeForStorage:
+          type: boolean
+        role:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          type: integer
+        id:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        appKey:
+          type: string
+        name:
+          type: string
+        appVersion:
+          type: string
+        sdkVersion:
+          type: string
+        status:
+          format: int32
+          enum:
+          - 0
+          - 1
+          type: integer
+        devId:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        csVendorId:
+          type: string
+        csVendorGroupId:
+          type: string
+        csVendorToken:
+          type: string
+        sfId:
+          type: string
+        sfAccountName:
+          type: string
+        sfContractExpiration:
+          format: date-time
+          type: string
+        tokenExpirationHours:
+          format: int32
+          type: integer
+        createdBy:
+          type: string
+        createdDate:
+          format: date-time
+          type: string
+        modifiedBy:
+          type: string
+        modifiedDate:
+          format: date-time
+          type: string
+        properties:
+          type: object
+          additionalProperties:
+            type: string
+    Device:
+      type: object
+      properties:
+        SerializeForStorage:
+          type: boolean
+        application:
+          $ref: '#/components/schemas/Application'
+        id:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        uniqueDeviceId:
+          type: string
+        platform:
+          type: string
+        osVersion:
+          type: string
+        model:
+          type: string
+        locale:
+          type: string
+        connectionType:
+          type: string
+        pushTokenChannel:
+          type: string
+        pushToken:
+          type: string
+        pushTokenType:
+          type: string
+        deviceToken:
+          type: string
+        pushCredentials:
+          type: object
+          additionalProperties:
+            type: string
+        name:
+          type: string

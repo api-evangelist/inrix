@@ -1,0 +1,276 @@
+openapi: 3.2.0
+info:
+  title: INRIX Analytics Webservice Template Metrics API
+  description: Webservice template to stand up webservices on IQ Backend
+tags:
+- name: Metrics
+paths:
+  /v1/metrics/intersections/availability:
+    get:
+      operationId: intersectionAvailability
+      parameters:
+      - name: startDate
+        in: query
+        schema:
+          type: string
+      - name: endDate
+        in: query
+        schema:
+          type: string
+      - name: intersectionOutputMode
+        in: query
+        schema:
+          type: string
+      - name: namespaces
+        in: query
+        schema:
+          type: string
+      - name: travelTimeType
+        in: query
+        schema:
+          type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/UasPrincipalRequired'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostMetricResponse'
+      security:
+      - Bearer Token: []
+      tags:
+      - Metrics
+  /v1/metrics/intersections:
+    post:
+      operationId: intersectionMetrics
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/MetricRequest'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostMetricResponse'
+      security:
+      - Bearer Token: []
+      tags:
+      - Metrics
+components:
+  schemas:
+    DateRange:
+      type: object
+      properties:
+        startDate:
+          type: string
+          format: date
+        endDate:
+          type: string
+          format: date
+    Metadata:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: object
+        valueList:
+          type: boolean
+    Crs:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - name
+          - link
+        properties:
+          type: object
+          additionalProperties:
+            type: object
+    UasPrincipalRequired:
+      type: object
+      properties:
+        accessToken:
+          type: string
+        userId:
+          type: string
+          format: uuid
+        appId:
+          type: string
+          format: uuid
+        name:
+          type: string
+        anonymous:
+          type: boolean
+    PostMetricResponse:
+      type: object
+      properties:
+        createdDate:
+          type: string
+        responseId:
+          type: string
+        data:
+          $ref: '#/components/schemas/MetricData'
+    NamedRangeItem:
+      type: object
+      properties:
+        name:
+          type: string
+        startAvgControlDelay:
+          type: number
+          format: double
+        endAvgControlDelay:
+          type: number
+          format: double
+    ValueItem:
+      type: object
+      properties:
+        name:
+          type: string
+        startTime:
+          type: string
+        endTime:
+          type: string
+    OrderBy:
+      type: object
+      properties:
+        name:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASCENDING
+          - DESCENDING
+    GeoJsonObject:
+      required:
+      - type
+      type: object
+      properties:
+        crs:
+          $ref: '#/components/schemas/Crs'
+        bbox:
+          type: array
+          items:
+            type: number
+            format: double
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+    MetricData:
+      type: object
+      properties:
+        nextCursor:
+          type: object
+          additionalProperties:
+            type: string
+        columnHeader:
+          $ref: '#/components/schemas/ColumnHeader'
+        rows:
+          type: array
+          items:
+            type: array
+            items:
+              type: string
+    ColumnHeaderEntry:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+    ColumnHeader:
+      type: object
+      properties:
+        dimensionHeaderEntries:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColumnHeaderEntry'
+        metricHeaderEntries:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColumnHeaderEntry'
+    Filter:
+      type: object
+      properties:
+        name:
+          type: string
+        operator:
+          type: string
+        not:
+          type: boolean
+        expressions:
+          type: array
+          items:
+            type: string
+    MetricRequest:
+      type: object
+      properties:
+        nextCursor:
+          type: object
+          additionalProperties:
+            type: string
+        offset:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        dateRanges:
+          type: array
+          items:
+            $ref: '#/components/schemas/DateRange'
+        geometry:
+          $ref: '#/components/schemas/GeoJsonObject'
+        dimensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/DimensionItem'
+        metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetricItem'
+        dimensionFilters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+        metadata:
+          type: array
+          items:
+            $ref: '#/components/schemas/Metadata'
+        orderBys:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderBy'
+        noPaging:
+          type: boolean
+    DimensionItem:
+      type: object
+      properties:
+        name:
+          type: string
+        ranges:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValueItem'
+    MetricItem:
+      type: object
+      properties:
+        name:
+          type: string
+        ranges:
+          type: array
+          items:
+            $ref: '#/components/schemas/NamedRangeItem'
+  securitySchemes:
+    Bearer_Token:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

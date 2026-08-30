@@ -1,0 +1,208 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: Inrix.UserAccounts.Web Email Template API
+servers:
+- url: https://uas-api.inrix.com/Inrix.UserAccountsSystem.Web_deploy
+tags:
+- name: EmailTemplate
+paths:
+  /v1/emailtemplates/{id}:
+    get:
+      tags:
+      - EmailTemplate
+      operationId: EmailTemplate_Get
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+    put:
+      tags:
+      - EmailTemplate
+      operationId: EmailTemplate_Put
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InrixEmailTemplate'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InrixEmailTemplate'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/InrixEmailTemplate'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/InrixEmailTemplate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/InrixEmailTemplate'
+        required: true
+    delete:
+      tags:
+      - EmailTemplate
+      operationId: EmailTemplate_Delete
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+  /v1/emailtemplates:
+    get:
+      tags:
+      - EmailTemplate
+      operationId: EmailTemplate_Get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+    post:
+      tags:
+      - EmailTemplate
+      operationId: EmailTemplate_Post
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InrixEmailTemplate'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InrixEmailTemplate'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/InrixEmailTemplate'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/InrixEmailTemplate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/InrixEmailTemplate'
+        required: true
+components:
+  schemas:
+    InrixEmailTemplate:
+      type: object
+      properties:
+        SerializeForStorage:
+          type: boolean
+        id:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        name:
+          type: string
+        templates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Template'
+        createdBy:
+          type: string
+        createdDate:
+          format: date-time
+          type: string
+        modifiedBy:
+          type: string
+        modifiedDate:
+          format: date-time
+          type: string
+        devId:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+    Template:
+      type: object
+      properties:
+        subject:
+          type: string
+        body:
+          type: string
+        locale:
+          type: string

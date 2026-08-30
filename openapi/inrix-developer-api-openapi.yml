@@ -1,0 +1,169 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: Inrix.UserAccounts.Web Developer API
+servers:
+- url: https://uas-api.inrix.com/Inrix.UserAccountsSystem.Web_deploy
+tags:
+- name: Developer
+paths:
+  /v1/developers:
+    get:
+      tags:
+      - Developer
+      operationId: Developer_Get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+    post:
+      tags:
+      - Developer
+      operationId: Developer_Post
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Developer'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Developer'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Developer'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/Developer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Developer'
+        required: true
+  /v1/developers/{devId}:
+    get:
+      tags:
+      - Developer
+      operationId: Developer_Get
+      parameters:
+      - name: devId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+    put:
+      tags:
+      - Developer
+      operationId: Developer_Put
+      parameters:
+      - name: devId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Developer'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Developer'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Developer'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/Developer'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Developer'
+        required: true
+components:
+  schemas:
+    Developer:
+      type: object
+      properties:
+        id:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        name:
+          type: string
+        devKey:
+          type: string
+        csVendorGroupId:
+          type: string
+        createdBy:
+          type: string
+        createdDate:
+          format: date-time
+          type: string
+        modifiedBy:
+          type: string
+        modifiedDate:
+          format: date-time
+          type: string
+        noCSToken:
+          format: int32
+          type: integer

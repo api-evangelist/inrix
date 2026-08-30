@@ -1,0 +1,246 @@
+openapi: 3.2.0
+info:
+  title: INRIX Analytics Webservice Template Metadata API
+  description: Webservice template to stand up webservices on IQ Backend
+tags:
+- name: Metadata
+paths:
+  /v1/metadata/intersections:
+    post:
+      operationId: intersectionMetadata
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/IntersectionMetadataRequest'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostMetadataResponse'
+      security:
+      - Bearer Token: []
+      tags:
+      - Metadata
+components:
+  schemas:
+    DateRange:
+      type: object
+      properties:
+        startDate:
+          type: string
+          format: date
+        endDate:
+          type: string
+          format: date
+    Geometry:
+      type: object
+      properties:
+        type:
+          type: string
+        coordinates:
+          type: array
+          items:
+            type: array
+            items:
+              type: number
+              format: double
+    Metadata:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: object
+        valueList:
+          type: boolean
+    Direction:
+      type: object
+      properties:
+        name:
+          type: string
+        direction:
+          type: string
+        altName:
+          type: array
+          items:
+            type: string
+        heading:
+          type: integer
+          format: int32
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+    Crs:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - name
+          - link
+        properties:
+          type: object
+          additionalProperties:
+            type: object
+    MovementResponseItem:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        rank:
+          type: integer
+          format: int32
+        inbound:
+          $ref: '#/components/schemas/Direction'
+        outbound:
+          $ref: '#/components/schemas/Direction'
+        movementType:
+          type: integer
+          format: int32
+        turnManeuvers:
+          type: string
+        turnGroupId:
+          type: string
+    PostMetadataResponse:
+      type: object
+      properties:
+        createdDate:
+          type: string
+        responseId:
+          type: string
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocationResponseItem'
+        totalCount:
+          type: integer
+          format: int32
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetadataResponseItem'
+    IntersectionMetadataRequest:
+      type: object
+      properties:
+        nextCursor:
+          type: object
+          additionalProperties:
+            type: string
+        offset:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        dateRanges:
+          type: array
+          items:
+            $ref: '#/components/schemas/DateRange'
+        geometry:
+          $ref: '#/components/schemas/GeoJsonObject'
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldName'
+        fieldFilters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/GeoObjectWithRadius'
+        includeGeometry:
+          type: boolean
+        includeMovements:
+          type: boolean
+        maxRank:
+          type: integer
+          format: int32
+    GeoObjectWithRadius:
+      type: object
+      properties:
+        geometry:
+          $ref: '#/components/schemas/GeoJsonObject'
+        radiusInMeters:
+          type: integer
+          format: int32
+    FieldName:
+      type: object
+      properties:
+        name:
+          type: string
+    MetadataResponseItem:
+      type: object
+      properties:
+        intersectionId:
+          type: string
+        name:
+          type: string
+        coordinates:
+          type: array
+          items:
+            $ref: '#/components/schemas/CoordinateResponseItem'
+        movements:
+          type: array
+          items:
+            $ref: '#/components/schemas/MovementResponseItem'
+    CoordinateResponseItem:
+      type: object
+      properties:
+        lat:
+          type: number
+          format: double
+        lon:
+          type: number
+          format: double
+    GeoJsonObject:
+      required:
+      - type
+      type: object
+      properties:
+        crs:
+          $ref: '#/components/schemas/Crs'
+        bbox:
+          type: array
+          items:
+            type: number
+            format: double
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+    Filter:
+      type: object
+      properties:
+        name:
+          type: string
+        operator:
+          type: string
+        not:
+          type: boolean
+        expressions:
+          type: array
+          items:
+            type: string
+    LocationResponseItem:
+      type: object
+      properties:
+        region:
+          type: string
+        country:
+          type: string
+        state:
+          type: string
+        mapVersion:
+          type: string
+  securitySchemes:
+    Bearer_Token:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -1,0 +1,219 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: Inrix.UserAccounts.Web Application Management API
+servers:
+- url: https://uas-api.inrix.com/Inrix.UserAccountsSystem.Web_deploy
+tags:
+- name: ApplicationManagement
+paths:
+  /v1/ApplicationManagement/Ping:
+    get:
+      tags:
+      - ApplicationManagement
+      operationId: ApplicationManagement_Ping
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+            text/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
+            text/xml:
+              schema:
+                type: string
+  /v1/ApplicationManagement/ApplicationContext:
+    get:
+      tags:
+      - ApplicationManagement
+      operationId: ApplicationManagement_GetApplicationContext
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+  /v1/ApplicationManagement/ApplicationStatus:
+    get:
+      tags:
+      - ApplicationManagement
+      operationId: ApplicationManagement_GetApplicationStatus
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+  /v1/ApplicationManagement/Caches:
+    get:
+      tags:
+      - ApplicationManagement
+      operationId: ApplicationManagement_GetCaches
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+  /v1/ApplicationManagement/Caches/{cacheId}/Clear:
+    get:
+      tags:
+      - ApplicationManagement
+      operationId: ApplicationManagement_ClearCache
+      parameters:
+      - name: cacheId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+  /v1/ApplicationManagement/Caches/{cacheId}/Refresh:
+    get:
+      tags:
+      - ApplicationManagement
+      operationId: ApplicationManagement_RefreshCache
+      parameters:
+      - name: cacheId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+  /v1/ApplicationManagement/Caches/{cacheId}:
+    get:
+      tags:
+      - ApplicationManagement
+      operationId: ApplicationManagement_GetCacheContent
+      parameters:
+      - name: cacheId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+  /v1/ApplicationManagement/Recycle:
+    get:
+      tags:
+      - ApplicationManagement
+      operationId: ApplicationManagement_RecycleApplication
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+  /v1/ApplicationManagement/ForceGarbageCollection:
+    get:
+      tags:
+      - ApplicationManagement
+      operationId: ApplicationManagement_ForceGarbageCollection
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object

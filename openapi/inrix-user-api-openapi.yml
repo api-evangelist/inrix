@@ -1,0 +1,1364 @@
+openapi: 3.2.0
+info:
+  version: v1
+  title: Inrix.UserAccounts.Web User API
+servers:
+- url: https://uas-api.inrix.com/Inrix.UserAccountsSystem.Web_deploy
+tags:
+- name: User
+paths:
+  /v1/users:
+    get:
+      tags:
+      - User
+      operationId: User_GetPrincipalsByResource
+      parameters:
+      - name: resourceId
+        in: query
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: actionId
+        in: query
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: resourceType
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: permissionId
+        in: query
+        required: false
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+    post:
+      tags:
+      - User
+      operationId: User_Post
+      parameters:
+      - name: hashToken
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: appKey
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: appId
+        in: query
+        required: false
+        schema:
+          type: string
+          format: uuid
+      - name: useEmailVerification
+        in: query
+        required: false
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InrixUser'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InrixUser'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/InrixUser'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/InrixUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/InrixUser'
+        required: true
+  /v1/GetPrincipalsByResource:
+    get:
+      tags:
+      - User
+      operationId: User_GetPrincipalsByResource2
+      parameters:
+      - name: resourceId
+        in: query
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: pageSize
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: actionId
+        in: query
+        required: false
+        schema:
+          type: string
+          format: uuid
+      - name: resourceType
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: permissionId
+        in: query
+        required: false
+        schema:
+          type: string
+          format: uuid
+      - name: actionName
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: permissionName
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: lastEvaluatedKey
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: principalType
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+  /v1/GetMultipleUsers:
+    post:
+      tags:
+      - User
+      operationId: User_GetMultipleUsers2
+      parameters:
+      - name: deviceStatus
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: withProperty
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+          text/json:
+            schema:
+              type: array
+              items:
+                type: string
+          application/xml:
+            schema:
+              type: array
+              items:
+                type: string
+          text/xml:
+            schema:
+              type: array
+              items:
+                type: string
+          application/x-www-form-urlencoded:
+            schema:
+              type: array
+              items:
+                type: string
+        required: true
+  /v1/getusersbydeveloper:
+    get:
+      tags:
+      - User
+      operationId: User_getusersbydeveloper
+      parameters:
+      - name: devId
+        in: query
+        required: false
+        schema:
+          type: string
+          format: uuid
+      - name: pageSize
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: lastKey
+        in: query
+        required: false
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+  /v1/users/{id}:
+    get:
+      tags:
+      - User
+      operationId: User_Get
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: deviceStatus
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: withProperty
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+  /v1/users/RDS1:
+    post:
+      tags:
+      - User
+      operationId: User_Post1
+      parameters:
+      - name: hashToken
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: appId
+        in: query
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InrixUser'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InrixUser'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/InrixUser'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/InrixUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/InrixUser'
+        required: true
+  /v1/users/RDS2:
+    post:
+      tags:
+      - User
+      operationId: User_Post2
+      parameters:
+      - name: hashToken
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: appId
+        in: query
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InrixUser'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InrixUser'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/InrixUser'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/InrixUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/InrixUser'
+        required: true
+  /v1/changePassword:
+    post:
+      tags:
+      - User
+      operationId: User_ChangePassword
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangePasswordRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ChangePasswordRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ChangePasswordRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ChangePasswordRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ChangePasswordRequest'
+        required: true
+  /v1/resetPassword:
+    get:
+      tags:
+      - User
+      operationId: User_ResetPassword
+      parameters:
+      - name: email
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: hashToken
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: locale
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: appKey
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: appId
+        in: query
+        required: false
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+    post:
+      tags:
+      - User
+      operationId: User_ResetPassword
+      parameters:
+      - name: hashToken
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: appId
+        in: query
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResetPasswordRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ResetPasswordRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ResetPasswordRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ResetPasswordRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ResetPasswordRequest'
+        required: true
+  /v1/inviteUser:
+    post:
+      tags:
+      - User
+      operationId: User_InviteUser
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InviteUserRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InviteUserRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/InviteUserRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/InviteUserRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/InviteUserRequest'
+        required: true
+  /v1/users/{userId}/email:
+    put:
+      tags:
+      - User
+      operationId: User_Put
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+          text/json:
+            schema:
+              type: string
+          application/xml:
+            schema:
+              type: string
+          text/xml:
+            schema:
+              type: string
+          application/x-www-form-urlencoded:
+            schema:
+              type: string
+        required: true
+  /v1/users/{userId}:
+    put:
+      tags:
+      - User
+      operationId: User_Put
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InrixUser'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InrixUser'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/InrixUser'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/InrixUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/InrixUser'
+        required: true
+    delete:
+      tags:
+      - User
+      operationId: User_Delete
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+  /v1/sendVerificationEmail:
+    post:
+      tags:
+      - User
+      operationId: User_SendVerificationEmail
+      parameters:
+      - name: appId
+        in: query
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: hashToken
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OpenCarUserRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/OpenCarUserRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/OpenCarUserRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/OpenCarUserRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OpenCarUserRequest'
+        required: true
+  /v1/validateEmail:
+    post:
+      tags:
+      - User
+      operationId: User_ValidateEmail
+      parameters:
+      - name: appId
+        in: query
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: hashToken
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OpenCarUserRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/OpenCarUserRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/OpenCarUserRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/OpenCarUserRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OpenCarUserRequest'
+        required: true
+  /v1/cleanOpenCarRecord:
+    post:
+      tags:
+      - User
+      operationId: User_Clean
+      parameters:
+      - name: userId
+        in: query
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: appId
+        in: query
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: hashToken
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+  /v1/users/{userId}/properties:
+    get:
+      tags:
+      - User
+      operationId: User_QueryProperty
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: name
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+    put:
+      tags:
+      - User
+      operationId: User_UpdateProperty
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties:
+                type: string
+          text/json:
+            schema:
+              type: object
+              additionalProperties:
+                type: string
+          application/xml:
+            schema:
+              type: object
+              additionalProperties:
+                type: string
+          text/xml:
+            schema:
+              type: object
+              additionalProperties:
+                type: string
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              additionalProperties:
+                type: string
+        required: true
+    post:
+      tags:
+      - User
+      operationId: User_AddProperties
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties:
+                type: string
+          text/json:
+            schema:
+              type: object
+              additionalProperties:
+                type: string
+          application/xml:
+            schema:
+              type: object
+              additionalProperties:
+                type: string
+          text/xml:
+            schema:
+              type: object
+              additionalProperties:
+                type: string
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              additionalProperties:
+                type: string
+        required: true
+    delete:
+      tags:
+      - User
+      operationId: User_DeleteProperty
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: name
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+  /v1/verifyEmail:
+    post:
+      tags:
+      - User
+      operationId: User_VerifyEmail
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerifyEmailRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/VerifyEmailRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/VerifyEmailRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/VerifyEmailRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/VerifyEmailRequest'
+        required: true
+  /v1/resendCode:
+    post:
+      tags:
+      - User
+      operationId: User_ResendCode
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+            text/json:
+              schema:
+                type: object
+            application/xml:
+              schema:
+                type: object
+            text/xml:
+              schema:
+                type: object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResendCodeRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ResendCodeRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ResendCodeRequest'
+          text/xml:
+            schema:
+              $ref: '#/components/schemas/ResendCodeRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ResendCodeRequest'
+        required: true
+components:
+  schemas:
+    ResetPasswordRequest:
+      type: object
+      properties:
+        email:
+          type: string
+        locale:
+          type: string
+        templateId:
+          type: string
+        baseUrl:
+          type: string
+        parameters:
+          type: object
+          additionalProperties:
+            type: string
+    Application:
+      type: object
+      properties:
+        SerializeForStorage:
+          type: boolean
+        role:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          type: integer
+        id:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        appKey:
+          type: string
+        name:
+          type: string
+        appVersion:
+          type: string
+        sdkVersion:
+          type: string
+        status:
+          format: int32
+          enum:
+          - 0
+          - 1
+          type: integer
+        devId:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        csVendorId:
+          type: string
+        csVendorGroupId:
+          type: string
+        csVendorToken:
+          type: string
+        sfId:
+          type: string
+        sfAccountName:
+          type: string
+        sfContractExpiration:
+          format: date-time
+          type: string
+        tokenExpirationHours:
+          format: int32
+          type: integer
+        createdBy:
+          type: string
+        createdDate:
+          format: date-time
+          type: string
+        modifiedBy:
+          type: string
+        modifiedDate:
+          format: date-time
+          type: string
+        properties:
+          type: object
+          additionalProperties:
+            type: string
+    OpenCarUserRequest:
+      type: object
+      properties:
+        email:
+          type: string
+        code:
+          type: string
+        deviceId:
+          type: string
+        deviceName:
+          type: string
+        locale:
+          type: string
+    InviteUserRequest:
+      type: object
+      properties:
+        email:
+          type: string
+        locale:
+          type: string
+        appId:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        hashToken:
+          type: string
+        isSsoUser:
+          type: boolean
+        baseUrl:
+          type: string
+    Device:
+      type: object
+      properties:
+        SerializeForStorage:
+          type: boolean
+        application:
+          $ref: '#/components/schemas/Application'
+        id:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        uniqueDeviceId:
+          type: string
+        platform:
+          type: string
+        osVersion:
+          type: string
+        model:
+          type: string
+        locale:
+          type: string
+        connectionType:
+          type: string
+        pushTokenChannel:
+          type: string
+        pushToken:
+          type: string
+        pushTokenType:
+          type: string
+        deviceToken:
+          type: string
+        pushCredentials:
+          type: object
+          additionalProperties:
+            type: string
+        name:
+          type: string
+    VerifyEmailRequest:
+      type: object
+      properties:
+        userId:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        verificationCode:
+          type: string
+    ChangePasswordRequest:
+      type: object
+      properties:
+        oldPassword:
+          type: string
+        newPassword:
+          type: string
+    ResendCodeRequest:
+      type: object
+      properties:
+        userId:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        locale:
+          type: string
+    InrixUser:
+      type: object
+      properties:
+        devices:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device'
+        SerializeForStorage:
+          type: boolean
+        role:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          type: integer
+        accountVerified:
+          type: string
+        verificationCode:
+          type: string
+        verificationAttempts:
+          format: int32
+          type: integer
+        verificationCodeExpirationUtc:
+          format: date-time
+          type: string
+        id:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        email:
+          type: string
+        oAuthUserId:
+          type: string
+        providerName:
+          type: string
+        avatarIndex:
+          type: string
+        profileName:
+          type: string
+        userType:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          type: integer
+        oAuthToken:
+          type: string
+        password:
+          type: string
+        givenName:
+          type: string
+        surname:
+          type: string
+        gender:
+          type: string
+        tag:
+          type: string
+        consumerId:
+          type: string
+        devId:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        parents:
+          type: string
+        createdBy:
+          type: string
+        properties:
+          type: object
+          additionalProperties:
+            type: string

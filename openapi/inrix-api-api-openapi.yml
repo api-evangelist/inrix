@@ -1,0 +1,96 @@
+openapi: 3.2.0
+info:
+  title: INRIX Parkme API
+  description: INRIX Parkme Web Service API
+  contact:
+    email: support@inrix.com
+  version: v1
+servers:
+- url: https://parking-api.inrix.com/
+security:
+- Basic: []
+tags:
+- name: api
+paths:
+  /api/caniparkhere/:
+    parameters: []
+    get:
+      operationId: api_caniparkhere_list
+      description: 'given a coordinate finds the nearest segments and computes which rate is currently active and attaches additional
+
+        data to json response.'
+      responses:
+        '200':
+          description: ''
+      tags:
+      - api
+  /api/openspots/events/:
+    parameters: []
+    get:
+      operationId: api_openspots_events_list
+      description: ''
+      parameters:
+      - name: search
+        in: query
+        description: A search term.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OpenParkEvent'
+      tags:
+      - api
+  /api/openspots/events/{pk_event}/:
+    parameters:
+    - name: pk_event
+      in: path
+      description: A unique value identifying this open park event.
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: api_openspots_events_read
+      description: ''
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpenParkEvent'
+      tags:
+      - api
+components:
+  schemas:
+    OpenParkEvent:
+      required:
+      - ts
+      type: object
+      properties:
+        ts:
+          title: Ts
+          type: string
+          format: date-time
+        polyline:
+          title: Polyline
+          type: string
+          readOnly: true
+        quadkey17:
+          title: Quadkey17
+          type: string
+          readOnly: true
+        source:
+          title: Source
+          type: string
+          readOnly: true
+  securitySchemes:
+    Basic:
+      type: http
+      scheme: basic

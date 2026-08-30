@@ -1,0 +1,197 @@
+openapi: 3.2.0
+info:
+  title: INRIX Analytics Webservice Template Namespace Management API
+  description: Webservice template to stand up webservices on IQ Backend
+tags:
+- name: Namespace Management
+  description: APIs for managing intersection namespace subscriptions
+paths:
+  /v1/namespace/{namespace}:
+    delete:
+      tags:
+      - Namespace Management
+      summary: Delete namespace
+      description: Delete a namespace and all its intersection subscription data
+      operationId: deleteNamespace
+      parameters:
+      - name: namespace
+        in: path
+        description: Namespace identifier
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Namespace deleted successfully
+        '400':
+          description: Bad request - invalid namespace
+        '401':
+          description: Unauthorized - invalid or missing token
+        '404':
+          description: Namespace not found
+        '500':
+          description: Internal server error
+      security:
+      - Bearer Token: []
+    patch:
+      tags:
+      - Namespace Management
+      summary: Update namespace
+      description: Update intersection subscription status for a specific namespace
+      operationId: updateNamespace
+      parameters:
+      - name: namespace
+        in: path
+        description: Namespace identifier
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: Update request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NamespaceUpdateRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful update
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NamespaceUpdateResponse'
+        '400':
+          description: Bad request - invalid parameters
+        '401':
+          description: Unauthorized - invalid or missing token
+        '500':
+          description: Internal server error
+      security:
+      - Bearer Token: []
+  /v1/namespace/search:
+    post:
+      tags:
+      - Namespace Management
+      summary: Search namespaces
+      description: Search for intersection subscription status across multiple namespaces
+      operationId: searchNamespaces
+      requestBody:
+        description: Search request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NamespaceSearchRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NamespaceSearchResponse'
+        '400':
+          description: Bad request - invalid parameters
+        '401':
+          description: Unauthorized - invalid or missing token
+        '500':
+          description: Internal server error
+      security:
+      - Bearer Token: []
+components:
+  schemas:
+    NamespaceUpdateResponse:
+      type: object
+      properties:
+        createdDate:
+          type: string
+        responseId:
+          type: string
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/NamespaceData'
+        message:
+          type: string
+    NamespaceUpdateRequest:
+      type: object
+      properties:
+        mapVersion:
+          type: string
+        provisioned:
+          $ref: '#/components/schemas/DeltaOperation'
+        pending:
+          $ref: '#/components/schemas/DeltaOperation'
+        reviewRequired:
+          $ref: '#/components/schemas/DeltaOperation'
+        region:
+          $ref: '#/components/schemas/Location'
+    Location:
+      type: object
+      properties:
+        country:
+          type: string
+        state:
+          type: string
+    DeltaOperation:
+      type: object
+      properties:
+        add:
+          type: array
+          items:
+            type: string
+        remove:
+          type: array
+          items:
+            type: string
+        replace:
+          type: array
+          items:
+            type: string
+    NamespaceSearchRequest:
+      type: object
+      properties:
+        namespaces:
+          type: array
+          items:
+            type: string
+        mapVersion:
+          type: string
+        region:
+          $ref: '#/components/schemas/Location'
+    NamespaceData:
+      type: object
+      properties:
+        namespace:
+          type: string
+        mapVersion:
+          type: string
+        provisioned:
+          type: array
+          items:
+            type: string
+        pending:
+          type: array
+          items:
+            type: string
+        reviewRequired:
+          type: array
+          items:
+            type: string
+        region:
+          $ref: '#/components/schemas/Location'
+    NamespaceSearchResponse:
+      type: object
+      properties:
+        createdDate:
+          type: string
+        responseId:
+          type: string
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/NamespaceData'
+  securitySchemes:
+    Bearer_Token:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

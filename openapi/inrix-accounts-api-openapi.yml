@@ -1,0 +1,29 @@
+openapi: 3.2.0
+info:
+  title: INRIX Parkme Accounts API
+  description: INRIX Parkme Web Service API
+  contact:
+    email: support@inrix.com
+  version: v1
+servers:
+- url: https://parking-api.inrix.com/
+security:
+- Basic: []
+tags:
+- name: accounts
+paths:
+  /accounts/mobile/delete/:
+    parameters: []
+    delete:
+      operationId: accounts_mobile_delete_delete
+      description: Endpoint for deleting a user account from mobile app
+      responses:
+        '204':
+          description: ''
+      tags:
+      - accounts
+components:
+  securitySchemes:
+    Basic:
+      type: http
+      scheme: basic
