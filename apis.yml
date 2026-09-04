@@ -22,6 +22,20 @@ deliveryModel:
   - pricing
   generated: '2026-08-28'
   method: derived
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  - security
+  - sandbox
+  generated: '2026-09-02'
+  method: derived
 image: https://docs.inrix.com/images/inrix.png
 url: https://raw.githubusercontent.com/api-evangelist/inrix/refs/heads/main/apis.yml
 x-type: company
@@ -544,8 +558,9 @@ common:
   url: overlays/inrix-signals-analytics-overlay.yaml
 - type: AgentSkill
   url: skills/inrix-query-signals-intersection-metrics.md
-- type: MCPServer
+- type: X-MCPServerCandidate
   url: mcp/inrix-mcp.yml
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
 - type: DomainSecurity
   url: security/inrix-domain-security.yml
 - type: Authentication
