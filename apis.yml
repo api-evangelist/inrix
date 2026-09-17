@@ -331,28 +331,6 @@ apis:
     url: https://parking-api.inrix.com/doc/v3/bulk/
   - type: ChangeLog
     url: https://docs.inrix.com/parking/change_log/
-- aid: inrix:inrix-applicationmanagement-api
-  name: INRIX Application Management API
-  description: The ApplicationManagement API from INRIX — 9 operation(s) for applicationmanagement.
-  humanURL: https://docs.inrix.com/authentication/getting_authorized/
-  baseURL: https://uas-api.inrix.com
-  tags:
-  - Application Management
-  tags_raw:
-  - ApplicationManagement
-  properties:
-  - type: OpenAPI
-    url: openapi/inrix-applicationmanagement-api-openapi.yml
-  - type: Swagger
-    url: https://uas-api.inrix.com/swagger/docs/v1
-  - type: Console
-    url: https://uas-api.inrix.com/swagger
-  - type: Swagger
-    url: https://parking-api.inrix.com/api/swagger.json
-  - type: APIReference
-    url: https://parking-api.inrix.com/doc/v3/bulk/
-  - type: ChangeLog
-    url: https://docs.inrix.com/parking/change_log/
 - aid: inrix:inrix-auth-api
   name: INRIX Auth API
   description: The Auth API from INRIX — 6 operation(s) for auth.
@@ -407,26 +385,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/inrix-device-api-openapi.yml
-  - type: Swagger
-    url: https://uas-api.inrix.com/swagger/docs/v1
-  - type: Console
-    url: https://uas-api.inrix.com/swagger
-  - type: Swagger
-    url: https://parking-api.inrix.com/api/swagger.json
-  - type: APIReference
-    url: https://parking-api.inrix.com/doc/v3/bulk/
-  - type: ChangeLog
-    url: https://docs.inrix.com/parking/change_log/
-- aid: inrix:inrix-emailtemplate-api
-  name: INRIX Email Template API
-  description: The EmailTemplate API from INRIX — 2 operation(s) for emailtemplate.
-  humanURL: https://docs.inrix.com/authentication/getting_authorized/
-  baseURL: https://uas-api.inrix.com
-  tags:
-  - EmailTemplate
-  properties:
-  - type: OpenAPI
-    url: openapi/inrix-emailtemplate-api-openapi.yml
   - type: Swagger
     url: https://uas-api.inrix.com/swagger/docs/v1
   - type: Console
@@ -517,16 +475,56 @@ apis:
     url: https://parking-api.inrix.com/doc/v3/bulk/
   - type: ChangeLog
     url: https://docs.inrix.com/parking/change_log/
-- aid: inrix:inrix-usergroup-api
-  name: INRIX User Group API
-  description: The UserGroup API from INRIX — 8 operation(s) for usergroup.
-  humanURL: https://docs.inrix.com/authentication/getting_authorized/
-  baseURL: https://uas-api.inrix.com
+- aid: inrix:inrix-application-management-api
+  name: INRIX Application Management API
+  description: The Application Management API from INRIX — 9 operation(s) for application management.
+  humanURL: https://docs.inrix.com/traffic/segmentspeed/
+  baseURL: https://segment-api.inrix.com
   tags:
-  - UserGroup
+  - Application Management
   properties:
   - type: OpenAPI
-    url: openapi/inrix-usergroup-api-openapi.yml
+    url: openapi/inrix-application-management-api-openapi.yml
+  - type: Swagger
+    url: https://uas-api.inrix.com/swagger/docs/v1
+  - type: Console
+    url: https://uas-api.inrix.com/swagger
+  - type: Swagger
+    url: https://parking-api.inrix.com/api/swagger.json
+  - type: APIReference
+    url: https://parking-api.inrix.com/doc/v3/bulk/
+  - type: ChangeLog
+    url: https://docs.inrix.com/parking/change_log/
+- aid: inrix:inrix-email-template-api
+  name: INRIX Email Template API
+  description: The Email Template API from INRIX — 2 operation(s) for email template.
+  humanURL: https://docs.inrix.com/traffic/segmentspeed/
+  baseURL: https://segment-api.inrix.com
+  tags:
+  - Email Template
+  properties:
+  - type: OpenAPI
+    url: openapi/inrix-email-template-api-openapi.yml
+  - type: Swagger
+    url: https://uas-api.inrix.com/swagger/docs/v1
+  - type: Console
+    url: https://uas-api.inrix.com/swagger
+  - type: Swagger
+    url: https://parking-api.inrix.com/api/swagger.json
+  - type: APIReference
+    url: https://parking-api.inrix.com/doc/v3/bulk/
+  - type: ChangeLog
+    url: https://docs.inrix.com/parking/change_log/
+- aid: inrix:inrix-user-group-api
+  name: INRIX User Group API
+  description: The User Group API from INRIX — 8 operation(s) for user group.
+  humanURL: https://docs.inrix.com/traffic/segmentspeed/
+  baseURL: https://segment-api.inrix.com
+  tags:
+  - User Group
+  properties:
+  - type: OpenAPI
+    url: openapi/inrix-user-group-api-openapi.yml
   - type: Swagger
     url: https://uas-api.inrix.com/swagger/docs/v1
   - type: Console
