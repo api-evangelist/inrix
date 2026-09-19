@@ -236,7 +236,7 @@ apis:
   - Traffic
   - Camera
   - Drive Time
-  - Gateway
+  - Gateways
   tags_raw:
   - Routing
   - Traffic
@@ -501,6 +501,8 @@ apis:
   humanURL: https://docs.inrix.com/traffic/segmentspeed/
   baseURL: https://segment-api.inrix.com
   tags:
+  - EmailTemplate
+  tags_raw:
   - Email Template
   properties:
   - type: OpenAPI
@@ -521,6 +523,8 @@ apis:
   humanURL: https://docs.inrix.com/traffic/segmentspeed/
   baseURL: https://segment-api.inrix.com
   tags:
+  - UserGroup
+  tags_raw:
   - User Group
   properties:
   - type: OpenAPI
