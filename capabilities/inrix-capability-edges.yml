@@ -35,7 +35,8 @@ edges:
     and OAuth2 app tokens for consumers of INRIX's APIs — developer credential issuance and stewardship.
     Some risk it is better read as internal IAM, hence moderate confidence.
 - tag: UserGroup
-  spec_file: inrix-usergroup-api-openapi.yml
+  spec_file: inrix-user-group-api-openapi.yml
+  reanchored_from: inrix-usergroup-api-openapi.yml
   capability_id: BC-620.20
   capability_id_l1: BC-620
   capability_name: Identity & Access Management
