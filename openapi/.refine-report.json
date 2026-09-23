@@ -1,0 +1,68 @@
+{
+  "provider": "inrix",
+  "sources": [
+    "_original/inrix-parkme-openapi-original.json",
+    "_original/inrix-signals-analytics-openapi-original.json",
+    "_original/inrix-user-accounts-openapi-original.json"
+  ],
+  "outputs": [
+    "inrix-accounts-api-openapi.yml",
+    "inrix-api-api-openapi.yml",
+    "inrix-metadata-api-openapi.yml",
+    "inrix-metrics-api-openapi.yml",
+    "inrix-namespace-management-api-openapi.yml",
+    "inrix-application-api-openapi.yml",
+    "inrix-applicationmanagement-api-openapi.yml",
+    "inrix-auth-api-openapi.yml",
+    "inrix-developer-api-openapi.yml",
+    "inrix-device-api-openapi.yml",
+    "inrix-emailtemplate-api-openapi.yml",
+    "inrix-user-api-openapi.yml",
+    "inrix-usergroup-api-openapi.yml"
+  ],
+  "archived": [
+    "deleted 3 superseded output(s) from the previous generation"
+  ],
+  "errors": [],
+  "warnings": [
+    "inrix-signals-analytics-openapi-original.json: info.version missing"
+  ],
+  "notes": [
+    "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "inrix-parkme-openapi-original.json: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "inrix-parkme-openapi-original.json: declared missing tag: accounts",
+    "inrix-parkme-openapi-original.json: declared missing tag: api",
+    "inrix-signals-analytics-openapi-original.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0; renamed 1 component key(s) illegal in 3.x (e.g. Bearer Token)",
+    "inrix-signals-analytics-openapi-original.json: tagged paths GET /v1/metrics/intersections/availability -> Metrics",
+    "inrix-signals-analytics-openapi-original.json: tagged paths POST /v1/metadata/intersections -> Metadata",
+    "inrix-signals-analytics-openapi-original.json: tagged paths POST /v1/metrics/intersections -> Metrics",
+    "inrix-signals-analytics-openapi-original.json: declared missing tag: Metadata",
+    "inrix-signals-analytics-openapi-original.json: declared missing tag: Metrics",
+    "inrix-user-accounts-openapi-original.json: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "inrix-user-accounts-openapi-original.json: declared missing tag: Application",
+    "inrix-user-accounts-openapi-original.json: declared missing tag: ApplicationManagement",
+    "inrix-user-accounts-openapi-original.json: declared missing tag: Auth",
+    "inrix-user-accounts-openapi-original.json: declared missing tag: Developer",
+    "inrix-user-accounts-openapi-original.json: declared missing tag: Device",
+    "inrix-user-accounts-openapi-original.json: declared missing tag: EmailTemplate",
+    "inrix-user-accounts-openapi-original.json: declared missing tag: User",
+    "inrix-user-accounts-openapi-original.json: declared missing tag: UserGroup",
+    "superseded outputs removed: inrix-application-management-api-openapi.yml, inrix-email-template-api-openapi.yml, inrix-user-group-api-openapi.yml",
+    "apis.yml register: written (+3 apis, 28 total)"
+  ],
+  "skipped": [
+    "inrix-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "inrix-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "inrix-application-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "inrix-application-management-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "inrix-auth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "inrix-developer-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "inrix-device-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "inrix-email-template-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "inrix-metadata-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "inrix-metrics-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "inrix-namespace-management-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "inrix-user-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "inrix-user-group-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}

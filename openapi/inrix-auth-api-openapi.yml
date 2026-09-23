@@ -46,6 +46,8 @@ paths:
             schema:
               $ref: '#/components/schemas/AccessToken'
         required: true
+      summary: Auth check token
+      x-summary-source: derived
   /v1/signin:
     post:
       tags:
@@ -107,6 +109,8 @@ paths:
             schema:
               $ref: '#/components/schemas/SigninRequest'
         required: true
+      summary: Auth signin
+      x-summary-source: derived
   /v1/oauth2/token:
     post:
       tags:
@@ -146,6 +150,8 @@ paths:
             schema:
               $ref: '#/components/schemas/OAuth2SigninRequest'
         required: true
+      summary: Auth OAuth2 token
+      x-summary-source: derived
   /v1/socialSignin:
     post:
       tags:
@@ -197,6 +203,8 @@ paths:
             schema:
               $ref: '#/components/schemas/SigninRequest'
         required: true
+      summary: Auth social signin
+      x-summary-source: derived
   /v1/signout:
     get:
       tags:
@@ -218,6 +226,8 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: Auth signout
+      x-summary-source: derived
   /v1/renewtoken:
     get:
       tags:
@@ -250,39 +260,10 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: Auth renew token
+      x-summary-source: derived
 components:
   schemas:
-    AccessToken:
-      type: object
-      properties:
-        token:
-          type: string
-        expiry:
-          format: date-time
-          type: string
-    SigninRequest:
-      type: object
-      properties:
-        email:
-          type: string
-        password:
-          type: string
-        oAuthUserId:
-          type: string
-        providerName:
-          type: string
-        oAuthToken:
-          type: string
-        oAuthUserName:
-          type: string
-        device:
-          $ref: '#/components/schemas/Device'
-        impersonateEmail:
-          type: string
-        impersonateAppId:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
     OAuth2SigninRequest:
       type: object
       properties:
@@ -298,6 +279,14 @@ components:
           type: string
         device:
           $ref: '#/components/schemas/Device'
+    AccessToken:
+      type: object
+      properties:
+        token:
+          type: string
+        expiry:
+          format: date-time
+          type: string
     Application:
       type: object
       properties:
@@ -364,6 +353,29 @@ components:
           type: object
           additionalProperties:
             type: string
+    SigninRequest:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+        oAuthUserId:
+          type: string
+        providerName:
+          type: string
+        oAuthToken:
+          type: string
+        oAuthUserName:
+          type: string
+        device:
+          $ref: '#/components/schemas/Device'
+        impersonateEmail:
+          type: string
+        impersonateAppId:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
     Device:
       type: object
       properties:

@@ -5,12 +5,12 @@ info:
 servers:
 - url: https://uas-api.inrix.com/Inrix.UserAccountsSystem.Web_deploy
 tags:
-- name: UserGroup
+- name: User Group
 paths:
   /v1/usergroups/{id}:
     get:
       tags:
-      - UserGroup
+      - User Group
       operationId: UserGroup_Get
       parameters:
       - name: id
@@ -35,10 +35,12 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: User group get
+      x-summary-source: derived
   /v1/usergroups:
     get:
       tags:
-      - UserGroup
+      - User Group
       operationId: UserGroup_GetByName
       parameters:
       - name: groupName
@@ -62,9 +64,11 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: User group get by name
+      x-summary-source: derived
     post:
       tags:
-      - UserGroup
+      - User Group
       operationId: UserGroup_Post
       responses:
         '200':
@@ -100,10 +104,12 @@ paths:
             schema:
               $ref: '#/components/schemas/InrixUserGroup'
         required: true
+      summary: User group post
+      x-summary-source: derived
   /v1/usergroups/{id}/members:
     get:
       tags:
-      - UserGroup
+      - User Group
       operationId: UserGroup_GetMembers
       parameters:
       - name: id
@@ -140,9 +146,11 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: User group get members
+      x-summary-source: derived
     post:
       tags:
-      - UserGroup
+      - User Group
       operationId: UserGroup_AddMembers
       parameters:
       - name: id
@@ -195,10 +203,12 @@ paths:
               items:
                 $ref: '#/components/schemas/InrixUserGroupMember'
         required: true
+      summary: User group add members
+      x-summary-source: derived
   /v1/FindUserGroupsByAdminUser:
     get:
       tags:
-      - UserGroup
+      - User Group
       operationId: UserGroup_GetUserGroupsByAdmin
       parameters:
       - name: groupIds
@@ -228,10 +238,12 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: User group get user groups by admin
+      x-summary-source: derived
   /v1/usergroups/{id}/members/{memberId}:
     delete:
       tags:
-      - UserGroup
+      - User Group
       operationId: UserGroup_DeleteMembers
       parameters:
       - name: id
@@ -262,10 +274,12 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: User group delete members
+      x-summary-source: derived
   /v1/usergroups/{groupId}:
     put:
       tags:
-      - UserGroup
+      - User Group
       operationId: UserGroup_Put
       parameters:
       - name: groupId
@@ -308,9 +322,11 @@ paths:
             schema:
               $ref: '#/components/schemas/InrixUserGroup'
         required: true
+      summary: User group put
+      x-summary-source: derived
     delete:
       tags:
-      - UserGroup
+      - User Group
       operationId: UserGroup_Delete
       parameters:
       - name: groupId
@@ -335,10 +351,12 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: User group delete
+      x-summary-source: derived
   /v1/usergroups/GetMultipleUserGroups:
     post:
       tags:
-      - UserGroup
+      - User Group
       operationId: UserGroup_GetMultipleUserGroups
       responses:
         '200':
@@ -384,10 +402,12 @@ paths:
               items:
                 type: string
         required: true
+      summary: User group get multiple user groups
+      x-summary-source: derived
   /v1/usergroups/{groupId}/properties:
     get:
       tags:
-      - UserGroup
+      - User Group
       operationId: UserGroup_QueryProperty
       parameters:
       - name: groupId
@@ -417,9 +437,11 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: User group query property
+      x-summary-source: derived
     put:
       tags:
-      - UserGroup
+      - User Group
       operationId: UserGroup_UpdateProperty
       parameters:
       - name: groupId
@@ -472,9 +494,11 @@ paths:
               additionalProperties:
                 type: string
         required: true
+      summary: User group update property
+      x-summary-source: derived
     post:
       tags:
-      - UserGroup
+      - User Group
       operationId: UserGroup_AddProperties
       parameters:
       - name: groupId
@@ -527,9 +551,11 @@ paths:
               additionalProperties:
                 type: string
         required: true
+      summary: User group add properties
+      x-summary-source: derived
     delete:
       tags:
-      - UserGroup
+      - User Group
       operationId: UserGroup_DeleteProperty
       parameters:
       - name: groupId
@@ -559,36 +585,10 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: User group delete property
+      x-summary-source: derived
 components:
   schemas:
-    InrixUserGroupMember:
-      type: object
-      properties:
-        id:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        type:
-          format: int32
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          type: integer
-        role:
-          format: int32
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          type: integer
-        user:
-          $ref: '#/components/schemas/InrixUser'
-        usergroup:
-          $ref: '#/components/schemas/InrixUserGroupInternal'
     Application:
       type: object
       properties:
@@ -655,6 +655,52 @@ components:
           type: object
           additionalProperties:
             type: string
+    InrixUserGroup:
+      type: object
+      properties:
+        SerializeForStorage:
+          type: boolean
+        id:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        name:
+          type: string
+        parents:
+          type: string
+        description:
+          type: string
+        devId:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        membership:
+          type: array
+          items:
+            format: uuid
+            type: string
+            example: 00000000-0000-0000-0000-000000000000
+        lastEvaluatedMemberId:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        membercount:
+          format: int64
+          type: integer
+        createdBy:
+          type: string
+        properties:
+          type: object
+          additionalProperties:
+            type: string
+        createdDate:
+          format: date-time
+          type: string
+        modifiedBy:
+          type: string
+        modifiedDate:
+          format: date-time
+          type: string
     Device:
       type: object
       properties:
@@ -745,52 +791,34 @@ components:
         modifiedDate:
           format: date-time
           type: string
-    InrixUserGroup:
+    InrixUserGroupMember:
       type: object
       properties:
-        SerializeForStorage:
-          type: boolean
         id:
           format: uuid
           type: string
           example: 00000000-0000-0000-0000-000000000000
-        name:
-          type: string
-        parents:
-          type: string
-        description:
-          type: string
-        devId:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        membership:
-          type: array
-          items:
-            format: uuid
-            type: string
-            example: 00000000-0000-0000-0000-000000000000
-        lastEvaluatedMemberId:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        membercount:
-          format: int64
+        type:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
           type: integer
-        createdBy:
-          type: string
-        properties:
-          type: object
-          additionalProperties:
-            type: string
-        createdDate:
-          format: date-time
-          type: string
-        modifiedBy:
-          type: string
-        modifiedDate:
-          format: date-time
-          type: string
+        role:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          type: integer
+        user:
+          $ref: '#/components/schemas/InrixUser'
+        usergroup:
+          $ref: '#/components/schemas/InrixUserGroupInternal'
     InrixUser:
       type: object
       properties:

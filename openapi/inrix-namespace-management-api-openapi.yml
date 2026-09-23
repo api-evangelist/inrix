@@ -99,19 +99,6 @@ paths:
       - Bearer Token: []
 components:
   schemas:
-    NamespaceUpdateResponse:
-      type: object
-      properties:
-        createdDate:
-          type: string
-        responseId:
-          type: string
-        result:
-          type: array
-          items:
-            $ref: '#/components/schemas/NamespaceData'
-        message:
-          type: string
     NamespaceUpdateRequest:
       type: object
       properties:
@@ -125,12 +112,29 @@ components:
           $ref: '#/components/schemas/DeltaOperation'
         region:
           $ref: '#/components/schemas/Location'
-    Location:
+    NamespaceSearchResponse:
       type: object
       properties:
-        country:
+        createdDate:
           type: string
-        state:
+        responseId:
+          type: string
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/NamespaceData'
+    NamespaceUpdateResponse:
+      type: object
+      properties:
+        createdDate:
+          type: string
+        responseId:
+          type: string
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/NamespaceData'
+        message:
           type: string
     DeltaOperation:
       type: object
@@ -147,17 +151,13 @@ components:
           type: array
           items:
             type: string
-    NamespaceSearchRequest:
+    Location:
       type: object
       properties:
-        namespaces:
-          type: array
-          items:
-            type: string
-        mapVersion:
+        country:
           type: string
-        region:
-          $ref: '#/components/schemas/Location'
+        state:
+          type: string
     NamespaceData:
       type: object
       properties:
@@ -179,17 +179,17 @@ components:
             type: string
         region:
           $ref: '#/components/schemas/Location'
-    NamespaceSearchResponse:
+    NamespaceSearchRequest:
       type: object
       properties:
-        createdDate:
-          type: string
-        responseId:
-          type: string
-        result:
+        namespaces:
           type: array
           items:
-            $ref: '#/components/schemas/NamespaceData'
+            type: string
+        mapVersion:
+          type: string
+        region:
+          $ref: '#/components/schemas/Location'
   securitySchemes:
     Bearer_Token:
       type: http

@@ -23,38 +23,10 @@ paths:
       - Bearer Token: []
       tags:
       - Metadata
+      summary: Intersection metadata
+      x-summary-source: derived
 components:
   schemas:
-    DateRange:
-      type: object
-      properties:
-        startDate:
-          type: string
-          format: date
-        endDate:
-          type: string
-          format: date
-    Geometry:
-      type: object
-      properties:
-        type:
-          type: string
-        coordinates:
-          type: array
-          items:
-            type: array
-            items:
-              type: number
-              format: double
-    Metadata:
-      type: object
-      properties:
-        key:
-          type: string
-        value:
-          type: object
-        valueList:
-          type: boolean
     Direction:
       type: object
       properties:
@@ -71,6 +43,24 @@ components:
           format: int32
         geometry:
           $ref: '#/components/schemas/Geometry'
+    PostMetadataResponse:
+      type: object
+      properties:
+        createdDate:
+          type: string
+        responseId:
+          type: string
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocationResponseItem'
+        totalCount:
+          type: integer
+          format: int32
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetadataResponseItem'
     Crs:
       type: object
       properties:
@@ -83,6 +73,24 @@ components:
           type: object
           additionalProperties:
             type: object
+    FieldName:
+      type: object
+      properties:
+        name:
+          type: string
+    Filter:
+      type: object
+      properties:
+        name:
+          type: string
+        operator:
+          type: string
+        not:
+          type: boolean
+        expressions:
+          type: array
+          items:
+            type: string
     MovementResponseItem:
       type: object
       properties:
@@ -104,24 +112,18 @@ components:
           type: string
         turnGroupId:
           type: string
-    PostMetadataResponse:
+    Geometry:
       type: object
       properties:
-        createdDate:
+        type:
           type: string
-        responseId:
-          type: string
-        locations:
+        coordinates:
           type: array
           items:
-            $ref: '#/components/schemas/LocationResponseItem'
-        totalCount:
-          type: integer
-          format: int32
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/MetadataResponseItem'
+            type: array
+            items:
+              type: number
+              format: double
     IntersectionMetadataRequest:
       type: object
       properties:
@@ -170,11 +172,6 @@ components:
         radiusInMeters:
           type: integer
           format: int32
-    FieldName:
-      type: object
-      properties:
-        name:
-          type: string
     MetadataResponseItem:
       type: object
       properties:
@@ -190,6 +187,24 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/MovementResponseItem'
+    Metadata:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: object
+        valueList:
+          type: boolean
+    DateRange:
+      type: object
+      properties:
+        startDate:
+          type: string
+          format: date
+        endDate:
+          type: string
+          format: date
     CoordinateResponseItem:
       type: object
       properties:
@@ -199,6 +214,17 @@ components:
         lon:
           type: number
           format: double
+    LocationResponseItem:
+      type: object
+      properties:
+        region:
+          type: string
+        country:
+          type: string
+        state:
+          type: string
+        mapVersion:
+          type: string
     GeoJsonObject:
       required:
       - type
@@ -215,30 +241,6 @@ components:
           type: string
       discriminator:
         propertyName: type
-    Filter:
-      type: object
-      properties:
-        name:
-          type: string
-        operator:
-          type: string
-        not:
-          type: boolean
-        expressions:
-          type: array
-          items:
-            type: string
-    LocationResponseItem:
-      type: object
-      properties:
-        region:
-          type: string
-        country:
-          type: string
-        state:
-          type: string
-        mapVersion:
-          type: string
   securitySchemes:
     Bearer_Token:
       type: http

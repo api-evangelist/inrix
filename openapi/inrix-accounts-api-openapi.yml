@@ -10,7 +10,7 @@ servers:
 security:
 - Basic: []
 tags:
-- name: accounts
+- name: Accounts
 paths:
   /accounts/mobile/delete/:
     parameters: []
@@ -21,7 +21,9 @@ paths:
         '204':
           description: ''
       tags:
-      - accounts
+      - Accounts
+      summary: Accounts mobile delete delete
+      x-summary-source: derived
 components:
   securitySchemes:
     Basic:

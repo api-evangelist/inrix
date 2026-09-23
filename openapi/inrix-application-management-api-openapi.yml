@@ -5,12 +5,12 @@ info:
 servers:
 - url: https://uas-api.inrix.com/Inrix.UserAccountsSystem.Web_deploy
 tags:
-- name: ApplicationManagement
+- name: Application Management
 paths:
   /v1/ApplicationManagement/Ping:
     get:
       tags:
-      - ApplicationManagement
+      - Application Management
       operationId: ApplicationManagement_Ping
       responses:
         '200':
@@ -28,10 +28,12 @@ paths:
             text/xml:
               schema:
                 type: string
+      summary: Application management ping
+      x-summary-source: derived
   /v1/ApplicationManagement/ApplicationContext:
     get:
       tags:
-      - ApplicationManagement
+      - Application Management
       operationId: ApplicationManagement_GetApplicationContext
       responses:
         '200':
@@ -49,10 +51,12 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: Application management get application context
+      x-summary-source: derived
   /v1/ApplicationManagement/ApplicationStatus:
     get:
       tags:
-      - ApplicationManagement
+      - Application Management
       operationId: ApplicationManagement_GetApplicationStatus
       responses:
         '200':
@@ -70,10 +74,12 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: Application management get application status
+      x-summary-source: derived
   /v1/ApplicationManagement/Caches:
     get:
       tags:
-      - ApplicationManagement
+      - Application Management
       operationId: ApplicationManagement_GetCaches
       responses:
         '200':
@@ -91,10 +97,12 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: Application management get caches
+      x-summary-source: derived
   /v1/ApplicationManagement/Caches/{cacheId}/Clear:
     get:
       tags:
-      - ApplicationManagement
+      - Application Management
       operationId: ApplicationManagement_ClearCache
       parameters:
       - name: cacheId
@@ -119,10 +127,12 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: Application management clear cache
+      x-summary-source: derived
   /v1/ApplicationManagement/Caches/{cacheId}/Refresh:
     get:
       tags:
-      - ApplicationManagement
+      - Application Management
       operationId: ApplicationManagement_RefreshCache
       parameters:
       - name: cacheId
@@ -147,10 +157,12 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: Application management refresh cache
+      x-summary-source: derived
   /v1/ApplicationManagement/Caches/{cacheId}:
     get:
       tags:
-      - ApplicationManagement
+      - Application Management
       operationId: ApplicationManagement_GetCacheContent
       parameters:
       - name: cacheId
@@ -175,10 +187,12 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: Application management get cache content
+      x-summary-source: derived
   /v1/ApplicationManagement/Recycle:
     get:
       tags:
-      - ApplicationManagement
+      - Application Management
       operationId: ApplicationManagement_RecycleApplication
       responses:
         '200':
@@ -196,10 +210,12 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: Application management recycle application
+      x-summary-source: derived
   /v1/ApplicationManagement/ForceGarbageCollection:
     get:
       tags:
-      - ApplicationManagement
+      - Application Management
       operationId: ApplicationManagement_ForceGarbageCollection
       responses:
         '200':
@@ -217,3 +233,5 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: Application management force garbage collection
+      x-summary-source: derived

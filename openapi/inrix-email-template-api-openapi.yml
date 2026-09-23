@@ -5,12 +5,12 @@ info:
 servers:
 - url: https://uas-api.inrix.com/Inrix.UserAccountsSystem.Web_deploy
 tags:
-- name: EmailTemplate
+- name: Email Template
 paths:
   /v1/emailtemplates/{id}:
     get:
       tags:
-      - EmailTemplate
+      - Email Template
       operationId: EmailTemplate_Get
       parameters:
       - name: id
@@ -35,9 +35,11 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: Email template get
+      x-summary-source: derived
     put:
       tags:
-      - EmailTemplate
+      - Email Template
       operationId: EmailTemplate_Put
       parameters:
       - name: id
@@ -80,9 +82,11 @@ paths:
             schema:
               $ref: '#/components/schemas/InrixEmailTemplate'
         required: true
+      summary: Email template put
+      x-summary-source: derived
     delete:
       tags:
-      - EmailTemplate
+      - Email Template
       operationId: EmailTemplate_Delete
       parameters:
       - name: id
@@ -107,10 +111,12 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: Email template delete
+      x-summary-source: derived
   /v1/emailtemplates:
     get:
       tags:
-      - EmailTemplate
+      - Email Template
       operationId: EmailTemplate_Get
       responses:
         '200':
@@ -128,9 +134,11 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: Email template get
+      x-summary-source: derived
     post:
       tags:
-      - EmailTemplate
+      - Email Template
       operationId: EmailTemplate_Post
       responses:
         '200':
@@ -166,6 +174,8 @@ paths:
             schema:
               $ref: '#/components/schemas/InrixEmailTemplate'
         required: true
+      summary: Email template post
+      x-summary-source: derived
 components:
   schemas:
     InrixEmailTemplate:

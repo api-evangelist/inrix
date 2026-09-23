@@ -28,6 +28,8 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: Developer get
+      x-summary-source: derived
     post:
       tags:
       - Developer
@@ -66,6 +68,8 @@ paths:
             schema:
               $ref: '#/components/schemas/Developer'
         required: true
+      summary: Developer post
+      x-summary-source: derived
   /v1/developers/{devId}:
     get:
       tags:
@@ -94,6 +98,8 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: Developer get
+      x-summary-source: derived
     put:
       tags:
       - Developer
@@ -139,6 +145,8 @@ paths:
             schema:
               $ref: '#/components/schemas/Developer'
         required: true
+      summary: Developer put
+      x-summary-source: derived
 components:
   schemas:
     Developer:

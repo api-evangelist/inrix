@@ -52,6 +52,8 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: User get principals by resource
+      x-summary-source: derived
     post:
       tags:
       - User
@@ -112,6 +114,8 @@ paths:
             schema:
               $ref: '#/components/schemas/InrixUser'
         required: true
+      summary: User post
+      x-summary-source: derived
   /v1/GetPrincipalsByResource:
     get:
       tags:
@@ -183,6 +187,8 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: User get principals by resource2
+      x-summary-source: derived
   /v1/GetMultipleUsers:
     post:
       tags:
@@ -243,6 +249,8 @@ paths:
               items:
                 type: string
         required: true
+      summary: User get multiple users2
+      x-summary-source: derived
   /v1/getusersbydeveloper:
     get:
       tags:
@@ -283,6 +291,8 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: User getusersbydeveloper
+      x-summary-source: derived
   /v1/users/{id}:
     get:
       tags:
@@ -321,6 +331,8 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: User get
+      x-summary-source: derived
   /v1/users/RDS1:
     post:
       tags:
@@ -372,6 +384,8 @@ paths:
             schema:
               $ref: '#/components/schemas/InrixUser'
         required: true
+      summary: User post1
+      x-summary-source: derived
   /v1/users/RDS2:
     post:
       tags:
@@ -423,6 +437,8 @@ paths:
             schema:
               $ref: '#/components/schemas/InrixUser'
         required: true
+      summary: User post2
+      x-summary-source: derived
   /v1/changePassword:
     post:
       tags:
@@ -462,6 +478,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ChangePasswordRequest'
         required: true
+      summary: User change password
+      x-summary-source: derived
   /v1/resetPassword:
     get:
       tags:
@@ -510,6 +528,8 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: User reset password
+      x-summary-source: derived
     post:
       tags:
       - User
@@ -560,6 +580,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ResetPasswordRequest'
         required: true
+      summary: User reset password
+      x-summary-source: derived
   /v1/inviteUser:
     post:
       tags:
@@ -599,6 +621,8 @@ paths:
             schema:
               $ref: '#/components/schemas/InviteUserRequest'
         required: true
+      summary: User invite user
+      x-summary-source: derived
   /v1/users/{userId}/email:
     put:
       tags:
@@ -645,6 +669,8 @@ paths:
             schema:
               type: string
         required: true
+      summary: User put
+      x-summary-source: derived
   /v1/users/{userId}:
     put:
       tags:
@@ -691,6 +717,8 @@ paths:
             schema:
               $ref: '#/components/schemas/InrixUser'
         required: true
+      summary: User put
+      x-summary-source: derived
     delete:
       tags:
       - User
@@ -718,6 +746,8 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: User delete
+      x-summary-source: derived
   /v1/sendVerificationEmail:
     post:
       tags:
@@ -769,6 +799,8 @@ paths:
             schema:
               $ref: '#/components/schemas/OpenCarUserRequest'
         required: true
+      summary: User send verification email
+      x-summary-source: derived
   /v1/validateEmail:
     post:
       tags:
@@ -820,6 +852,8 @@ paths:
             schema:
               $ref: '#/components/schemas/OpenCarUserRequest'
         required: true
+      summary: User validate email
+      x-summary-source: derived
   /v1/cleanOpenCarRecord:
     post:
       tags:
@@ -859,6 +893,8 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: User clean
+      x-summary-source: derived
   /v1/users/{userId}/properties:
     get:
       tags:
@@ -892,6 +928,8 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: User query property
+      x-summary-source: derived
     put:
       tags:
       - User
@@ -947,6 +985,8 @@ paths:
               additionalProperties:
                 type: string
         required: true
+      summary: User update property
+      x-summary-source: derived
     post:
       tags:
       - User
@@ -1002,6 +1042,8 @@ paths:
               additionalProperties:
                 type: string
         required: true
+      summary: User add properties
+      x-summary-source: derived
     delete:
       tags:
       - User
@@ -1034,6 +1076,8 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: User delete property
+      x-summary-source: derived
   /v1/verifyEmail:
     post:
       tags:
@@ -1073,6 +1117,8 @@ paths:
             schema:
               $ref: '#/components/schemas/VerifyEmailRequest'
         required: true
+      summary: User verify email
+      x-summary-source: derived
   /v1/resendCode:
     post:
       tags:
@@ -1112,23 +1158,39 @@ paths:
             schema:
               $ref: '#/components/schemas/ResendCodeRequest'
         required: true
+      summary: User resend code
+      x-summary-source: derived
 components:
   schemas:
-    ResetPasswordRequest:
+    OpenCarUserRequest:
       type: object
       properties:
         email:
           type: string
+        code:
+          type: string
+        deviceId:
+          type: string
+        deviceName:
+          type: string
         locale:
           type: string
-        templateId:
+    ChangePasswordRequest:
+      type: object
+      properties:
+        oldPassword:
           type: string
-        baseUrl:
+        newPassword:
           type: string
-        parameters:
-          type: object
-          additionalProperties:
-            type: string
+    ResendCodeRequest:
+      type: object
+      properties:
+        userId:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        locale:
+          type: string
     Application:
       type: object
       properties:
@@ -1195,36 +1257,6 @@ components:
           type: object
           additionalProperties:
             type: string
-    OpenCarUserRequest:
-      type: object
-      properties:
-        email:
-          type: string
-        code:
-          type: string
-        deviceId:
-          type: string
-        deviceName:
-          type: string
-        locale:
-          type: string
-    InviteUserRequest:
-      type: object
-      properties:
-        email:
-          type: string
-        locale:
-          type: string
-        appId:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        hashToken:
-          type: string
-        isSsoUser:
-          type: boolean
-        baseUrl:
-          type: string
     Device:
       type: object
       properties:
@@ -1271,22 +1303,38 @@ components:
           example: 00000000-0000-0000-0000-000000000000
         verificationCode:
           type: string
-    ChangePasswordRequest:
+    InviteUserRequest:
       type: object
       properties:
-        oldPassword:
+        email:
           type: string
-        newPassword:
+        locale:
           type: string
-    ResendCodeRequest:
-      type: object
-      properties:
-        userId:
+        appId:
           format: uuid
           type: string
           example: 00000000-0000-0000-0000-000000000000
+        hashToken:
+          type: string
+        isSsoUser:
+          type: boolean
+        baseUrl:
+          type: string
+    ResetPasswordRequest:
+      type: object
+      properties:
+        email:
+          type: string
         locale:
           type: string
+        templateId:
+          type: string
+        baseUrl:
+          type: string
+        parameters:
+          type: object
+          additionalProperties:
+            type: string
     InrixUser:
       type: object
       properties:

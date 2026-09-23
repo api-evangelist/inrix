@@ -35,6 +35,8 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: Application get
+      x-summary-source: derived
     post:
       tags:
       - Application
@@ -73,6 +75,8 @@ paths:
             schema:
               $ref: '#/components/schemas/Application'
         required: true
+      summary: Application post
+      x-summary-source: derived
   /v1/applications/{appId}:
     get:
       tags:
@@ -106,6 +110,8 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: Application get
+      x-summary-source: derived
     put:
       tags:
       - Application
@@ -151,6 +157,8 @@ paths:
             schema:
               $ref: '#/components/schemas/Application'
         required: true
+      summary: Application put
+      x-summary-source: derived
     delete:
       tags:
       - Application
@@ -178,6 +186,8 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: Application delete
+      x-summary-source: derived
   /v1/appByVendor:
     get:
       tags:
@@ -205,6 +215,8 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: Application get by vendor
+      x-summary-source: derived
   /v1/appToken:
     get:
       tags:
@@ -238,6 +250,8 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: Application get app token
+      x-summary-source: derived
   /v1/oauth2/apptoken:
     post:
       tags:
@@ -277,6 +291,8 @@ paths:
             schema:
               $ref: '#/components/schemas/OAuth2SigninRequest'
         required: true
+      summary: Application OAuth2 token
+      x-summary-source: derived
   /v1/applications/{appId}/appKey:
     get:
       tags:
@@ -305,6 +321,8 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: Application get app key
+      x-summary-source: derived
   /v1/applications/{appId}/status:
     put:
       tags:
@@ -338,6 +356,8 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: Application set status
+      x-summary-source: derived
   /v1/applications/{appId}/properties:
     get:
       tags:
@@ -371,6 +391,8 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: Application query property
+      x-summary-source: derived
     put:
       tags:
       - Application
@@ -408,6 +430,8 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: Application update property2
+      x-summary-source: derived
     post:
       tags:
       - Application
@@ -463,6 +487,8 @@ paths:
               additionalProperties:
                 type: string
         required: true
+      summary: Application add properties
+      x-summary-source: derived
     delete:
       tags:
       - Application
@@ -495,6 +521,8 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: Application delete property2
+      x-summary-source: derived
   /v1/applications/{appId}/properties/{key}:
     get:
       tags:
@@ -528,6 +556,8 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: Application query property by key
+      x-summary-source: derived
     put:
       tags:
       - Application
@@ -565,6 +595,8 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: Application update property
+      x-summary-source: derived
     delete:
       tags:
       - Application
@@ -597,6 +629,8 @@ paths:
             text/xml:
               schema:
                 type: object
+      summary: Application delete property
+      x-summary-source: derived
 components:
   schemas:
     OAuth2SigninRequest:

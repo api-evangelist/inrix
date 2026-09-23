@@ -24,6 +24,8 @@ paths:
           description: ''
       tags:
       - api
+      summary: Api caniparkhere list
+      x-summary-source: derived
   /api/openspots/events/:
     parameters: []
     get:
@@ -47,6 +49,8 @@ paths:
                   $ref: '#/components/schemas/OpenParkEvent'
       tags:
       - api
+      summary: Api openspots events list
+      x-summary-source: derived
   /api/openspots/events/{pk_event}/:
     parameters:
     - name: pk_event
@@ -67,6 +71,8 @@ paths:
                 $ref: '#/components/schemas/OpenParkEvent'
       tags:
       - api
+      summary: Api openspots events read
+      x-summary-source: derived
 components:
   schemas:
     OpenParkEvent:
