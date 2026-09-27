@@ -68,6 +68,58 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ColumnHeaderEntry:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+    DateRange:
+      type: object
+      properties:
+        startDate:
+          type: string
+          format: date
+        endDate:
+          type: string
+          format: date
+    Crs:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - name
+          - link
+        properties:
+          type: object
+          additionalProperties:
+            type: object
+    DimensionItem:
+      type: object
+      properties:
+        name:
+          type: string
+        ranges:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValueItem'
+    UasPrincipalRequired:
+      type: object
+      properties:
+        accessToken:
+          type: string
+        userId:
+          type: string
+          format: uuid
+        appId:
+          type: string
+          format: uuid
+        name:
+          type: string
+        anonymous:
+          type: boolean
     MetricData:
       type: object
       properties:
@@ -83,18 +135,16 @@ components:
             type: array
             items:
               type: string
-    ColumnHeader:
+    Metadata:
       type: object
       properties:
-        dimensionHeaderEntries:
-          type: array
-          items:
-            $ref: '#/components/schemas/ColumnHeaderEntry'
-        metricHeaderEntries:
-          type: array
-          items:
-            $ref: '#/components/schemas/ColumnHeaderEntry'
-    DimensionItem:
+        key:
+          type: string
+        value:
+          type: object
+        valueList:
+          type: boolean
+    MetricItem:
       type: object
       properties:
         name:
@@ -102,26 +152,27 @@ components:
         ranges:
           type: array
           items:
-            $ref: '#/components/schemas/ValueItem'
-    OrderBy:
+            $ref: '#/components/schemas/NamedRangeItem'
+    PostMetricResponse:
+      type: object
+      properties:
+        createdDate:
+          type: string
+        responseId:
+          type: string
+        data:
+          $ref: '#/components/schemas/MetricData'
+    NamedRangeItem:
       type: object
       properties:
         name:
           type: string
-        sortOrder:
-          type: string
-          enum:
-          - ASCENDING
-          - DESCENDING
-    ValueItem:
-      type: object
-      properties:
-        name:
-          type: string
-        startTime:
-          type: string
-        endTime:
-          type: string
+        startAvgControlDelay:
+          type: number
+          format: double
+        endAvgControlDelay:
+          type: number
+          format: double
     MetricRequest:
       type: object
       properties:
@@ -163,15 +214,17 @@ components:
             $ref: '#/components/schemas/OrderBy'
         noPaging:
           type: boolean
-    MetricItem:
+    ColumnHeader:
       type: object
       properties:
-        name:
-          type: string
-        ranges:
+        dimensionHeaderEntries:
           type: array
           items:
-            $ref: '#/components/schemas/NamedRangeItem'
+            $ref: '#/components/schemas/ColumnHeaderEntry'
+        metricHeaderEntries:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColumnHeaderEntry'
     Filter:
       type: object
       properties:
@@ -185,78 +238,25 @@ components:
           type: array
           items:
             type: string
-    ColumnHeaderEntry:
+    ValueItem:
       type: object
       properties:
         name:
           type: string
-        type:
+        startTime:
           type: string
-    UasPrincipalRequired:
-      type: object
-      properties:
-        accessToken:
+        endTime:
           type: string
-        userId:
-          type: string
-          format: uuid
-        appId:
-          type: string
-          format: uuid
-        name:
-          type: string
-        anonymous:
-          type: boolean
-    PostMetricResponse:
-      type: object
-      properties:
-        createdDate:
-          type: string
-        responseId:
-          type: string
-        data:
-          $ref: '#/components/schemas/MetricData'
-    Metadata:
-      type: object
-      properties:
-        key:
-          type: string
-        value:
-          type: object
-        valueList:
-          type: boolean
-    DateRange:
-      type: object
-      properties:
-        startDate:
-          type: string
-          format: date
-        endDate:
-          type: string
-          format: date
-    NamedRangeItem:
+    OrderBy:
       type: object
       properties:
         name:
           type: string
-        startAvgControlDelay:
-          type: number
-          format: double
-        endAvgControlDelay:
-          type: number
-          format: double
-    Crs:
-      type: object
-      properties:
-        type:
+        sortOrder:
           type: string
           enum:
-          - name
-          - link
-        properties:
-          type: object
-          additionalProperties:
-            type: object
+          - ASCENDING
+          - DESCENDING
     GeoJsonObject:
       required:
       - type

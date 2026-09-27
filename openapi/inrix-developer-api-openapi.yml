@@ -74,7 +74,7 @@ paths:
     get:
       tags:
       - Developer
-      operationId: Developer_Get
+      operationId: getV1DevelopersByDevId
       parameters:
       - name: devId
         in: path
@@ -100,6 +100,8 @@ paths:
                 type: object
       summary: Developer get
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Developer_Get
     put:
       tags:
       - Developer

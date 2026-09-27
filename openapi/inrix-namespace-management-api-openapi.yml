@@ -99,43 +99,6 @@ paths:
       - Bearer Token: []
 components:
   schemas:
-    NamespaceUpdateRequest:
-      type: object
-      properties:
-        mapVersion:
-          type: string
-        provisioned:
-          $ref: '#/components/schemas/DeltaOperation'
-        pending:
-          $ref: '#/components/schemas/DeltaOperation'
-        reviewRequired:
-          $ref: '#/components/schemas/DeltaOperation'
-        region:
-          $ref: '#/components/schemas/Location'
-    NamespaceSearchResponse:
-      type: object
-      properties:
-        createdDate:
-          type: string
-        responseId:
-          type: string
-        result:
-          type: array
-          items:
-            $ref: '#/components/schemas/NamespaceData'
-    NamespaceUpdateResponse:
-      type: object
-      properties:
-        createdDate:
-          type: string
-        responseId:
-          type: string
-        result:
-          type: array
-          items:
-            $ref: '#/components/schemas/NamespaceData'
-        message:
-          type: string
     DeltaOperation:
       type: object
       properties:
@@ -151,13 +114,19 @@ components:
           type: array
           items:
             type: string
-    Location:
+    NamespaceUpdateRequest:
       type: object
       properties:
-        country:
+        mapVersion:
           type: string
-        state:
-          type: string
+        provisioned:
+          $ref: '#/components/schemas/DeltaOperation'
+        pending:
+          $ref: '#/components/schemas/DeltaOperation'
+        reviewRequired:
+          $ref: '#/components/schemas/DeltaOperation'
+        region:
+          $ref: '#/components/schemas/Location'
     NamespaceData:
       type: object
       properties:
@@ -190,6 +159,37 @@ components:
           type: string
         region:
           $ref: '#/components/schemas/Location'
+    Location:
+      type: object
+      properties:
+        country:
+          type: string
+        state:
+          type: string
+    NamespaceSearchResponse:
+      type: object
+      properties:
+        createdDate:
+          type: string
+        responseId:
+          type: string
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/NamespaceData'
+    NamespaceUpdateResponse:
+      type: object
+      properties:
+        createdDate:
+          type: string
+        responseId:
+          type: string
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/NamespaceData'
+        message:
+          type: string
   securitySchemes:
     Bearer_Token:
       type: http

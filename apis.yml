@@ -143,6 +143,12 @@ apis:
   - Analytics
   - Collisions
   - Road Network
+  - Risk Management
+  tags_raw:
+  - Safety
+  - Analytics
+  - Collisions
+  - Road Network
   - Risk
 - name: INRIX Trade Area Trips API
   description: >-
@@ -280,27 +286,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/inrix-accounts-api-openapi.yml
-  - type: Swagger
-    url: https://uas-api.inrix.com/swagger/docs/v1
-  - type: Console
-    url: https://uas-api.inrix.com/swagger
-  - type: Swagger
-    url: https://parking-api.inrix.com/api/swagger.json
-  - type: APIReference
-    url: https://parking-api.inrix.com/doc/v3/bulk/
-  - type: ChangeLog
-    url: https://docs.inrix.com/parking/change_log/
-- aid: inrix:inrix-api-api
-  name: INRIX API
-  description: The api API from INRIX — 3 operation(s) for api.
-  humanURL: https://docs.inrix.com/authentication/getting_authorized/
-  baseURL: https://uas-api.inrix.com
-  tags: []
-  tags_raw:
-  - api
-  properties:
-  - type: OpenAPI
-    url: openapi/inrix-api-api-openapi.yml
   - type: Swagger
     url: https://uas-api.inrix.com/swagger/docs/v1
   - type: Console
@@ -475,6 +460,46 @@ apis:
     url: https://parking-api.inrix.com/doc/v3/bulk/
   - type: ChangeLog
     url: https://docs.inrix.com/parking/change_log/
+- aid: inrix:inrix-caniparkhere-api
+  name: INRIX Caniparkhere API
+  description: The Caniparkhere API from INRIX — 1 operation(s) for caniparkhere.
+  humanURL: https://docs.inrix.com/traffic/segmentspeed/
+  baseURL: https://segment-api.inrix.com
+  tags:
+  - Caniparkhere
+  properties:
+  - type: OpenAPI
+    url: openapi/inrix-caniparkhere-api-openapi.yml
+  - type: Swagger
+    url: https://uas-api.inrix.com/swagger/docs/v1
+  - type: Console
+    url: https://uas-api.inrix.com/swagger
+  - type: Swagger
+    url: https://parking-api.inrix.com/api/swagger.json
+  - type: APIReference
+    url: https://parking-api.inrix.com/doc/v3/bulk/
+  - type: ChangeLog
+    url: https://docs.inrix.com/parking/change_log/
+- aid: inrix:inrix-openspots-api
+  name: INRIX Openspots API
+  description: The Openspots API from INRIX — 2 operation(s) for openspots.
+  humanURL: https://docs.inrix.com/traffic/segmentspeed/
+  baseURL: https://segment-api.inrix.com
+  tags:
+  - Openspots
+  properties:
+  - type: OpenAPI
+    url: openapi/inrix-openspots-api-openapi.yml
+  - type: Swagger
+    url: https://uas-api.inrix.com/swagger/docs/v1
+  - type: Console
+    url: https://uas-api.inrix.com/swagger
+  - type: Swagger
+    url: https://parking-api.inrix.com/api/swagger.json
+  - type: APIReference
+    url: https://parking-api.inrix.com/doc/v3/bulk/
+  - type: ChangeLog
+    url: https://docs.inrix.com/parking/change_log/
 - aid: inrix:inrix-application-management-api
   name: INRIX Application Management API
   description: The Application Management API from INRIX — 9 operation(s) for application management.
@@ -501,8 +526,6 @@ apis:
   humanURL: https://docs.inrix.com/traffic/segmentspeed/
   baseURL: https://segment-api.inrix.com
   tags:
-  - EmailTemplate
-  tags_raw:
   - Email Template
   properties:
   - type: OpenAPI
@@ -523,8 +546,6 @@ apis:
   humanURL: https://docs.inrix.com/traffic/segmentspeed/
   baseURL: https://segment-api.inrix.com
   tags:
-  - UserGroup
-  tags_raw:
   - User Group
   properties:
   - type: OpenAPI

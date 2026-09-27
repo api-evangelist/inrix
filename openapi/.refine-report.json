@@ -6,8 +6,9 @@
     "_original/inrix-user-accounts-openapi-original.json"
   ],
   "outputs": [
+    "inrix-caniparkhere-api-openapi.yml",
+    "inrix-openspots-api-openapi.yml",
     "inrix-accounts-api-openapi.yml",
-    "inrix-api-api-openapi.yml",
     "inrix-metadata-api-openapi.yml",
     "inrix-metrics-api-openapi.yml",
     "inrix-namespace-management-api-openapi.yml",
@@ -21,7 +22,7 @@
     "inrix-usergroup-api-openapi.yml"
   ],
   "archived": [
-    "deleted 3 superseded output(s) from the previous generation"
+    "deleted 4 superseded output(s) from the previous generation"
   ],
   "errors": [],
   "warnings": [
@@ -30,8 +31,12 @@
   "notes": [
     "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "inrix-parkme-openapi-original.json: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "inrix-parkme-openapi-original.json: tagged paths GET /api/caniparkhere/ -> Caniparkhere",
+    "inrix-parkme-openapi-original.json: tagged paths GET /api/openspots/events/ -> Openspots",
+    "inrix-parkme-openapi-original.json: tagged paths GET /api/openspots/events/{pk_event}/ -> Openspots",
+    "inrix-parkme-openapi-original.json: declared missing tag: Caniparkhere",
+    "inrix-parkme-openapi-original.json: declared missing tag: Openspots",
     "inrix-parkme-openapi-original.json: declared missing tag: accounts",
-    "inrix-parkme-openapi-original.json: declared missing tag: api",
     "inrix-signals-analytics-openapi-original.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0; renamed 1 component key(s) illegal in 3.x (e.g. Bearer Token)",
     "inrix-signals-analytics-openapi-original.json: tagged paths GET /v1/metrics/intersections/availability -> Metrics",
     "inrix-signals-analytics-openapi-original.json: tagged paths POST /v1/metadata/intersections -> Metadata",
@@ -47,8 +52,8 @@
     "inrix-user-accounts-openapi-original.json: declared missing tag: EmailTemplate",
     "inrix-user-accounts-openapi-original.json: declared missing tag: User",
     "inrix-user-accounts-openapi-original.json: declared missing tag: UserGroup",
-    "superseded outputs removed: inrix-application-management-api-openapi.yml, inrix-email-template-api-openapi.yml, inrix-user-group-api-openapi.yml",
-    "apis.yml register: written (+3 apis, 28 total)"
+    "superseded outputs removed: inrix-api-api-openapi.yml, inrix-application-management-api-openapi.yml, inrix-email-template-api-openapi.yml, inrix-user-group-api-openapi.yml",
+    "apis.yml register: written (+5 apis, 29 total)"
   ],
   "skipped": [
     "inrix-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",

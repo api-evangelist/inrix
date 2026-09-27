@@ -1,0 +1,33 @@
+openapi: 3.2.0
+info:
+  title: INRIX Parkme Caniparkhere API
+  description: INRIX Parkme Web Service API
+  contact:
+    email: support@inrix.com
+  version: v1
+servers:
+- url: https://parking-api.inrix.com/
+security:
+- Basic: []
+tags:
+- name: Caniparkhere
+paths:
+  /api/caniparkhere/:
+    parameters: []
+    get:
+      operationId: api_caniparkhere_list
+      description: 'given a coordinate finds the nearest segments and computes which rate is currently active and attaches additional
+
+        data to json response.'
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Caniparkhere
+      summary: Api caniparkhere list
+      x-summary-source: derived
+components:
+  securitySchemes:
+    Basic:
+      type: http
+      scheme: basic

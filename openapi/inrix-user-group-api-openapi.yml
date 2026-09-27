@@ -589,6 +589,59 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    InrixUserGroupInternal:
+      type: object
+      properties:
+        SerializeForStorage:
+          type: boolean
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/InrixUserGroupMember'
+        depth:
+          format: int32
+          type: integer
+        id:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        name:
+          type: string
+        parents:
+          type: string
+        description:
+          type: string
+        devId:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        membership:
+          type: array
+          items:
+            format: uuid
+            type: string
+            example: 00000000-0000-0000-0000-000000000000
+        lastEvaluatedMemberId:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        membercount:
+          format: int64
+          type: integer
+        createdBy:
+          type: string
+        properties:
+          type: object
+          additionalProperties:
+            type: string
+        createdDate:
+          format: date-time
+          type: string
+        modifiedBy:
+          type: string
+        modifiedDate:
+          format: date-time
+          type: string
     Application:
       type: object
       properties:
@@ -655,6 +708,109 @@ components:
           type: object
           additionalProperties:
             type: string
+    InrixUser:
+      type: object
+      properties:
+        devices:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device'
+        SerializeForStorage:
+          type: boolean
+        role:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          type: integer
+        accountVerified:
+          type: string
+        verificationCode:
+          type: string
+        verificationAttempts:
+          format: int32
+          type: integer
+        verificationCodeExpirationUtc:
+          format: date-time
+          type: string
+        id:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        email:
+          type: string
+        oAuthUserId:
+          type: string
+        providerName:
+          type: string
+        avatarIndex:
+          type: string
+        profileName:
+          type: string
+        userType:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          type: integer
+        oAuthToken:
+          type: string
+        password:
+          type: string
+        givenName:
+          type: string
+        surname:
+          type: string
+        gender:
+          type: string
+        tag:
+          type: string
+        consumerId:
+          type: string
+        devId:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        parents:
+          type: string
+        createdBy:
+          type: string
+        properties:
+          type: object
+          additionalProperties:
+            type: string
+    InrixUserGroupMember:
+      type: object
+      properties:
+        id:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        type:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          type: integer
+        role:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          type: integer
+        user:
+          $ref: '#/components/schemas/InrixUser'
+        usergroup:
+          $ref: '#/components/schemas/InrixUserGroupInternal'
     InrixUserGroup:
       type: object
       properties:
@@ -738,159 +894,3 @@ components:
             type: string
         name:
           type: string
-    InrixUserGroupInternal:
-      type: object
-      properties:
-        SerializeForStorage:
-          type: boolean
-        members:
-          type: array
-          items:
-            $ref: '#/components/schemas/InrixUserGroupMember'
-        depth:
-          format: int32
-          type: integer
-        id:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        name:
-          type: string
-        parents:
-          type: string
-        description:
-          type: string
-        devId:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        membership:
-          type: array
-          items:
-            format: uuid
-            type: string
-            example: 00000000-0000-0000-0000-000000000000
-        lastEvaluatedMemberId:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        membercount:
-          format: int64
-          type: integer
-        createdBy:
-          type: string
-        properties:
-          type: object
-          additionalProperties:
-            type: string
-        createdDate:
-          format: date-time
-          type: string
-        modifiedBy:
-          type: string
-        modifiedDate:
-          format: date-time
-          type: string
-    InrixUserGroupMember:
-      type: object
-      properties:
-        id:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        type:
-          format: int32
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          type: integer
-        role:
-          format: int32
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          type: integer
-        user:
-          $ref: '#/components/schemas/InrixUser'
-        usergroup:
-          $ref: '#/components/schemas/InrixUserGroupInternal'
-    InrixUser:
-      type: object
-      properties:
-        devices:
-          type: array
-          items:
-            $ref: '#/components/schemas/Device'
-        SerializeForStorage:
-          type: boolean
-        role:
-          format: int32
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          type: integer
-        accountVerified:
-          type: string
-        verificationCode:
-          type: string
-        verificationAttempts:
-          format: int32
-          type: integer
-        verificationCodeExpirationUtc:
-          format: date-time
-          type: string
-        id:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        email:
-          type: string
-        oAuthUserId:
-          type: string
-        providerName:
-          type: string
-        avatarIndex:
-          type: string
-        profileName:
-          type: string
-        userType:
-          format: int32
-          enum:
-          - 0
-          - 1
-          - 2
-          type: integer
-        oAuthToken:
-          type: string
-        password:
-          type: string
-        givenName:
-          type: string
-        surname:
-          type: string
-        gender:
-          type: string
-        tag:
-          type: string
-        consumerId:
-          type: string
-        devId:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        parents:
-          type: string
-        createdBy:
-          type: string
-        properties:
-          type: object
-          additionalProperties:
-            type: string

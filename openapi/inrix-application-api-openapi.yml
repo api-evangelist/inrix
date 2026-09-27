@@ -81,7 +81,7 @@ paths:
     get:
       tags:
       - Application
-      operationId: Application_Get
+      operationId: getV1ApplicationsByAppId
       parameters:
       - name: appId
         in: path
@@ -112,6 +112,8 @@ paths:
                 type: object
       summary: Application get
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Application_Get
     put:
       tags:
       - Application
@@ -648,43 +650,6 @@ components:
           type: string
         device:
           $ref: '#/components/schemas/Device'
-    Device:
-      type: object
-      properties:
-        SerializeForStorage:
-          type: boolean
-        application:
-          $ref: '#/components/schemas/Application'
-        id:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        uniqueDeviceId:
-          type: string
-        platform:
-          type: string
-        osVersion:
-          type: string
-        model:
-          type: string
-        locale:
-          type: string
-        connectionType:
-          type: string
-        pushTokenChannel:
-          type: string
-        pushToken:
-          type: string
-        pushTokenType:
-          type: string
-        deviceToken:
-          type: string
-        pushCredentials:
-          type: object
-          additionalProperties:
-            type: string
-        name:
-          type: string
     Application:
       type: object
       properties:
@@ -751,3 +716,40 @@ components:
           type: object
           additionalProperties:
             type: string
+    Device:
+      type: object
+      properties:
+        SerializeForStorage:
+          type: boolean
+        application:
+          $ref: '#/components/schemas/Application'
+        id:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        uniqueDeviceId:
+          type: string
+        platform:
+          type: string
+        osVersion:
+          type: string
+        model:
+          type: string
+        locale:
+          type: string
+        connectionType:
+          type: string
+        pushTokenChannel:
+          type: string
+        pushToken:
+          type: string
+        pushTokenType:
+          type: string
+        deviceToken:
+          type: string
+        pushCredentials:
+          type: object
+          additionalProperties:
+            type: string
+        name:
+          type: string

@@ -117,7 +117,7 @@ paths:
     get:
       tags:
       - Email Template
-      operationId: EmailTemplate_Get
+      operationId: getV1Emailtemplates
       responses:
         '200':
           description: OK
@@ -136,6 +136,8 @@ paths:
                 type: object
       summary: Email template get
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: EmailTemplate_Get
     post:
       tags:
       - Email Template

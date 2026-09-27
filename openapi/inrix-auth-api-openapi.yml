@@ -279,14 +279,6 @@ components:
           type: string
         device:
           $ref: '#/components/schemas/Device'
-    AccessToken:
-      type: object
-      properties:
-        token:
-          type: string
-        expiry:
-          format: date-time
-          type: string
     Application:
       type: object
       properties:
@@ -353,6 +345,14 @@ components:
           type: object
           additionalProperties:
             type: string
+    AccessToken:
+      type: object
+      properties:
+        token:
+          type: string
+        expiry:
+          format: date-time
+          type: string
     SigninRequest:
       type: object
       properties:

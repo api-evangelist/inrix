@@ -533,7 +533,7 @@ paths:
     post:
       tags:
       - User
-      operationId: User_ResetPassword
+      operationId: postV1ResetPassword
       parameters:
       - name: hashToken
         in: query
@@ -582,6 +582,8 @@ paths:
         required: true
       summary: User reset password
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: User_ResetPassword
   /v1/inviteUser:
     post:
       tags:
@@ -675,7 +677,7 @@ paths:
     put:
       tags:
       - User
-      operationId: User_Put
+      operationId: putV1UsersByUserId
       parameters:
       - name: userId
         in: path
@@ -719,6 +721,8 @@ paths:
         required: true
       summary: User put
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: User_Put
     delete:
       tags:
       - User
@@ -1162,35 +1166,38 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    OpenCarUserRequest:
+    InviteUserRequest:
       type: object
       properties:
         email:
           type: string
-        code:
-          type: string
-        deviceId:
-          type: string
-        deviceName:
-          type: string
         locale:
           type: string
-    ChangePasswordRequest:
-      type: object
-      properties:
-        oldPassword:
-          type: string
-        newPassword:
-          type: string
-    ResendCodeRequest:
-      type: object
-      properties:
-        userId:
+        appId:
           format: uuid
           type: string
           example: 00000000-0000-0000-0000-000000000000
+        hashToken:
+          type: string
+        isSsoUser:
+          type: boolean
+        baseUrl:
+          type: string
+    ResetPasswordRequest:
+      type: object
+      properties:
+        email:
+          type: string
         locale:
           type: string
+        templateId:
+          type: string
+        baseUrl:
+          type: string
+        parameters:
+          type: object
+          additionalProperties:
+            type: string
     Application:
       type: object
       properties:
@@ -1257,84 +1264,22 @@ components:
           type: object
           additionalProperties:
             type: string
-    Device:
+    ChangePasswordRequest:
       type: object
       properties:
-        SerializeForStorage:
-          type: boolean
-        application:
-          $ref: '#/components/schemas/Application'
-        id:
-          format: uuid
+        oldPassword:
           type: string
-          example: 00000000-0000-0000-0000-000000000000
-        uniqueDeviceId:
+        newPassword:
           type: string
-        platform:
-          type: string
-        osVersion:
-          type: string
-        model:
-          type: string
-        locale:
-          type: string
-        connectionType:
-          type: string
-        pushTokenChannel:
-          type: string
-        pushToken:
-          type: string
-        pushTokenType:
-          type: string
-        deviceToken:
-          type: string
-        pushCredentials:
-          type: object
-          additionalProperties:
-            type: string
-        name:
-          type: string
-    VerifyEmailRequest:
+    ResendCodeRequest:
       type: object
       properties:
         userId:
           format: uuid
           type: string
           example: 00000000-0000-0000-0000-000000000000
-        verificationCode:
-          type: string
-    InviteUserRequest:
-      type: object
-      properties:
-        email:
-          type: string
         locale:
           type: string
-        appId:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        hashToken:
-          type: string
-        isSsoUser:
-          type: boolean
-        baseUrl:
-          type: string
-    ResetPasswordRequest:
-      type: object
-      properties:
-        email:
-          type: string
-        locale:
-          type: string
-        templateId:
-          type: string
-        baseUrl:
-          type: string
-        parameters:
-          type: object
-          additionalProperties:
-            type: string
     InrixUser:
       type: object
       properties:
@@ -1410,3 +1355,62 @@ components:
           type: object
           additionalProperties:
             type: string
+    OpenCarUserRequest:
+      type: object
+      properties:
+        email:
+          type: string
+        code:
+          type: string
+        deviceId:
+          type: string
+        deviceName:
+          type: string
+        locale:
+          type: string
+    VerifyEmailRequest:
+      type: object
+      properties:
+        userId:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        verificationCode:
+          type: string
+    Device:
+      type: object
+      properties:
+        SerializeForStorage:
+          type: boolean
+        application:
+          $ref: '#/components/schemas/Application'
+        id:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        uniqueDeviceId:
+          type: string
+        platform:
+          type: string
+        osVersion:
+          type: string
+        model:
+          type: string
+        locale:
+          type: string
+        connectionType:
+          type: string
+        pushTokenChannel:
+          type: string
+        pushToken:
+          type: string
+        pushTokenType:
+          type: string
+        deviceToken:
+          type: string
+        pushCredentials:
+          type: object
+          additionalProperties:
+            type: string
+        name:
+          type: string
