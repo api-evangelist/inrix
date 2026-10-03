@@ -1166,38 +1166,59 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    InviteUserRequest:
+    ChangePasswordRequest:
       type: object
       properties:
-        email:
+        oldPassword:
           type: string
-        locale:
+        newPassword:
           type: string
-        appId:
+    ResendCodeRequest:
+      type: object
+      properties:
+        userId:
           format: uuid
           type: string
           example: 00000000-0000-0000-0000-000000000000
-        hashToken:
+        locale:
           type: string
-        isSsoUser:
-          type: boolean
-        baseUrl:
-          type: string
-    ResetPasswordRequest:
+    Device:
       type: object
       properties:
-        email:
+        SerializeForStorage:
+          type: boolean
+        application:
+          $ref: '#/components/schemas/Application'
+        id:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        uniqueDeviceId:
+          type: string
+        platform:
+          type: string
+        osVersion:
+          type: string
+        model:
           type: string
         locale:
           type: string
-        templateId:
+        connectionType:
           type: string
-        baseUrl:
+        pushTokenChannel:
           type: string
-        parameters:
+        pushToken:
+          type: string
+        pushTokenType:
+          type: string
+        deviceToken:
+          type: string
+        pushCredentials:
           type: object
           additionalProperties:
             type: string
+        name:
+          type: string
     Application:
       type: object
       properties:
@@ -1264,22 +1285,21 @@ components:
           type: object
           additionalProperties:
             type: string
-    ChangePasswordRequest:
+    ResetPasswordRequest:
       type: object
       properties:
-        oldPassword:
+        email:
           type: string
-        newPassword:
-          type: string
-    ResendCodeRequest:
-      type: object
-      properties:
-        userId:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
         locale:
           type: string
+        templateId:
+          type: string
+        baseUrl:
+          type: string
+        parameters:
+          type: object
+          additionalProperties:
+            type: string
     InrixUser:
       type: object
       properties:
@@ -1355,6 +1375,32 @@ components:
           type: object
           additionalProperties:
             type: string
+    VerifyEmailRequest:
+      type: object
+      properties:
+        userId:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        verificationCode:
+          type: string
+    InviteUserRequest:
+      type: object
+      properties:
+        email:
+          type: string
+        locale:
+          type: string
+        appId:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        hashToken:
+          type: string
+        isSsoUser:
+          type: boolean
+        baseUrl:
+          type: string
     OpenCarUserRequest:
       type: object
       properties:
@@ -1367,50 +1413,4 @@ components:
         deviceName:
           type: string
         locale:
-          type: string
-    VerifyEmailRequest:
-      type: object
-      properties:
-        userId:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        verificationCode:
-          type: string
-    Device:
-      type: object
-      properties:
-        SerializeForStorage:
-          type: boolean
-        application:
-          $ref: '#/components/schemas/Application'
-        id:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        uniqueDeviceId:
-          type: string
-        platform:
-          type: string
-        osVersion:
-          type: string
-        model:
-          type: string
-        locale:
-          type: string
-        connectionType:
-          type: string
-        pushTokenChannel:
-          type: string
-        pushToken:
-          type: string
-        pushTokenType:
-          type: string
-        deviceToken:
-          type: string
-        pushCredentials:
-          type: object
-          additionalProperties:
-            type: string
-        name:
           type: string

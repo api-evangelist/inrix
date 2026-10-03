@@ -22,7 +22,7 @@
     "inrix-usergroup-api-openapi.yml"
   ],
   "archived": [
-    "deleted 4 superseded output(s) from the previous generation"
+    "deleted 3 superseded output(s) from the previous generation"
   ],
   "errors": [],
   "warnings": [
@@ -52,21 +52,22 @@
     "inrix-user-accounts-openapi-original.json: declared missing tag: EmailTemplate",
     "inrix-user-accounts-openapi-original.json: declared missing tag: User",
     "inrix-user-accounts-openapi-original.json: declared missing tag: UserGroup",
-    "superseded outputs removed: inrix-api-api-openapi.yml, inrix-application-management-api-openapi.yml, inrix-email-template-api-openapi.yml, inrix-user-group-api-openapi.yml",
-    "apis.yml register: written (+5 apis, 29 total)"
+    "superseded outputs removed: inrix-application-management-api-openapi.yml, inrix-email-template-api-openapi.yml, inrix-user-group-api-openapi.yml",
+    "apis.yml register: written (+3 apis, 29 total)"
   ],
   "skipped": [
     "inrix-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "inrix-api-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "inrix-application-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "inrix-application-management-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "inrix-auth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "inrix-caniparkhere-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "inrix-developer-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "inrix-device-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "inrix-email-template-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "inrix-metadata-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "inrix-metrics-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "inrix-namespace-management-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "inrix-openspots-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "inrix-user-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "inrix-user-group-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]

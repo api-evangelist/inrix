@@ -264,21 +264,66 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    OAuth2SigninRequest:
+    Device:
       type: object
       properties:
-        username:
+        SerializeForStorage:
+          type: boolean
+        application:
+          $ref: '#/components/schemas/Application'
+        id:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        uniqueDeviceId:
+          type: string
+        platform:
+          type: string
+        osVersion:
+          type: string
+        model:
+          type: string
+        locale:
+          type: string
+        connectionType:
+          type: string
+        pushTokenChannel:
+          type: string
+        pushToken:
+          type: string
+        pushTokenType:
+          type: string
+        deviceToken:
+          type: string
+        pushCredentials:
+          type: object
+          additionalProperties:
+            type: string
+        name:
+          type: string
+    SigninRequest:
+      type: object
+      properties:
+        email:
           type: string
         password:
           type: string
-        client_id:
+        oAuthUserId:
           type: string
-        client_secret:
+        providerName:
           type: string
-        grant_type:
+        oAuthToken:
+          type: string
+        oAuthUserName:
           type: string
         device:
           $ref: '#/components/schemas/Device'
+        impersonateEmail:
+          type: string
+        impersonateAppId:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
     Application:
       type: object
       properties:
@@ -353,63 +398,18 @@ components:
         expiry:
           format: date-time
           type: string
-    SigninRequest:
+    OAuth2SigninRequest:
       type: object
       properties:
-        email:
+        username:
           type: string
         password:
           type: string
-        oAuthUserId:
+        client_id:
           type: string
-        providerName:
+        client_secret:
           type: string
-        oAuthToken:
-          type: string
-        oAuthUserName:
+        grant_type:
           type: string
         device:
           $ref: '#/components/schemas/Device'
-        impersonateEmail:
-          type: string
-        impersonateAppId:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-    Device:
-      type: object
-      properties:
-        SerializeForStorage:
-          type: boolean
-        application:
-          $ref: '#/components/schemas/Application'
-        id:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        uniqueDeviceId:
-          type: string
-        platform:
-          type: string
-        osVersion:
-          type: string
-        model:
-          type: string
-        locale:
-          type: string
-        connectionType:
-          type: string
-        pushTokenChannel:
-          type: string
-        pushToken:
-          type: string
-        pushTokenType:
-          type: string
-        deviceToken:
-          type: string
-        pushCredentials:
-          type: object
-          additionalProperties:
-            type: string
-        name:
-          type: string

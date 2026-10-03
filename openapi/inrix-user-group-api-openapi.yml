@@ -589,18 +589,11 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    InrixUserGroupInternal:
+    InrixUserGroup:
       type: object
       properties:
         SerializeForStorage:
           type: boolean
-        members:
-          type: array
-          items:
-            $ref: '#/components/schemas/InrixUserGroupMember'
-        depth:
-          format: int32
-          type: integer
         id:
           format: uuid
           type: string
@@ -642,6 +635,71 @@ components:
         modifiedDate:
           format: date-time
           type: string
+    Device:
+      type: object
+      properties:
+        SerializeForStorage:
+          type: boolean
+        application:
+          $ref: '#/components/schemas/Application'
+        id:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        uniqueDeviceId:
+          type: string
+        platform:
+          type: string
+        osVersion:
+          type: string
+        model:
+          type: string
+        locale:
+          type: string
+        connectionType:
+          type: string
+        pushTokenChannel:
+          type: string
+        pushToken:
+          type: string
+        pushTokenType:
+          type: string
+        deviceToken:
+          type: string
+        pushCredentials:
+          type: object
+          additionalProperties:
+            type: string
+        name:
+          type: string
+    InrixUserGroupMember:
+      type: object
+      properties:
+        id:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        type:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          type: integer
+        role:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          type: integer
+        user:
+          $ref: '#/components/schemas/InrixUser'
+        usergroup:
+          $ref: '#/components/schemas/InrixUserGroupInternal'
     Application:
       type: object
       properties:
@@ -783,39 +841,18 @@ components:
           type: object
           additionalProperties:
             type: string
-    InrixUserGroupMember:
-      type: object
-      properties:
-        id:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        type:
-          format: int32
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          type: integer
-        role:
-          format: int32
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          type: integer
-        user:
-          $ref: '#/components/schemas/InrixUser'
-        usergroup:
-          $ref: '#/components/schemas/InrixUserGroupInternal'
-    InrixUserGroup:
+    InrixUserGroupInternal:
       type: object
       properties:
         SerializeForStorage:
           type: boolean
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/InrixUserGroupMember'
+        depth:
+          format: int32
+          type: integer
         id:
           format: uuid
           type: string
@@ -856,41 +893,4 @@ components:
           type: string
         modifiedDate:
           format: date-time
-          type: string
-    Device:
-      type: object
-      properties:
-        SerializeForStorage:
-          type: boolean
-        application:
-          $ref: '#/components/schemas/Application'
-        id:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        uniqueDeviceId:
-          type: string
-        platform:
-          type: string
-        osVersion:
-          type: string
-        model:
-          type: string
-        locale:
-          type: string
-        connectionType:
-          type: string
-        pushTokenChannel:
-          type: string
-        pushToken:
-          type: string
-        pushTokenType:
-          type: string
-        deviceToken:
-          type: string
-        pushCredentials:
-          type: object
-          additionalProperties:
-            type: string
-        name:
           type: string

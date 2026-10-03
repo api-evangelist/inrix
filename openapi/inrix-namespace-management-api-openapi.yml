@@ -114,19 +114,19 @@ components:
           type: array
           items:
             type: string
-    NamespaceUpdateRequest:
+    NamespaceUpdateResponse:
       type: object
       properties:
-        mapVersion:
+        createdDate:
           type: string
-        provisioned:
-          $ref: '#/components/schemas/DeltaOperation'
-        pending:
-          $ref: '#/components/schemas/DeltaOperation'
-        reviewRequired:
-          $ref: '#/components/schemas/DeltaOperation'
-        region:
-          $ref: '#/components/schemas/Location'
+        responseId:
+          type: string
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/NamespaceData'
+        message:
+          type: string
     NamespaceData:
       type: object
       properties:
@@ -148,24 +148,6 @@ components:
             type: string
         region:
           $ref: '#/components/schemas/Location'
-    NamespaceSearchRequest:
-      type: object
-      properties:
-        namespaces:
-          type: array
-          items:
-            type: string
-        mapVersion:
-          type: string
-        region:
-          $ref: '#/components/schemas/Location'
-    Location:
-      type: object
-      properties:
-        country:
-          type: string
-        state:
-          type: string
     NamespaceSearchResponse:
       type: object
       properties:
@@ -177,19 +159,37 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/NamespaceData'
-    NamespaceUpdateResponse:
+    NamespaceUpdateRequest:
       type: object
       properties:
-        createdDate:
+        mapVersion:
           type: string
-        responseId:
+        provisioned:
+          $ref: '#/components/schemas/DeltaOperation'
+        pending:
+          $ref: '#/components/schemas/DeltaOperation'
+        reviewRequired:
+          $ref: '#/components/schemas/DeltaOperation'
+        region:
+          $ref: '#/components/schemas/Location'
+    Location:
+      type: object
+      properties:
+        country:
           type: string
-        result:
+        state:
+          type: string
+    NamespaceSearchRequest:
+      type: object
+      properties:
+        namespaces:
           type: array
           items:
-            $ref: '#/components/schemas/NamespaceData'
-        message:
+            type: string
+        mapVersion:
           type: string
+        region:
+          $ref: '#/components/schemas/Location'
   securitySchemes:
     Bearer_Token:
       type: http

@@ -180,6 +180,15 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    Template:
+      type: object
+      properties:
+        subject:
+          type: string
+        body:
+          type: string
+        locale:
+          type: string
     InrixEmailTemplate:
       type: object
       properties:
@@ -209,12 +218,3 @@ components:
           format: uuid
           type: string
           example: 00000000-0000-0000-0000-000000000000
-    Template:
-      type: object
-      properties:
-        subject:
-          type: string
-        body:
-          type: string
-        locale:
-          type: string
