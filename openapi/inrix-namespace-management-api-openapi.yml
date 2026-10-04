@@ -99,6 +99,27 @@ paths:
       - Bearer Token: []
 components:
   schemas:
+    NamespaceData:
+      type: object
+      properties:
+        namespace:
+          type: string
+        mapVersion:
+          type: string
+        provisioned:
+          type: array
+          items:
+            type: string
+        pending:
+          type: array
+          items:
+            type: string
+        reviewRequired:
+          type: array
+          items:
+            type: string
+        region:
+          $ref: '#/components/schemas/Location'
     DeltaOperation:
       type: object
       properties:
@@ -127,27 +148,6 @@ components:
             $ref: '#/components/schemas/NamespaceData'
         message:
           type: string
-    NamespaceData:
-      type: object
-      properties:
-        namespace:
-          type: string
-        mapVersion:
-          type: string
-        provisioned:
-          type: array
-          items:
-            type: string
-        pending:
-          type: array
-          items:
-            type: string
-        reviewRequired:
-          type: array
-          items:
-            type: string
-        region:
-          $ref: '#/components/schemas/Location'
     NamespaceSearchResponse:
       type: object
       properties:
@@ -159,6 +159,17 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/NamespaceData'
+    NamespaceSearchRequest:
+      type: object
+      properties:
+        namespaces:
+          type: array
+          items:
+            type: string
+        mapVersion:
+          type: string
+        region:
+          $ref: '#/components/schemas/Location'
     NamespaceUpdateRequest:
       type: object
       properties:
@@ -179,17 +190,6 @@ components:
           type: string
         state:
           type: string
-    NamespaceSearchRequest:
-      type: object
-      properties:
-        namespaces:
-          type: array
-          items:
-            type: string
-        mapVersion:
-          type: string
-        region:
-          $ref: '#/components/schemas/Location'
   securitySchemes:
     Bearer_Token:
       type: http

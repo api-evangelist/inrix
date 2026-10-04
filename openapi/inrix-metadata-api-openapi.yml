@@ -27,45 +27,63 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    PostMetadataResponse:
+    DateRange:
       type: object
       properties:
-        createdDate:
+        startDate:
           type: string
-        responseId:
+          format: date
+        endDate:
           type: string
-        locations:
-          type: array
-          items:
-            $ref: '#/components/schemas/LocationResponseItem'
-        totalCount:
+          format: date
+    MovementResponseItem:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        rank:
           type: integer
           format: int32
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/MetadataResponseItem'
-    CoordinateResponseItem:
+        inbound:
+          $ref: '#/components/schemas/Direction'
+        outbound:
+          $ref: '#/components/schemas/Direction'
+        movementType:
+          type: integer
+          format: int32
+        turnManeuvers:
+          type: string
+        turnGroupId:
+          type: string
+    MetadataResponseItem:
       type: object
       properties:
-        lat:
-          type: number
-          format: double
-        lon:
-          type: number
-          format: double
-    Crs:
+        intersectionId:
+          type: string
+        name:
+          type: string
+        coordinates:
+          type: array
+          items:
+            $ref: '#/components/schemas/CoordinateResponseItem'
+        movements:
+          type: array
+          items:
+            $ref: '#/components/schemas/MovementResponseItem'
+    Geometry:
       type: object
       properties:
         type:
           type: string
-          enum:
-          - name
-          - link
-        properties:
-          type: object
-          additionalProperties:
-            type: object
+        coordinates:
+          type: array
+          items:
+            type: array
+            items:
+              type: number
+              format: double
     IntersectionMetadataRequest:
       type: object
       properties:
@@ -106,36 +124,24 @@ components:
         maxRank:
           type: integer
           format: int32
-    DateRange:
+    PostMetadataResponse:
       type: object
       properties:
-        startDate:
+        createdDate:
           type: string
-          format: date
-        endDate:
+        responseId:
           type: string
-          format: date
-    Metadata:
-      type: object
-      properties:
-        key:
-          type: string
-        value:
-          type: object
-        valueList:
-          type: boolean
-    Geometry:
-      type: object
-      properties:
-        type:
-          type: string
-        coordinates:
+        locations:
           type: array
           items:
-            type: array
-            items:
-              type: number
-              format: double
+            $ref: '#/components/schemas/LocationResponseItem'
+        totalCount:
+          type: integer
+          format: int32
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetadataResponseItem'
     Filter:
       type: object
       properties:
@@ -149,10 +155,16 @@ components:
           type: array
           items:
             type: string
-    FieldName:
+    LocationResponseItem:
       type: object
       properties:
-        name:
+        region:
+          type: string
+        country:
+          type: string
+        state:
+          type: string
+        mapVersion:
           type: string
     Direction:
       type: object
@@ -170,61 +182,20 @@ components:
           format: int32
         geometry:
           $ref: '#/components/schemas/Geometry'
-    MetadataResponseItem:
+    FieldName:
       type: object
       properties:
-        intersectionId:
-          type: string
         name:
           type: string
-        coordinates:
-          type: array
-          items:
-            $ref: '#/components/schemas/CoordinateResponseItem'
-        movements:
-          type: array
-          items:
-            $ref: '#/components/schemas/MovementResponseItem'
-    GeoObjectWithRadius:
+    Metadata:
       type: object
       properties:
-        geometry:
-          $ref: '#/components/schemas/GeoJsonObject'
-        radiusInMeters:
-          type: integer
-          format: int32
-    LocationResponseItem:
-      type: object
-      properties:
-        region:
+        key:
           type: string
-        country:
-          type: string
-        state:
-          type: string
-        mapVersion:
-          type: string
-    MovementResponseItem:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        rank:
-          type: integer
-          format: int32
-        inbound:
-          $ref: '#/components/schemas/Direction'
-        outbound:
-          $ref: '#/components/schemas/Direction'
-        movementType:
-          type: integer
-          format: int32
-        turnManeuvers:
-          type: string
-        turnGroupId:
-          type: string
+        value:
+          type: object
+        valueList:
+          type: boolean
     GeoJsonObject:
       required:
       - type
@@ -241,6 +212,35 @@ components:
           type: string
       discriminator:
         propertyName: type
+    Crs:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - name
+          - link
+        properties:
+          type: object
+          additionalProperties:
+            type: object
+    CoordinateResponseItem:
+      type: object
+      properties:
+        lat:
+          type: number
+          format: double
+        lon:
+          type: number
+          format: double
+    GeoObjectWithRadius:
+      type: object
+      properties:
+        geometry:
+          $ref: '#/components/schemas/GeoJsonObject'
+        radiusInMeters:
+          type: integer
+          format: int32
   securitySchemes:
     Bearer_Token:
       type: http

@@ -264,6 +264,14 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    AccessToken:
+      type: object
+      properties:
+        token:
+          type: string
+        expiry:
+          format: date-time
+          type: string
     Device:
       type: object
       properties:
@@ -390,14 +398,6 @@ components:
           type: object
           additionalProperties:
             type: string
-    AccessToken:
-      type: object
-      properties:
-        token:
-          type: string
-        expiry:
-          format: date-time
-          type: string
     OAuth2SigninRequest:
       type: object
       properties:
