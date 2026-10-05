@@ -1,0 +1,12 @@
+{
+ "url": "https://uas-api.inrix.com/swagger/docs/v1",
+ "requested_url": "https://uas-api.inrix.com/swagger/docs/v1",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 44664,
+ "sha256": "b042bdfa05b5f407f13157044bbe09a04a44f5f7c16fd4a070fdc6c254ccd4c1",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}

@@ -1,0 +1,12 @@
+{
+ "url": "https://parking-api.inrix.com/api/swagger.json",
+ "requested_url": "https://parking-api.inrix.com/api/swagger.json",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 2122,
+ "sha256": "bcadaba9bc56f9021c395f541a444d678d0546ec436578ceb13f76aa428a417a",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
