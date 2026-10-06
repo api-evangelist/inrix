@@ -42,7 +42,7 @@ x-type: company
 x-source: harvest:secondary-market
 specificationVersion: '0.23'
 created: '2026-08-01'
-modified: '2026-08-01'
+modified: '2026-10-06'
 tags:
 - Transportation
 - Traffic
@@ -566,6 +566,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- url: https://inrix.com/feed/
+  type: BlogRSS
 - type: CapabilityMap
   url: capabilities/inrix-capability-edges.yml
   name: INRIX Business Capability Map
