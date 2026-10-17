@@ -1166,26 +1166,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    OpenCarUserRequest:
-      type: object
-      properties:
-        email:
-          type: string
-        code:
-          type: string
-        deviceId:
-          type: string
-        deviceName:
-          type: string
-        locale:
-          type: string
-    ChangePasswordRequest:
-      type: object
-      properties:
-        oldPassword:
-          type: string
-        newPassword:
-          type: string
     ResendCodeRequest:
       type: object
       properties:
@@ -1194,135 +1174,6 @@ components:
           type: string
           example: 00000000-0000-0000-0000-000000000000
         locale:
-          type: string
-    InrixUser:
-      type: object
-      properties:
-        devices:
-          type: array
-          items:
-            $ref: '#/components/schemas/Device'
-        SerializeForStorage:
-          type: boolean
-        role:
-          format: int32
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          type: integer
-        accountVerified:
-          type: string
-        verificationCode:
-          type: string
-        verificationAttempts:
-          format: int32
-          type: integer
-        verificationCodeExpirationUtc:
-          format: date-time
-          type: string
-        id:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        email:
-          type: string
-        oAuthUserId:
-          type: string
-        providerName:
-          type: string
-        avatarIndex:
-          type: string
-        profileName:
-          type: string
-        userType:
-          format: int32
-          enum:
-          - 0
-          - 1
-          - 2
-          type: integer
-        oAuthToken:
-          type: string
-        password:
-          type: string
-        givenName:
-          type: string
-        surname:
-          type: string
-        gender:
-          type: string
-        tag:
-          type: string
-        consumerId:
-          type: string
-        devId:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        parents:
-          type: string
-        createdBy:
-          type: string
-        properties:
-          type: object
-          additionalProperties:
-            type: string
-    Device:
-      type: object
-      properties:
-        SerializeForStorage:
-          type: boolean
-        application:
-          $ref: '#/components/schemas/Application'
-        id:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        uniqueDeviceId:
-          type: string
-        platform:
-          type: string
-        osVersion:
-          type: string
-        model:
-          type: string
-        locale:
-          type: string
-        connectionType:
-          type: string
-        pushTokenChannel:
-          type: string
-        pushToken:
-          type: string
-        pushTokenType:
-          type: string
-        deviceToken:
-          type: string
-        pushCredentials:
-          type: object
-          additionalProperties:
-            type: string
-        name:
-          type: string
-    InviteUserRequest:
-      type: object
-      properties:
-        email:
-          type: string
-        locale:
-          type: string
-        appId:
-          format: uuid
-          type: string
-          example: 00000000-0000-0000-0000-000000000000
-        hashToken:
-          type: string
-        isSsoUser:
-          type: boolean
-        baseUrl:
           type: string
     VerifyEmailRequest:
       type: object
@@ -1394,6 +1245,155 @@ components:
           type: string
         modifiedDate:
           format: date-time
+          type: string
+        properties:
+          type: object
+          additionalProperties:
+            type: string
+    InviteUserRequest:
+      type: object
+      properties:
+        email:
+          type: string
+        locale:
+          type: string
+        appId:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        hashToken:
+          type: string
+        isSsoUser:
+          type: boolean
+        baseUrl:
+          type: string
+    OpenCarUserRequest:
+      type: object
+      properties:
+        email:
+          type: string
+        code:
+          type: string
+        deviceId:
+          type: string
+        deviceName:
+          type: string
+        locale:
+          type: string
+    Device:
+      type: object
+      properties:
+        SerializeForStorage:
+          type: boolean
+        application:
+          $ref: '#/components/schemas/Application'
+        id:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        uniqueDeviceId:
+          type: string
+        platform:
+          type: string
+        osVersion:
+          type: string
+        model:
+          type: string
+        locale:
+          type: string
+        connectionType:
+          type: string
+        pushTokenChannel:
+          type: string
+        pushToken:
+          type: string
+        pushTokenType:
+          type: string
+        deviceToken:
+          type: string
+        pushCredentials:
+          type: object
+          additionalProperties:
+            type: string
+        name:
+          type: string
+    ChangePasswordRequest:
+      type: object
+      properties:
+        oldPassword:
+          type: string
+        newPassword:
+          type: string
+    InrixUser:
+      type: object
+      properties:
+        devices:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device'
+        SerializeForStorage:
+          type: boolean
+        role:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          type: integer
+        accountVerified:
+          type: string
+        verificationCode:
+          type: string
+        verificationAttempts:
+          format: int32
+          type: integer
+        verificationCodeExpirationUtc:
+          format: date-time
+          type: string
+        id:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        email:
+          type: string
+        oAuthUserId:
+          type: string
+        providerName:
+          type: string
+        avatarIndex:
+          type: string
+        profileName:
+          type: string
+        userType:
+          format: int32
+          enum:
+          - 0
+          - 1
+          - 2
+          type: integer
+        oAuthToken:
+          type: string
+        password:
+          type: string
+        givenName:
+          type: string
+        surname:
+          type: string
+        gender:
+          type: string
+        tag:
+          type: string
+        consumerId:
+          type: string
+        devId:
+          format: uuid
+          type: string
+          example: 00000000-0000-0000-0000-000000000000
+        parents:
+          type: string
+        createdBy:
           type: string
         properties:
           type: object

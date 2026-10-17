@@ -68,6 +68,108 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ValueItem:
+      type: object
+      properties:
+        name:
+          type: string
+        startTime:
+          type: string
+        endTime:
+          type: string
+    DimensionItem:
+      type: object
+      properties:
+        name:
+          type: string
+        ranges:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValueItem'
+    ColumnHeader:
+      type: object
+      properties:
+        dimensionHeaderEntries:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColumnHeaderEntry'
+        metricHeaderEntries:
+          type: array
+          items:
+            $ref: '#/components/schemas/ColumnHeaderEntry'
+    MetricData:
+      type: object
+      properties:
+        nextCursor:
+          type: object
+          additionalProperties:
+            type: string
+        columnHeader:
+          $ref: '#/components/schemas/ColumnHeader'
+        rows:
+          type: array
+          items:
+            type: array
+            items:
+              type: string
+    ColumnHeaderEntry:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+    GeoJsonObject:
+      required:
+      - type
+      type: object
+      properties:
+        crs:
+          $ref: '#/components/schemas/Crs'
+        bbox:
+          type: array
+          items:
+            type: number
+            format: double
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+    NamedRangeItem:
+      type: object
+      properties:
+        name:
+          type: string
+        startAvgControlDelay:
+          type: number
+          format: double
+        endAvgControlDelay:
+          type: number
+          format: double
+    UasPrincipalRequired:
+      type: object
+      properties:
+        accessToken:
+          type: string
+        userId:
+          type: string
+          format: uuid
+        appId:
+          type: string
+          format: uuid
+        name:
+          type: string
+        anonymous:
+          type: boolean
+    PostMetricResponse:
+      type: object
+      properties:
+        createdDate:
+          type: string
+        responseId:
+          type: string
+        data:
+          $ref: '#/components/schemas/MetricData'
     OrderBy:
       type: object
       properties:
@@ -87,112 +189,6 @@ components:
         endDate:
           type: string
           format: date
-    ColumnHeader:
-      type: object
-      properties:
-        dimensionHeaderEntries:
-          type: array
-          items:
-            $ref: '#/components/schemas/ColumnHeaderEntry'
-        metricHeaderEntries:
-          type: array
-          items:
-            $ref: '#/components/schemas/ColumnHeaderEntry'
-    ColumnHeaderEntry:
-      type: object
-      properties:
-        name:
-          type: string
-        type:
-          type: string
-    Filter:
-      type: object
-      properties:
-        name:
-          type: string
-        operator:
-          type: string
-        not:
-          type: boolean
-        expressions:
-          type: array
-          items:
-            type: string
-    DimensionItem:
-      type: object
-      properties:
-        name:
-          type: string
-        ranges:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValueItem'
-    ValueItem:
-      type: object
-      properties:
-        name:
-          type: string
-        startTime:
-          type: string
-        endTime:
-          type: string
-    MetricItem:
-      type: object
-      properties:
-        name:
-          type: string
-        ranges:
-          type: array
-          items:
-            $ref: '#/components/schemas/NamedRangeItem'
-    PostMetricResponse:
-      type: object
-      properties:
-        createdDate:
-          type: string
-        responseId:
-          type: string
-        data:
-          $ref: '#/components/schemas/MetricData'
-    MetricData:
-      type: object
-      properties:
-        nextCursor:
-          type: object
-          additionalProperties:
-            type: string
-        columnHeader:
-          $ref: '#/components/schemas/ColumnHeader'
-        rows:
-          type: array
-          items:
-            type: array
-            items:
-              type: string
-    UasPrincipalRequired:
-      type: object
-      properties:
-        accessToken:
-          type: string
-        userId:
-          type: string
-          format: uuid
-        appId:
-          type: string
-          format: uuid
-        name:
-          type: string
-        anonymous:
-          type: boolean
-    Metadata:
-      type: object
-      properties:
-        key:
-          type: string
-        value:
-          type: object
-        valueList:
-          type: boolean
     MetricRequest:
       type: object
       properties:
@@ -234,22 +230,6 @@ components:
             $ref: '#/components/schemas/OrderBy'
         noPaging:
           type: boolean
-    GeoJsonObject:
-      required:
-      - type
-      type: object
-      properties:
-        crs:
-          $ref: '#/components/schemas/Crs'
-        bbox:
-          type: array
-          items:
-            type: number
-            format: double
-        type:
-          type: string
-      discriminator:
-        propertyName: type
     Crs:
       type: object
       properties:
@@ -262,17 +242,37 @@ components:
           type: object
           additionalProperties:
             type: object
-    NamedRangeItem:
+    Filter:
       type: object
       properties:
         name:
           type: string
-        startAvgControlDelay:
-          type: number
-          format: double
-        endAvgControlDelay:
-          type: number
-          format: double
+        operator:
+          type: string
+        not:
+          type: boolean
+        expressions:
+          type: array
+          items:
+            type: string
+    Metadata:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: object
+        valueList:
+          type: boolean
+    MetricItem:
+      type: object
+      properties:
+        name:
+          type: string
+        ranges:
+          type: array
+          items:
+            $ref: '#/components/schemas/NamedRangeItem'
   securitySchemes:
     Bearer_Token:
       type: http

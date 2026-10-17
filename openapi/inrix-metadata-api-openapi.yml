@@ -27,15 +27,115 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    DateRange:
+    Geometry:
       type: object
       properties:
-        startDate:
+        type:
           type: string
-          format: date
-        endDate:
+        coordinates:
+          type: array
+          items:
+            type: array
+            items:
+              type: number
+              format: double
+    PostMetadataResponse:
+      type: object
+      properties:
+        createdDate:
           type: string
-          format: date
+        responseId:
+          type: string
+        locations:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocationResponseItem'
+        totalCount:
+          type: integer
+          format: int32
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetadataResponseItem'
+    CoordinateResponseItem:
+      type: object
+      properties:
+        lat:
+          type: number
+          format: double
+        lon:
+          type: number
+          format: double
+    Crs:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - name
+          - link
+        properties:
+          type: object
+          additionalProperties:
+            type: object
+    GeoJsonObject:
+      required:
+      - type
+      type: object
+      properties:
+        crs:
+          $ref: '#/components/schemas/Crs'
+        bbox:
+          type: array
+          items:
+            type: number
+            format: double
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+    MetadataResponseItem:
+      type: object
+      properties:
+        intersectionId:
+          type: string
+        name:
+          type: string
+        coordinates:
+          type: array
+          items:
+            $ref: '#/components/schemas/CoordinateResponseItem'
+        movements:
+          type: array
+          items:
+            $ref: '#/components/schemas/MovementResponseItem'
+    Direction:
+      type: object
+      properties:
+        name:
+          type: string
+        direction:
+          type: string
+        altName:
+          type: array
+          items:
+            type: string
+        heading:
+          type: integer
+          format: int32
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+    LocationResponseItem:
+      type: object
+      properties:
+        region:
+          type: string
+        country:
+          type: string
+        state:
+          type: string
+        mapVersion:
+          type: string
     MovementResponseItem:
       type: object
       properties:
@@ -57,33 +157,6 @@ components:
           type: string
         turnGroupId:
           type: string
-    MetadataResponseItem:
-      type: object
-      properties:
-        intersectionId:
-          type: string
-        name:
-          type: string
-        coordinates:
-          type: array
-          items:
-            $ref: '#/components/schemas/CoordinateResponseItem'
-        movements:
-          type: array
-          items:
-            $ref: '#/components/schemas/MovementResponseItem'
-    Geometry:
-      type: object
-      properties:
-        type:
-          type: string
-        coordinates:
-          type: array
-          items:
-            type: array
-            items:
-              type: number
-              format: double
     IntersectionMetadataRequest:
       type: object
       properties:
@@ -124,24 +197,28 @@ components:
         maxRank:
           type: integer
           format: int32
-    PostMetadataResponse:
+    GeoObjectWithRadius:
       type: object
       properties:
-        createdDate:
-          type: string
-        responseId:
-          type: string
-        locations:
-          type: array
-          items:
-            $ref: '#/components/schemas/LocationResponseItem'
-        totalCount:
+        geometry:
+          $ref: '#/components/schemas/GeoJsonObject'
+        radiusInMeters:
           type: integer
           format: int32
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/MetadataResponseItem'
+    DateRange:
+      type: object
+      properties:
+        startDate:
+          type: string
+          format: date
+        endDate:
+          type: string
+          format: date
+    FieldName:
+      type: object
+      properties:
+        name:
+          type: string
     Filter:
       type: object
       properties:
@@ -155,38 +232,6 @@ components:
           type: array
           items:
             type: string
-    LocationResponseItem:
-      type: object
-      properties:
-        region:
-          type: string
-        country:
-          type: string
-        state:
-          type: string
-        mapVersion:
-          type: string
-    Direction:
-      type: object
-      properties:
-        name:
-          type: string
-        direction:
-          type: string
-        altName:
-          type: array
-          items:
-            type: string
-        heading:
-          type: integer
-          format: int32
-        geometry:
-          $ref: '#/components/schemas/Geometry'
-    FieldName:
-      type: object
-      properties:
-        name:
-          type: string
     Metadata:
       type: object
       properties:
@@ -196,51 +241,6 @@ components:
           type: object
         valueList:
           type: boolean
-    GeoJsonObject:
-      required:
-      - type
-      type: object
-      properties:
-        crs:
-          $ref: '#/components/schemas/Crs'
-        bbox:
-          type: array
-          items:
-            type: number
-            format: double
-        type:
-          type: string
-      discriminator:
-        propertyName: type
-    Crs:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - name
-          - link
-        properties:
-          type: object
-          additionalProperties:
-            type: object
-    CoordinateResponseItem:
-      type: object
-      properties:
-        lat:
-          type: number
-          format: double
-        lon:
-          type: number
-          format: double
-    GeoObjectWithRadius:
-      type: object
-      properties:
-        geometry:
-          $ref: '#/components/schemas/GeoJsonObject'
-        radiusInMeters:
-          type: integer
-          format: int32
   securitySchemes:
     Bearer_Token:
       type: http
