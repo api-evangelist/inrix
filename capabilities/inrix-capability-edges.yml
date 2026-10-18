@@ -3,6 +3,7 @@ provider: INRIX
 generated_by: planning/capability-mapping/scripts/classify_capabilities.py
 model: claude-opus-5
 frame:
+- Infrastructure
 - Transportation & Logistics
 min_confidence: 0.7
 capability_model:
@@ -11,7 +12,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 3
+edge_count: 4
 edges:
 - tag: User
   spec_file: inrix-user-api-openapi.yml
@@ -34,6 +35,16 @@ edges:
   reason: Under a UserAccounts service, these operations register client applications and issue app keys
     and OAuth2 app tokens for consumers of INRIX's APIs — developer credential issuance and stewardship.
     Some risk it is better read as internal IAM, hence moderate confidence.
+- tag: User Group
+  spec_file: inrix-user-group-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: POST /v1/usergroups/{id}/members 'User group add members', GET /v1/FindUserGroupsByAdminUser,
+    schema InrixUserGroupMember
+  reason: Group and membership administration over platform user accounts — access grouping, i.e. identity
+    and access management. Not a domain business capability.
 - tag: UserGroup
   spec_file: inrix-user-group-api-openapi.yml
   reanchored_from: inrix-usergroup-api-openapi.yml
