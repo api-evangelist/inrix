@@ -3,19 +3,17 @@
   "feeds": [
     {
       "source": "https://inrix.com/blog/",
-      "feed_url": "https://inrix.com/blog/feed/",
-      "title": "",
-      "saved": 0,
-      "method": "discovered"
+      "error": "HTTPError"
     },
     {
       "source": "https://inrix.com/feed/",
-      "feed_url": "https://inrix.com/feed/",
-      "title": "",
-      "saved": 1,
-      "method": "feed"
+      "error": "HTTPError"
+    },
+    {
+      "source": "https://inrix.com/blog/feed/",
+      "error": "HTTPError"
     }
   ],
-  "post_count": 1,
-  "fetched": "2026-10-10T13:15:00Z"
+  "post_count": 10,
+  "fetched": "2026-10-17T14:53:57Z"
 }
