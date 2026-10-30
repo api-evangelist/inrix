@@ -64,54 +64,147 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-INRIX is a Kirkland, Washington-based transportation analytics company that turns anonymized GPS probe
-data from connected vehicles, mobile devices and fleets into real-time and historical road intelligence
-for automakers, cities, departments of transportation, retailers and app developers.
+INRIX is a Kirkland, Washington-based transportation analytics company that turns anonymized GPS probe data from connected vehicles, mobile devices and fleets into real-time and historical road intelligence for automakers, cities, departments of transportation, retailers and app developers. Its developer surface is organized around the INRIX IQ platform and documented at docs.inrix.com, spanning Traffic APIs (segment speed, safety alerts/incidents, traffic tiles, routing, drive time polygons, traffic cameras, dangerous slowdowns, fuel stations and TPEG Connect), Parking APIs (INRIX Parking Services 3.0, formerly ParkMe: lots, blocks, occupancy and probability, destinations and reservations), Analytics APIs (trade area trips, trip trends, visits, dangerous roads and Roadway Analytics), Signals intersection analytics, a Data Download Service for map and XD network releases, and data-upload streams for GPS, XFCD and parking events. All access is brokered through the INRIX User Accounts System (UAS), which exchanges an appId and a SHA-1 hashToken for a bearer access token used across every product API.
 
-- Website: https://inrix.com/
-- Developers: https://inrix.com/developers/
-- Documentation: https://docs.inrix.com/
-- Console / sign up: https://iq.inrix.com/
-- Status: https://status.inrix.com/
-- Support: support@inrix.com
+**Areas:** Transportation · Traffic · Mobility · Parking · Geospatial · Location Data · Analytics · Automotive · Smart Cities · Routing · Connected Vehicles · Road Network
 
-## Machine-readable contracts
+## INRIX on APIs.io
 
-INRIX publishes no spec index, but three real contracts are served from the API hosts and are captured
-verbatim in `openapi/`:
+Everything profiled for INRIX is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/inrix/](https://apis.io/providers/inrix/)** — or go straight to one of the APIs or properties below.
 
-| API | Spec | Operations | Source |
-|---|---|---|---|
-| INRIX User Accounts System (UAS) | Swagger 2.0 | 83 | https://uas-api.inrix.com/swagger/docs/v1 |
-| INRIX Parkme | Swagger 2.0 | 4 | https://parking-api.inrix.com/api/swagger.json |
-| INRIX Signals Analytics | OpenAPI 3.0.1 | 6 | https://signals-api.inrix.com/openapi.json |
+### APIs (29)
 
-The far larger Traffic, Parking v3, Analytics and data-stream surfaces are documented in HTML only.
+- [INRIX Segment Speed API](https://apis.io/apis/inrix/inrix-segment-speed-api/) — Real-time, historical and predicted speed, travel time and reference speed for INRIX XD and TMC road segments, queried by bounding box, radius, point,…
+- [INRIX Safety Alerts (Incidents) API](https://apis.io/apis/inrix/inrix-safety-alerts-incidents-api/) — Roadway incident, construction, flow, event and hazard alerts within a bounding box, radius or along a route, with TMC and OpenLR location referencing and…
+- [INRIX Traffic Tiles API](https://apis.io/apis/inrix/inrix-traffic-tiles-api/) — Pre-rendered raster traffic tiles for map overlays, addressed by quadkey and rendered from live INRIX speed data.
+- [INRIX Fuel Stations API](https://apis.io/apis/inrix/inrix-fuel-stations-api/) — Fuel station locations, brands, amenities and current fuel prices by grade, searchable by bounding box, radius or station identifier.
+- [INRIX Dangerous Slowdowns API](https://apis.io/apis/inrix/inrix-dangerous-slowdowns-api/) — Detects and reports sudden, unexpected slowdowns on the road network so vehicles and drivers can be warned ahead of a hazard.
+- [INRIX Dangerous Roads API](https://apis.io/apis/inrix/inrix-dangerous-roads-api/) — Ranked collision and safety risk scoring for road segments, used to identify the most dangerous roads and intersections in a geography.
+- [INRIX Trade Area Trips API](https://apis.io/apis/inrix/inrix-trade-area-trips-api/) — Aggregated, anonymized trip origin-destination counts into and out of a defined trade area or location polygon, for retail site selection and location…
+- [INRIX Trip Trends Reports API](https://apis.io/apis/inrix/inrix-trip-trends-reports-api/) — Trip volume and travel-behaviour trend reports over time for a geography, including seasonal adjustment and data-quality metadata.
+- [INRIX Roadway Analytics Data Downloader API](https://apis.io/apis/inrix/inrix-roadway-analytics-data-downloader-api/) — Asynchronous report and bulk speed-data downloader for INRIX Roadway Analytics: submit a report request, poll its status and retrieve the generated dataset.
+- [INRIX Data Download Service](https://apis.io/apis/inrix/inrix-data-download-service/) — Queries and downloads static INRIX data deliverables organized by product, dataset and file - beginning with map releases (XD added/removed/replaced, TMC…
+- [INRIX Data Upload Service (GPS, XFCD and Parking Event Streams)](https://apis.io/apis/inrix/inrix-data-upload-service-gps-xfcd-and-parking-event-streams/) — Inbound data streams for partners contributing probe data to INRIX: batched JSON POSTs of GPS points, extended floating car data (XFCD) readings, and…
+- [INRIX Gateway Map Version API](https://apis.io/apis/inrix/inrix-gateway-map-version-api/) — Reports the current INRIX map and XD network version in use, so consumers can align segment identifiers with the correct map release.
+- [INRIX Connected Services Gateway API](https://apis.io/apis/inrix/inrix-connected-services-gateway-api/) — The long-standing INRIX Connected Services gateway (Inrix.ashx), which serves routing, drive time polygons, traffic cameras, road speed at points, segment…
+- [INRIX TPEG Connect](https://apis.io/apis/inrix/inrix-tpeg-connect/) — Delivers INRIX traffic, incident, parking, weather and fuel content in TISA TPEG format over HTTP POST sessions, with incremental deltas, configurable…
+- [INRIX Visits Analytics API](https://apis.io/apis/inrix/inrix-visits-analytics-api/) — Anonymized visit counts and dwell analytics for points of interest and custom polygons, derived from INRIX device and vehicle movement data.
+- [INRIX Accounts API](https://apis.io/apis/inrix/inrix-accounts-api/) — The accounts API from INRIX — 1 operation(s) for accounts.
+- [INRIX Application API](https://apis.io/apis/inrix/inrix-application-api/) — The Application API from INRIX — 9 operation(s) for application.
+- [INRIX Auth API](https://apis.io/apis/inrix/inrix-auth-api/) — The Auth API from INRIX — 6 operation(s) for auth.
+- [INRIX Developer API](https://apis.io/apis/inrix/inrix-developer-api/) — The Developer API from INRIX — 2 operation(s) for developer.
+- [INRIX Device API](https://apis.io/apis/inrix/inrix-device-api/) — The Device API from INRIX — 3 operation(s) for device.
+- [INRIX Metadata API](https://apis.io/apis/inrix/inrix-metadata-api/) — The Metadata API from INRIX — 1 operation(s) for metadata.
+- [INRIX Metrics API](https://apis.io/apis/inrix/inrix-metrics-api/) — The Metrics API from INRIX — 2 operation(s) for metrics.
+- [INRIX Namespace Management API](https://apis.io/apis/inrix/inrix-namespace-management-api/) — APIs for managing intersection namespace subscriptions
+- [INRIX User API](https://apis.io/apis/inrix/inrix-user-api/) — The User API from INRIX — 18 operation(s) for user.
+- [INRIX Caniparkhere API](https://apis.io/apis/inrix/inrix-caniparkhere-api/) — The Caniparkhere API from INRIX — 1 operation(s) for caniparkhere.
+- [INRIX Openspots API](https://apis.io/apis/inrix/inrix-openspots-api/) — The Openspots API from INRIX — 2 operation(s) for openspots.
+- [INRIX Application Management API](https://apis.io/apis/inrix/inrix-application-management-api/) — The Application Management API from INRIX — 9 operation(s) for application management.
+- [INRIX Email Template API](https://apis.io/apis/inrix/inrix-email-template-api/) — The Email Template API from INRIX — 2 operation(s) for email template.
+- [INRIX User Group API](https://apis.io/apis/inrix/inrix-user-group-api/) — The User Group API from INRIX — 8 operation(s) for user group.
 
-## Artifacts
+### Published properties
 
-| Directory | What is in it |
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [inrix](https://apis.io/servers/inrix/inrix/)
+
+#### Collections (3)
+
+Postman and Open Collection request collections.
+
+- [INRIX Parkme API](https://apis.io/collections/inrix/open-inrix-parkme-openapi-original/)
+- [INRIX Analytics Webservice Template API](https://apis.io/collections/inrix/open-inrix-signals-analytics-openapi-original/)
+- [Inrix.UserAccounts.Web](https://apis.io/collections/inrix/open-inrix-user-accounts-openapi-original/)
+
+#### Overlays (3)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Inrix Parkme Overlay](https://apis.io/overlays/inrix/inrix-parkme-overlay/)
+- [Inrix Signals Analytics Overlay](https://apis.io/overlays/inrix/inrix-signals-analytics-overlay/)
+- [Inrix User Accounts Overlay](https://apis.io/overlays/inrix/inrix-user-accounts-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Inrix Authentication](https://apis.io/security/inrix/inrix-authentication/)
+- [Inrix Domain Security](https://apis.io/security/inrix/inrix-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://inrix.com/)
+- [Documentation](https://docs.inrix.com/)
+- [Getting started](https://docs.inrix.com/authentication/getting_authorized/)
+- [API reference](https://docs.inrix.com/traffic/general_info/)
+- [Pricing](https://inrix.com/contact/)
+- [Sign up](https://iq.inrix.com/)
+- [Changelog](https://docs.inrix.com/parking/change_log/)
+- [Blog](https://inrix.com/blog/)
+- [Terms of service](https://inrix.com/site-terms/)
+- [Privacy policy](https://inrix.com/site-privacy-policy/)
+- [GitHub](https://github.com/INRIX)
+- [Status](https://status.inrix.com/)
+
+## API Evangelist rating
+
+**Kin Score 50.2** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
 |---|---|
-| `openapi/` | The three harvested contracts, verbatim |
-| `authentication/` | The UAS appToken flow, OAuth2-shaped endpoints and the legacy GetSecurityToken path |
-| `errors/` | The 360-entry INRIX `statusId` registry, plus responses derived from the contracts |
-| `conventions/` | Auth style, geospatial bounding, output fields, ISO 8601, error envelope, no idempotency |
-| `lifecycle/` | Versioning, status page, environments, regions and observed deprecation notices |
-| `changelog/` | Parking API change log and Mobile Client SDK release notes |
-| `sandbox/` | The beta / sandbox / qa host map and the Stripe test-card note for parking reservations |
-| `packages/` | The iOS CocoaPods library and the gated Android Artifactory SDK |
-| `conformance/` | TPEG, OpenLR, TMC, ISO 8601, GeoJSON and the EU-U.S. Data Privacy Framework certification |
-| `data-model/` | Entity graph derived from the contracts |
-| `overlays/` | API Evangelist enhancements over each harvested spec |
-| `skills/` | Three agent skills grounded in verified operationIds |
-| `llms/` | Generated llms.txt |
-| `mcp/` | A candidate tool surface — INRIX ships no MCP server |
-| `well-known/` | Negative probe record: no `/.well-known/` documents on any host |
-| `security/` | Probed TLS, HSTS, DNSSEC, CAA, SPF and DMARC posture |
+| Discoverability | 78.6 |
+| Contract quality | 41.5 |
+| Contract governance | 18.2 |
+| Operational transparency | 34.2 |
+| Developer ergonomics | 73.2 |
+| Access clarity | 46.1 |
 
-## Honest gaps
+**Agent readiness 18.2** — agent-aware
 
-INRIX publishes **no** security.txt, vulnerability-disclosure policy, bug bounty, trust center,
-OpenID/OAuth discovery document, A2A agent card, MCP server, AsyncAPI, webhook or event-subscription
-surface, idempotency contract, rate-limit headers, formal deprecation policy, public SLA, first-party
-Postman workspace, or CLI. `inrix.com` returns HTTP 403 to non-browser clients.
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | — |
+
+**Regulatory alignment 29.4** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/inrix/](https://apis.io/providers/inrix/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for INRIX: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/inrix/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
